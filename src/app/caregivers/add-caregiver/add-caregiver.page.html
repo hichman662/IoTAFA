@@ -1,0 +1,60 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-back-button slot="start"></ion-back-button>
+
+        <ion-title class="ion-text-center">Add caregiver</ion-title>
+
+        <ion-icon slot="end" size="large" src="assets/icon/nurse.svg"></ion-icon>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+    <ion-list-header>
+        <ion-text>Add new caregiver</ion-text>
+    </ion-list-header>
+
+    <form>
+        <ion-item lines="full">
+            <ion-label position="floating">NIF</ion-label>
+            <ion-input type="text" required></ion-input>
+        </ion-item>
+
+        <ion-item lines="full">
+            <ion-label position="floating">Name</ion-label>
+            <ion-input type="text" required></ion-input>
+        </ion-item>
+
+        <ion-item lines="full">
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="text" required></ion-input>
+        </ion-item>
+
+        <ion-item lines="full">
+            <ion-label position="floating">Password</ion-label>
+            <ion-input type="password" required></ion-input>
+        </ion-item>
+
+        <ion-item lines="full">
+            <ion-label position="floating">Password confirmation</ion-label>
+            <ion-input type="text" required></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+            <ion-label position="floating">Date of birth</ion-label>
+            <ion-input type="date" required></ion-input>
+        </ion-item>
+
+        <ion-item lines="full">
+            <ion-label position="floating">Patients</ion-label>
+            <ion-input type="text" required></ion-input>
+        </ion-item>
+
+        <ion-button expand="block" type="submit" shape="round" fill="solid" [routerLink]="['profile-caregiver']">Save Caregiver
+            <ion-icon slot="end" name="person-add"></ion-icon>
+        </ion-button>
+
+    </form>
+
+</ion-content>

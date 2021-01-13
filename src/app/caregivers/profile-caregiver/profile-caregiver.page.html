@@ -1,0 +1,61 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-back-button slot="start"></ion-back-button>
+
+        <ion-title class="ion-text-center">Caregiver profile</ion-title>
+
+
+        <ion-icon slot="end" size="large" src="assets/icon/nurse.svg"></ion-icon>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="ion-text-right">
+
+        <ion-button expand="full" shape="round" fill="outline" [routerLink]="['add-caregiver']">Edit Caregiver
+            <ion-icon slot="end" name="pencil"></ion-icon>
+        </ion-button>
+    </div>
+    <ion-card>
+
+        <ion-item>
+            <ion-label>Caregiver name</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label>NIF</ion-label>12345678A
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Email</ion-label>Caregiver@IoTAFA.com
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Date of birth</ion-label>20/12/1980
+        </ion-item>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-title>Patientes</ion-card-title>
+        <ion-list>
+            <ion-item>
+                <ion-avatar slot="start">
+                    <img src="assets/icon/disability.svg">
+                </ion-avatar>
+                <ion-label>Patiente 2</ion-label>
+            </ion-item>
+
+            <ion-item>
+                <ion-avatar slot="start">
+                    <img src="assets/icon/disability.svg">
+                </ion-avatar>
+                <ion-label>Patiente 2</ion-label>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+
+
+    <ion-button expand="full" shape="round" color="danger" fill="outline" [routerLink]="['add-caregiver']">Remove Caregiver
+        <ion-icon slot="end" name="trash"></ion-icon>
+    </ion-button>
+</ion-content>

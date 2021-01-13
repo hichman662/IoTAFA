@@ -1,0 +1,59 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-back-button slot="start"></ion-back-button>
+
+        <ion-title class="ion-text-center">Add device template</ion-title>
+
+        <ion-icon slot="end" size="large" src="assets/icon/deviceTemplate.svg"></ion-icon>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-item-divider color="light">
+        <ion-label>
+            Device template
+        </ion-label>
+    </ion-item-divider>
+
+    <ion-item>
+        <ion-label position="stacked">Device template name</ion-label>
+        <ion-input placeholder="Enter device template name"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>isEdge</ion-label>
+        <ion-toggle></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Device type</ion-label>
+        <ion-select value="sensor" okText="Okay" cancelText="Dismiss">
+            <ion-select-option value="sensor">Sensor</ion-select-option>
+            <ion-select-option value="actuator">Actuator</ion-select-option>
+        </ion-select>
+    </ion-item>
+
+
+    <ion-item-divider color="light">
+        <ion-label>
+            Device template telemetry
+        </ion-label>
+    </ion-item-divider>
+    <app-device-template-telemetry></app-device-template-telemetry>
+
+    <ion-item-divider color="light">
+        <ion-label>
+            Device template property
+        </ion-label>
+    </ion-item-divider>
+    <ion-card>
+        <app-device-template-property></app-device-template-property>
+    </ion-card>
+    <ion-item-divider color="light">
+        <ion-label>
+            Device template command
+        </ion-label>
+    </ion-item-divider>
+    <app-device-template-command></app-device-template-command>
+</ion-content>
