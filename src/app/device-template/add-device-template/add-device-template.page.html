@@ -11,7 +11,7 @@
 
 <ion-content>
 
-    <ion-item-divider color="light">
+    <ion-item-divider color="dark">
         <ion-label>
             Device template
         </ion-label>
@@ -35,14 +35,14 @@
     </ion-item>
 
 
-    <ion-item-divider color="light">
+    <ion-item-divider color="dark">
         <ion-label>
             Device template telemetry
         </ion-label>
     </ion-item-divider>
     <app-device-template-telemetry></app-device-template-telemetry>
 
-    <ion-item-divider color="light">
+    <ion-item-divider color="dark">
         <ion-label>
             Device template property
         </ion-label>
@@ -50,10 +50,16 @@
     <ion-card>
         <app-device-template-property></app-device-template-property>
     </ion-card>
-    <ion-item-divider color="light">
+    <ion-item-divider color="dark">
         <ion-label>
             Device template command
         </ion-label>
     </ion-item-divider>
     <app-device-template-command></app-device-template-command>
+    <br>
+    <br>
+    <ion-button expand="block" type="submit" shape="round" fill="solid" [routerLink]="['profile-device-template']">Save Device Template
+        <ion-icon slot="end" name="save-outline"></ion-icon>
+    </ion-button>
+    <br>
 </ion-content>

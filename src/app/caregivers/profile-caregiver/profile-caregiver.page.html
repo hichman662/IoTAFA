@@ -19,9 +19,8 @@
     </div>
     <ion-card>
 
-        <ion-item>
-            <ion-label>Caregiver name</ion-label>
-        </ion-item>
+        <ion-card-title>Caregiver name</ion-card-title>
+
         <ion-item>
             <ion-label>NIF</ion-label>12345678A
         </ion-item>
@@ -53,9 +52,11 @@
             </ion-item>
         </ion-list>
     </ion-card>
-
-
-    <ion-button expand="full" shape="round" color="danger" fill="outline" [routerLink]="['add-caregiver']">Remove Caregiver
-        <ion-icon slot="end" name="trash"></ion-icon>
-    </ion-button>
+    <br>
+    <br>
+    <ion-item-divider>
+        <ion-button expand="full" shape="round" color="danger" fill="outline" [routerLink]="['add-caregiver']">Remove Caregiver
+            <ion-icon slot="end" name="trash"></ion-icon>
+        </ion-button>
+    </ion-item-divider>
 </ion-content>

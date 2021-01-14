@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'add-device-template',
     loadChildren: () => import('./add-device-template/add-device-template.module').then( m => m.AddDeviceTemplatePageModule)
+  },
+  {
+    path: 'profile-device-template',
+    loadChildren: () => import('./profile-device-template/profile-device-template.module').then( m => m.ProfileDeviceTemplatePageModule)
   }
 ];
 

@@ -8,6 +8,7 @@ import { AddCaregiverPageRoutingModule } from './add-caregiver-routing.module';
 
 import { AddCaregiverPage } from './add-caregiver.page';
 
+
 @NgModule({
   imports: [
     CommonModule,
