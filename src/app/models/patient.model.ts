@@ -6,8 +6,7 @@ export class Patient{
           NIF: string,
           email: string,
           name: string,
-          dateOfBirth: Date,
-          user: User
+          dateOfBirth: Date
           )
     {}
 }

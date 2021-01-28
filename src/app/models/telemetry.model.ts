@@ -1,4 +1,4 @@
-import { DeviceTemplate} from './deviceTemplate.model';
+
 
 export class Telemetry{
   constructor(
@@ -6,7 +6,7 @@ export class Telemetry{
         frecuency: DoubleRange,
         schema: number,
         unit: number,
-        deviceTemplate: DeviceTemplate
+        deviceTemplate: number
         )
   {}
 

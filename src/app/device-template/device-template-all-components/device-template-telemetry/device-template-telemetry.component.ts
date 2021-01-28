@@ -16,7 +16,7 @@ export class DeviceTemplateTelemetryComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit(): void {}
 
 telemetries(): FormArray {
   return this.telemetryForm.get("telemetries") as FormArray;

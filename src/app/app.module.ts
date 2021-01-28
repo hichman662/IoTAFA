@@ -1,3 +1,4 @@
+import { DeviceTemplateService } from './services/deviceTemplate.service';
 import { DeviceTemplatePageModule } from './device-template/device-template.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,6 +13,7 @@ import { AppComponent } from './app.component';
 
 
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -19,6 +21,7 @@ import { AppComponent } from './app.component';
   providers: [
     StatusBar,
     SplashScreen,
+    DeviceTemplateService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
