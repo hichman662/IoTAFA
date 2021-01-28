@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-device-template-command',
+  selector: 'app-device-template-command-component',
   templateUrl: './device-template-command.component.html',
   styleUrls: ['./device-template-command.component.scss'],
 })

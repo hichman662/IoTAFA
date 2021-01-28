@@ -11,15 +11,9 @@
 
 <ion-content>
 
-    <ion-item-divider color="medium">
-        <ion-label>
-            Device template
-        </ion-label>
-    </ion-item-divider>
-
     <ion-item>
         <ion-label position="stacked">Device template name</ion-label>
-        <ion-input placeholder="Enter device template name"></ion-input>
+        <ion-input></ion-input>
     </ion-item>
     <ion-item>
         <ion-label>isEdge</ion-label>
@@ -35,30 +29,32 @@
     </ion-item>
 
 
-    <ion-item-divider color="medium">
-        <ion-label>
-            Device template telemetry
-        </ion-label>
-    </ion-item-divider>
-    <app-device-template-telemetry></app-device-template-telemetry>
+    <ion-item [routerLink]="['device-template-telemetry']">
+        <ion-label>Telemetry</ion-label>
+        <ion-item-option color="light">
+            <ion-icon slot="icon-only" name="arrow-forward"></ion-icon>
+        </ion-item-option>
+    </ion-item>
+    <ion-item [routerLink]="['device-template-property']">
 
-    <ion-item-divider color="medium">
-        <ion-label>
-            Device template property
-        </ion-label>
-    </ion-item-divider>
-    <ion-card>
-        <app-device-template-property></app-device-template-property>
-    </ion-card>
-    <ion-item-divider color="medium">
-        <ion-label>
-            Device template command
-        </ion-label>
-    </ion-item-divider>
-    <app-device-template-command></app-device-template-command>
+        <ion-label>Property</ion-label>
+        <ion-item-option color="light">
+            <ion-icon slot="icon-only" name="arrow-forward"></ion-icon>
+        </ion-item-option>
+    </ion-item>
+
+    <ion-item [routerLink]="['device-template-command']">
+        <ion-label>Command</ion-label>
+        <ion-item-option color="light">
+            <ion-icon slot="icon-only" name="arrow-forward"></ion-icon>
+        </ion-item-option>
+    </ion-item>
+
+
+
     <br>
     <br>
-    <ion-button expand="block" type="submit" shape="round" fill="solid" [routerLink]="['profile-device-template']">Save Device Template
+    <ion-button expand="block" type="submit" shape="round" fill="solid" [routerLink]="['profile-device-template']">Save
         <ion-icon slot="end" name="save-outline"></ion-icon>
     </ion-button>
     <br>

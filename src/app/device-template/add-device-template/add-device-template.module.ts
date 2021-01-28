@@ -7,9 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { AddDeviceTemplatePageRoutingModule } from './add-device-template-routing.module';
 
 import { AddDeviceTemplatePage } from './add-device-template.page';
-import { DeviceTemplateTelemetryComponent } from './device-template-telemetry/device-template-telemetry.component';
-import { DeviceTemplateCommandComponent } from './device-template-command/device-template-command.component';
-import { DeviceTemplatePropertyComponent } from './device-template-property/device-template-property.component';
+
 
 
 @NgModule({
@@ -19,6 +17,6 @@ import { DeviceTemplatePropertyComponent } from './device-template-property/devi
     IonicModule,
     AddDeviceTemplatePageRoutingModule
   ],
-  declarations: [AddDeviceTemplatePage, DeviceTemplateTelemetryComponent, DeviceTemplateCommandComponent, DeviceTemplatePropertyComponent]
+  declarations: [AddDeviceTemplatePage]
 })
 export class AddDeviceTemplatePageModule {}
