@@ -1,8 +1,22 @@
-<ion-item>
-    <ion-label position="stacked">Name</ion-label>
-    <ion-input></ion-input>
-</ion-item>
-<ion-item>
-    <ion-label>isSynchronous</ion-label>
-    <ion-toggle></ion-toggle>
-</ion-item>
+<form [formGroup]="commandForm" (ngSubmit)="onSubmit()"></form>
+
+<div formArrayName="ArrayCommands" *ngFor="let command of commands().controls; let i=index">
+
+    <div [formGroupName]="i">
+
+        <ion-item>
+            <ion-label position="stacked">Name</ion-label>
+            <ion-input name="name" type="text" formControlName="name"></ion-input>
+        </ion-item>
+        <!--    <ion-item>
+                <ion-label>isSynchronous</ion-label>
+                <ion-toggle name="isSyn" formControlName="isSyn"></ion-toggle>
+            </ion-item> -->
+        <button (click)="removeCommand(i)">Remove</button>
+    </div>
+
+</div>
+<button type="submit">Submit</button>
+</form>
+
+<button type="button" (click)="addCommands()">Add another command</button>

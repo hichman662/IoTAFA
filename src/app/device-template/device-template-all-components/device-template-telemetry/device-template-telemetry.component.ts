@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormArray, FormGroup } from '@angular/forms';
+import { FormBuilder, FormArray, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-device-template-telemetry-component',
@@ -8,38 +9,30 @@ import { FormBuilder, FormArray, FormGroup } from '@angular/forms';
 })
 export class DeviceTemplateTelemetryComponent implements OnInit {
 
-   telemetryForm: FormGroup;
+FormGroup: FormGroup;
+form: any;
 
-  constructor(private fb: FormBuilder) {
-    this.telemetryForm = this.fb.group({
-      telemetries: this.fb.array([]) ,
+  constructor() {
+
+  }
+
+  ngOnInit(): void {
+    this.form = new FormGroup({
+      ArrayTelemetries: new FormArray([
+      ])
     });
   }
 
-  ngOnInit(): void {}
-
-telemetries(): FormArray {
-  return this.telemetryForm.get("telemetries") as FormArray;
+addTelemetries(){
+  this.form.get('ArrayTelemetries').push(new FormControl());
 }
 
-  addTelemetry() {
-    this.telemetries().push(this.newTelemetry());
-  }
-
-  newTelemetry(): FormGroup {
-    return this.fb.group({
-      frecuency: '',
-      unit: '',
-      schema: ''
-    });
-  }
-
-  removeTelemetry(i: number) {
-    this.telemetries().removeAt(i);
-  }
-
-  onSubmit() {
-    console.log(this.telemetryForm.value);
-  }
+removeTelemetry(i: number) {
+  this.form.get('ArrayTelemetries').removeAt(i);
+}
+onSubmit(){
+ // console.log(this.form.get('arrayTelemetries').value);
+  console.log(this.form.value);
+}
 
 }

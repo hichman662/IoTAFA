@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { DeviceTemplateService } from './services/deviceTemplate.service';
 import { DeviceTemplatePageModule } from './device-template/device-template.module';
 import { NgModule } from '@angular/core';
@@ -13,11 +14,10 @@ import { AppComponent } from './app.component';
 
 
 
-
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, DeviceTemplatePageModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, DeviceTemplatePageModule, ReactiveFormsModule],
   providers: [
     StatusBar,
     SplashScreen,
