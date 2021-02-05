@@ -10,52 +10,105 @@
 </ion-header>
 
 <ion-content>
+    <form [formGroup]="deviceTemplateForm" (ngSubmit)="onSubmit()">
+        <ion-item>
+            <ion-label position="stacked">Device template name</ion-label>
+            <ion-input type="text" formControlName="name" class="form-control"></ion-input>
+            <div class="error" *ngIf="deviceTemplateForm.controls.name.errors && deviceTemplateForm.controls.name.touched">
+                Please fill out this field
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label>isEdge</ion-label>
+            <ion-toggle formControlName="isEdge" class="form-control" checked="true"></ion-toggle>
+        </ion-item>
 
-    <ion-item>
-        <ion-label position="stacked">Device template name</ion-label>
-        <ion-input></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label>isEdge</ion-label>
-        <ion-toggle></ion-toggle>
-    </ion-item>
+        <ion-item>
+            <ion-label>Device type</ion-label>
+            <ion-select value="sensor" okText="Okay" cancelText="Dismiss" formControlName="type">
+                <div class="error" *ngIf="deviceTemplateForm.controls.type.errors && deviceTemplateForm.controls.type.touched">
+                    Please fill out this field
+                </div>
+                <ion-select-option value="sensor">Sensor</ion-select-option>
+                <ion-select-option value="actuator">Actuator</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <!-- 
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <ion-col size-xs="12" size-sm="6">
+                        <p class="ion-text-wrap">
+                            title
+                        </p>
+                    </ion-col>
+                    <ion-col class="ion-hide-sm-down" size-sm="3">
+                        <p>
+                            Nombre
+                        </p>
+                    </ion-col>
+                    <ion-col class="ion-hide-sm-down" size-sm="3">
+                        <p>
+                            fecha
+                        </p>
+                    </ion-col>
+                    <mat-panel-title>
+                        This is the expansion title
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        This is a summary of the content
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <ion-label>
+                    <p class="ion-text-right mr-1 mb-1 ion-hide-sm-up" slot="end">
+                        <small>
+                       nombre<br> fecha
+                    </small>
+                    </p>
+                </ion-label>
+                <p>This is the primary content of the panel.</p>
+            </mat-expansion-panel>
+        </mat-accordion> -->
 
-    <ion-item>
-        <ion-label>Device type</ion-label>
-        <ion-select value="sensor" okText="Okay" cancelText="Dismiss">
-            <ion-select-option value="sensor">Sensor</ion-select-option>
-            <ion-select-option value="actuator">Actuator</ion-select-option>
-        </ion-select>
-    </ion-item>
+        <ion-item [routerLink]="['device-template-telemetry']">
+            <ion-label>Telemetries</ion-label>
+            <ion-item-option color="light">
+                <ion-icon slot="icon-only" name="arrow-forward"></ion-icon>
+            </ion-item-option>
+        </ion-item>
+        <ion-item [routerLink]="['device-template-property']">
 
 
-    <ion-item [routerLink]="['device-template-telemetry']">
-        <ion-label>Telemetry</ion-label>
-        <ion-item-option color="light">
-            <ion-icon slot="icon-only" name="arrow-forward"></ion-icon>
-        </ion-item-option>
-    </ion-item>
-    <ion-item [routerLink]="['device-template-property']">
+            <ion-label>Properties</ion-label>
+            <ion-item-option color="light">
+                <ion-icon slot="icon-only" name="arrow-forward"></ion-icon>
+            </ion-item-option>
+        </ion-item>
 
-        <ion-label>Property</ion-label>
-        <ion-item-option color="light">
-            <ion-icon slot="icon-only" name="arrow-forward"></ion-icon>
-        </ion-item-option>
-    </ion-item>
+        <ion-item [routerLink]="['device-template-command']">
+            <ion-label>Commands</ion-label>
+            <ion-item-option color="light">
+                <ion-icon slot="icon-only" name="arrow-forward"></ion-icon>
+            </ion-item-option>
+        </ion-item>
 
-    <ion-item [routerLink]="['device-template-command']">
-        <ion-label>Command</ion-label>
-        <ion-item-option color="light">
-            <ion-icon slot="icon-only" name="arrow-forward"></ion-icon>
-        </ion-item-option>
-    </ion-item>
+        <br>
+        <br>
+        <ion-button expand="block " type="submit " shape="round " fill="solid " type="submit" class="btn btn-success" [disabled]="!deviceTemplateForm.valid">Add Device template</ion-button>
+    </form>
 
-
-
-    <br>
-    <br>
-    <ion-button expand="block" type="submit" shape="round" fill="solid" [routerLink]="['profile-device-template']">Save
-        <ion-icon slot="end" name="save-outline"></ion-icon>
-    </ion-button>
+    <div class="telemetries">
+        <div class="telemetry" *ngFor="let telemetry of telemetries">
+            <ul>
+                <li>{{telemetry}}</li>
+                <li>
+                    <h4>unit</h4>
+                </li>
+                <li>
+                    <h4>schema</h4>
+                </li>
+            </ul>
+        </div>
+    </div>
     <br>
 </ion-content>

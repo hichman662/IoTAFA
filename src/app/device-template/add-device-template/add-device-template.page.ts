@@ -1,5 +1,7 @@
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-
+import { TelemetryService } from 'src/app/services/telemetry.service';
+import { Telemetry } from '../../models/telemetry.model';
 @Component({
   selector: 'app-add-device-template',
   templateUrl: './add-device-template.page.html',
@@ -7,9 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddDeviceTemplatePage implements OnInit {
 
-  constructor() { }
+  deviceTemplateForm: FormGroup;
+  telemetries: Telemetry [];
+  constructor(
+    private telemetryService: TelemetryService
+  ) {
+    this.deviceTemplateForm = new FormGroup({
+      name: new FormControl('', [
+        Validators.required
+      ]),
+      isEdge: new FormControl(true),
+      type: new FormControl('', [
+        Validators.required
+      ])
+    });
+   }
 
-  ngOnInit() {
+   ngOnInit() {
+     this.telemetryService.getAllTelemetries()
+      .then(arr => {
+        this.telemetries = arr;
+      })
+  }
+
+  onSubmit(){
+    console.log(this.deviceTemplateForm.value);
   }
 
 }

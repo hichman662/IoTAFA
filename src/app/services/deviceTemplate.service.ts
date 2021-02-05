@@ -3,18 +3,27 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DeviceTemplate  } from '../models/deviceTemplate.model';
 import {of, Observable} from 'rxjs';
-
+import { Command } from '../models/command.model';
+import { Property } from '../models/property.model';
+import { Telemetry } from './../models/telemetry.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeviceTemplateService {
-
-  private deviceTemplate: DeviceTemplate;
+  arrayTelemetries: Telemetry [];
+  arrayCommands: Command [];
+  arrayProperties: Property [];
+  arrayDeviceTemplates: DeviceTemplate [];
+  /* private deviceTemplate: DeviceTemplate;
   private TOKEN = localStorage.getItem ('TOKEN');
-  private headers: HttpHeaders = new HttpHeaders({Authorization: this.TOKEN});
+  private headers: HttpHeaders = new HttpHeaders({Authorization: this.TOKEN}); */
 
-constructor(private http: HttpClient) { }
+constructor(private http: HttpClient) {
+    this.arrayTelemetries = [];
+    this.arrayCommands = [];
+    this.arrayProperties = [];
+}
 
 public getDeviceTemplateById( uid: string): Observable<object>{
   if (!uid) { uid = ''; }

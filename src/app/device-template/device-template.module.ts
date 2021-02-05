@@ -1,4 +1,5 @@
 
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -11,6 +12,7 @@ import { DeviceTemplatePage } from './device-template.page';
 import { DeviceTemplateTelemetryPageModule } from './device-template-telemetry/device-template-telemetry.module';
 import { DeviceTemplatePropertyPageModule } from './device-template-property/device-template-property.module';
 import { DeviceTemplateCommandPageModule } from './device-template-command/device-template-command.module';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   imports: [
@@ -21,8 +23,10 @@ import { DeviceTemplateCommandPageModule } from './device-template-command/devic
     ReactiveFormsModule,
     DeviceTemplateTelemetryPageModule,
     DeviceTemplateCommandPageModule,
-    DeviceTemplatePropertyPageModule
+    DeviceTemplatePropertyPageModule,
+    MatExpansionModule,
   ],
   declarations: [DeviceTemplatePage]
 })
 export class DeviceTemplatePageModule {}
+

@@ -9,13 +9,16 @@ import { AddDeviceTemplatePageRoutingModule } from './add-device-template-routin
 import { AddDeviceTemplatePage } from './add-device-template.page';
 
 
+import {MatExpansionModule} from '@angular/material/expansion';
+
+import { resolve } from 'dns';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AddDeviceTemplatePageRoutingModule, ReactiveFormsModule
+    AddDeviceTemplatePageRoutingModule, ReactiveFormsModule, MatExpansionModule, 
   ],
   declarations: [AddDeviceTemplatePage]
 })
