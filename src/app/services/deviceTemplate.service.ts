@@ -14,7 +14,7 @@ export class DeviceTemplateService {
   arrayTelemetries: Telemetry [];
   arrayCommands: Command [];
   arrayProperties: Property [];
-  arrayDeviceTemplates: DeviceTemplate [];
+  deviceTemplate: DeviceTemplate;
   /* private deviceTemplate: DeviceTemplate;
   private TOKEN = localStorage.getItem ('TOKEN');
   private headers: HttpHeaders = new HttpHeaders({Authorization: this.TOKEN}); */
@@ -31,7 +31,7 @@ public getDeviceTemplateById( uid: string): Observable<object>{
 }
 
 public getAllDeviceTemplates(): Observable<object>{
-  return this.http.get(`${environment.base_url}/deviceTemplates/`);
+  return this.http.get(`${environment.base_url}/deviceTemplates/ReadAll`);
 }
 
 public makeDeviceTemplate( data: DeviceTemplate ): Observable<object> {
@@ -45,5 +45,36 @@ public updateDeviceTemplate(uid: string, data: DeviceTemplate): Observable<objec
 public deleteDeviceTemplate(uid) {
   return this.http.delete(`${environment.base_url}/deviceTemplates/${uid}`);
 }
+
+insertCommandToArray(command): void{
+  this.arrayCommands.push(command);
+  console.log('Array the commands: ');
+  console.log(this.arrayCommands);
+}
+
+insertPropertyToArray(property): void{
+  this.arrayProperties.push(property);
+  console.log('Array the properties: ');
+  console.log(this.arrayProperties);
+}
+
+insertTelemetryToArray(telemetry): void{
+  this.arrayTelemetries.push(telemetry);
+  console.log('Array the Telemetry: ')
+  console.log(this.arrayTelemetries);
+}
+
+getArrayProperties(): Property[]{
+  return this.arrayProperties;
+}
+
+getArrayTelemetries(): Telemetry[] {
+  return this.arrayTelemetries;
+}
+
+getArrayCommands(): Command[] {
+  return this.arrayCommands;
+}
+
 
 }

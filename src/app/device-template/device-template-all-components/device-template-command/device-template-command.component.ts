@@ -1,5 +1,7 @@
-import { Component, OnInit , ViewChild, ElementRef} from '@angular/core';
-import { FormBuilder, FormArray, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { Component, OnInit} from '@angular/core';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
+import {Router} from '@angular/router';
+import { DeviceTemplateService } from '../../../services/deviceTemplate.service';
 
 @Component({
   selector: 'app-device-template-command-component',
@@ -9,34 +11,25 @@ import { FormBuilder, FormArray, FormGroup, Validators, FormControl, ReactiveFor
 export class DeviceTemplateCommandComponent implements OnInit {
 commandForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
-    this.commandForm = this.fb.group({
-      ArrayCommands: this.fb.array([])
-    });
+  constructor(
+    private router: Router,
+    private deviceTemplateService: DeviceTemplateService,
+  ) { 
+    this.commandForm = new FormGroup({
+      name: new FormControl('', [
+        Validators.required
+      ]),
+      isSync: new FormControl(true)
+    })
   }
 
   ngOnInit() {}
 
-  get commands(): FormArray {
-    return this.commandForm.get(' ArrayCommands ') as FormArray;
-  }
-
-  newCommand(): FormGroup {
-    return this.fb.group({
-      name: '',
-      isSyn: false,
-    });
-  }
-
-  addCommands() {
-    this.commands.push(this.newCommand());
- }
-
- removeCommand(i: number) {
-  this.commands.removeAt(i);
-}
 onSubmit() {
   console.log(this.commandForm.value);
+  this.deviceTemplateService.insertCommandToArray(this.commandForm.value);
+  this.commandForm.reset();
+  this.router.navigate(['tabs/tab1/device-template/add-device-template']);
 }
 
 }

@@ -1,22 +1,15 @@
-<!-- <form [formGroup]="commandForm" (ngSubmit)="onSubmit()"></form>
+<form [formGroup]="commandForm" (ngSubmit)="onSubmit()">
 
-<div formArrayName="ArrayCommands" *ngFor="let command of commands().controls; let i=index">
-
-    <div [formGroupName]="i">
-
-        <ion-item>
-            <ion-label position="stacked">Name</ion-label>
-            <ion-input name="name" type="text" formControlName="name"></ion-input>
-        </ion-item>
-        <ion-item>
-                <ion-label>isSynchronous</ion-label>
-                <ion-toggle name="isSyn" formControlName="isSyn"></ion-toggle>
-            </ion-item> 
-<button (click)="removeCommand(i)">Remove</button>
-</div>
-
-</div>
-<button type="submit">Submit</button>
+    <ion-item>
+        <ion-label position="stacked">Name</ion-label>
+        <ion-input name="name" type="text" formControlName="name"></ion-input>
+        <div class="error" *ngIf="commandForm.controls.name.errors && commandForm.controls.name.touched">
+            Please fill out this field
+        </div>
+    </ion-item>
+    <ion-item>
+        <ion-label>isSynchronous</ion-label>
+        <ion-toggle name="isSyn" formControlName="isSync" checked="true"></ion-toggle>
+    </ion-item>
+    <ion-button expand="block " type="submit " shape="round " fill="solid " type="submit" class="btn btn-block btn-success">Add command</ion-button>
 </form>
-
-<button type="button" (click)="addCommands()">Add another command</button> -->

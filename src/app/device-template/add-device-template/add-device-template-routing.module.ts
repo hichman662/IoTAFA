@@ -9,6 +9,10 @@ const routes: Routes = [
     component: AddDeviceTemplatePage
   },
   {
+    path: 'add-device-template',
+    component: AddDeviceTemplatePage
+  },
+  {
     path: 'device-template-command',
     loadChildren: () => import('../device-template-command/device-template-command.module').then( m => m.DeviceTemplateCommandPageModule)
   },

@@ -2,11 +2,11 @@
 
 export class Telemetry{
   constructor(
-        id: string,
-        frecuency: DoubleRange,
-        schema: number,
-        unit: number,
-        deviceTemplate: number
+        id?: string,
+        frecuency?: number,
+        schema?: number,
+        unit?: number,
+        deviceTemplate?: number
         )
   {}
 

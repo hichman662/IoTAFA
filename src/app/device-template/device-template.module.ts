@@ -13,6 +13,7 @@ import { DeviceTemplateTelemetryPageModule } from './device-template-telemetry/d
 import { DeviceTemplatePropertyPageModule } from './device-template-property/device-template-property.module';
 import { DeviceTemplateCommandPageModule } from './device-template-command/device-template-command.module';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { HttpClientModule } from '@angular/common/http'; 
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     DeviceTemplateCommandPageModule,
     DeviceTemplatePropertyPageModule,
     MatExpansionModule,
+    HttpClientModule
   ],
   declarations: [DeviceTemplatePage]
 })

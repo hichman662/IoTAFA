@@ -9,7 +9,6 @@ export class DeviceTemplateCommandPage implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

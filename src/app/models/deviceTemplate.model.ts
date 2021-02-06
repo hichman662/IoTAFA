@@ -4,13 +4,13 @@ import { Property } from './property.model';
 
 export class DeviceTemplate {
   constructor(
-        id: string,
-        name: string,
-        isEdge: boolean,
-        type: number,
-        command: Command[],
-        property: Property[],
-        telemetry: Telemetry[]
+        id?: string,
+        name?: string,
+        isEdge?: boolean,
+        type?: number,
+        command?: Command[],
+        property?: Property[],
+        telemetry?: Telemetry[]
 
         )
   {}

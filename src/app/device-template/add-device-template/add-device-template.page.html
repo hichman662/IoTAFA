@@ -15,7 +15,7 @@
             <ion-label position="stacked">Device template name</ion-label>
             <ion-input type="text" formControlName="name" class="form-control"></ion-input>
             <div class="error" *ngIf="deviceTemplateForm.controls.name.errors && deviceTemplateForm.controls.name.touched">
-                Please fill out this field
+                To add Device template please fill out this field
             </div>
         </ion-item>
         <ion-item>
@@ -98,16 +98,23 @@
     </form>
 
     <div class="telemetries">
-        <div class="telemetry" *ngFor="let telemetry of telemetries">
-            <ul>
-                <li>{{telemetry}}</li>
-                <li>
-                    <h4>unit</h4>
-                </li>
-                <li>
-                    <h4>schema</h4>
-                </li>
-            </ul>
+        <div class="telemetry" *ngFor="let telemetry of telemetries |keyvalue">
+
+            <ion-item-group>
+                <ion-list>
+                    <ion-item>
+                        <ion-label>{{telemetry.value.frecuency}}</ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>{{telemetry.value.unit}}</ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>{{telemetry.value.schema}}</ion-label>
+                    </ion-item>
+                </ion-list>
+            </ion-item-group>
+
+
         </div>
     </div>
     <br>

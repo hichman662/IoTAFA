@@ -11,8 +11,6 @@ import { AddDeviceTemplatePage } from './add-device-template.page';
 
 import {MatExpansionModule} from '@angular/material/expansion';
 
-import { resolve } from 'dns';
-
 @NgModule({
   imports: [
     CommonModule,
