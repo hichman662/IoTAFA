@@ -23,7 +23,7 @@
             <ion-toggle formControlName="isEdge" class="form-control" checked="true"></ion-toggle>
         </ion-item>
 
-        <ion-item>
+        <ion-item lines="full">
             <ion-label>Device type</ion-label>
             <ion-select value="sensor" okText="Okay" cancelText="Dismiss" formControlName="type">
                 <div class="error" *ngIf="deviceTemplateForm.controls.type.errors && deviceTemplateForm.controls.type.touched">
@@ -70,26 +70,16 @@
             </mat-expansion-panel>
         </mat-accordion> -->
 
-        <ion-item [routerLink]="['device-template-telemetry']">
+        <ion-item detail [routerLink]="['add-telemetry']">
             <ion-label>Telemetries</ion-label>
-            <ion-item-option color="light">
-                <ion-icon slot="icon-only" name="arrow-forward"></ion-icon>
-            </ion-item-option>
         </ion-item>
-        <ion-item [routerLink]="['device-template-property']">
 
-
+        <ion-item detail [routerLink]="['add-property']">
             <ion-label>Properties</ion-label>
-            <ion-item-option color="light">
-                <ion-icon slot="icon-only" name="arrow-forward"></ion-icon>
-            </ion-item-option>
         </ion-item>
 
-        <ion-item [routerLink]="['device-template-command']">
+        <ion-item detail [routerLink]="['add-command']">
             <ion-label>Commands</ion-label>
-            <ion-item-option color="light">
-                <ion-icon slot="icon-only" name="arrow-forward"></ion-icon>
-            </ion-item-option>
         </ion-item>
 
         <br>

@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { AddDeviceTemplatePage } from './add-device-template.page';
+import { AddCommandPage } from './../add-command/add-command.page';
+import { AddTelemetryPage } from './../add-telemetry/add-telemetry.page';
+import { AddPropertyPage } from './../add-property/add-property.page';
 
 const routes: Routes = [
   {
@@ -13,18 +15,18 @@ const routes: Routes = [
     component: AddDeviceTemplatePage
   },
   {
-    path: 'device-template-command',
-    loadChildren: () => import('../device-template-command/device-template-command.module').then( m => m.DeviceTemplateCommandPageModule)
+    path: 'add-property',
+    loadChildren: () => import('../add-property/add-property.module').then( m => m.AddPropertyPageModule)
   },
   {
-    path: 'device-template-property',
-    loadChildren: () => import('../device-template-property/device-template-property.module').then( m => m.DeviceTemplatePropertyPageModule)
+    path: 'add-telemetry',
+    loadChildren: () => import('../add-telemetry/add-telemetry.module').then( m => m.AddTelemetryPageModule)
   },
-  // tslint:disable-next-line: max-line-length
-  { path: 'device-template-telemetry',
-  // tslint:disable-next-line: max-line-length
-  loadChildren: () => import('../device-template-telemetry/device-template-telemetry.module').then( m => m.DeviceTemplateTelemetryPageModule)
-  }
+  {
+    path: 'add-command',
+    loadChildren: () => import('../add-command/add-command.module').then( m => m.AddCommandPageModule)
+  },
+
 ];
 
 @NgModule({

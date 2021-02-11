@@ -9,11 +9,9 @@ import { IonicModule} from '@ionic/angular';
 import { DeviceTemplatePageRoutingModule } from './device-template-routing.module';
 
 import { DeviceTemplatePage } from './device-template.page';
-import { DeviceTemplateTelemetryPageModule } from './device-template-telemetry/device-template-telemetry.module';
-import { DeviceTemplatePropertyPageModule } from './device-template-property/device-template-property.module';
-import { DeviceTemplateCommandPageModule } from './device-template-command/device-template-command.module';
+
 import {MatExpansionModule} from '@angular/material/expansion';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -22,9 +20,6 @@ import { HttpClientModule } from '@angular/common/http';
     IonicModule,
     DeviceTemplatePageRoutingModule,
     ReactiveFormsModule,
-    DeviceTemplateTelemetryPageModule,
-    DeviceTemplateCommandPageModule,
-    DeviceTemplatePropertyPageModule,
     MatExpansionModule,
     HttpClientModule
   ],

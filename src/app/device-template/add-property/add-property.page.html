@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-back-button slot="start"></ion-back-button>
+
+        <ion-title class="ion-text-center">Add property</ion-title>
+
+        <ion-icon slot="end" size="large" src="assets/icon/deviceTemplate.svg"></ion-icon>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="propertyForm" (ngSubmit)="onSubmit()">
+        <ion-item>
+            <ion-label position="stacked">Name</ion-label>
+            <ion-input type="text" formControlName="name"></ion-input>
+            <div class="error" *ngIf="propertyForm.controls.name.errors && propertyForm.controls.name.touched">
+                Please fill out this field
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label>isWritable</ion-label>
+            <ion-toggle formControlName="isWritable" class="form-control" checked="true"></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label>isCloudable</ion-label>
+            <ion-toggle formControlName="isCloudable" class="form-control" checked="true"></ion-toggle>
+        </ion-item>
+
+        <ion-button expand="block " color="medium" type="submit" shape="round" size="default" fill="solid" type="submit" class="btn btn-block btn-success">Add ANOTHER PROPERTY</ion-button>
+    </form>
+</ion-content>
