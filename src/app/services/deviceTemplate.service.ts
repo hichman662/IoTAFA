@@ -25,25 +25,25 @@ constructor(private http: HttpClient) {
     this.arrayProperties = [];
 }
 
+public getAllDeviceTemplate(): Observable<object>{
+  return this.http.get(`${environment.base_url}/DeviceTemplate/ReadAll`);
+}
+
 public getDeviceTemplateById( uid: number): Observable<object>{
   if (!uid) { uid = null; }
   return this.http.get <DeviceTemplate>(`${environment.base_url}/DeviceTemplate/${uid}` );
-}
-
-public getAllDeviceTemplate(): Observable<object>{
-  return this.http.get(`${environment.base_url}/DeviceTemplate/ReadAll`);
 }
 
 public createDeviceTemplate( data: DeviceTemplate ): Observable<object> {
   return this.http.post(`${environment.base_url}/DeviceTemplate/NEW_`, data);
 }
 
-public updateDeviceTemplate(uid: string, data: DeviceTemplate): Observable<object> {
-  return this.http.put(`${environment.base_url}/deviceTemplates/${uid}`, data);
+public updateDeviceTemplate(uid: number, data: DeviceTemplate): Observable<object> {
+  return this.http.put(`${environment.base_url}/DeviceTemplate/Modify?idDeviceTemplate=${uid}`, data);
 }
 
 public deleteDeviceTemplate(uid) {
-  return this.http.delete(`${environment.base_url}/deviceTemplates/${uid}`);
+  return this.http.delete(`${environment.base_url}/DeviceTemplate/Destroy?p_devicetemplate_oid=${uid}`);
 }
 
 insertCommandToArray(command): void{
