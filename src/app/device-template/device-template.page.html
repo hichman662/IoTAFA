@@ -2,18 +2,24 @@
     <ion-toolbar>
         <ion-back-button slot="start"></ion-back-button>
         <ion-title class="ion-text-center">Device templates </ion-title>
-        <ion-icon slot="end" size="large" src="assets/icon/deviceTemplate.svg"></ion-icon>
+
+        <ion-icon class="ionadd" name="add-circle-outline" size="large" slot="end" [routerLink]="['add-device-template']"></ion-icon>
+
+
 
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <div class="ion-text-right">
+    <!--  <div class="ion-text-right">
         <ion-button rel="rel" expand="full" size="default" shape="round" fill="solid" [routerLink]="['add-device-template']">Add device template</ion-button>
-    </div>
+    </div> -->
+
     <ion-list-header>
         <ion-label>List of device templates</ion-label>
+
     </ion-list-header>
+
     <ion-list>
         <ion-item-sliding>
             <ion-item lines="inset" detail [routerLink]="['profile-device-template']">

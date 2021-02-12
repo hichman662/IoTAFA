@@ -1,3 +1,4 @@
+import { ProfileTelemetryPageModule } from './../profile-telemetry/profile-telemetry.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -8,12 +9,14 @@ import { ListTelemetriesPageRoutingModule } from './list-telemetries-routing.mod
 
 import { ListTelemetriesPage } from './list-telemetries.page';
 
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ListTelemetriesPageRoutingModule
+    ListTelemetriesPageRoutingModule,
+    ProfileTelemetryPageModule
   ],
   declarations: [ListTelemetriesPage]
 })

@@ -1,3 +1,4 @@
+import { Telemetry } from './../../models/telemetry.model';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
@@ -10,25 +11,35 @@ import { DeviceTemplateService } from '../../services/deviceTemplate.service';
 })
 export class AddTelemetryPage implements OnInit {
 
+  arrayTelemetries: Telemetry [];
+
   telemetryForm: FormGroup;
 
   constructor(
     private deviceTemplateService: DeviceTemplateService,
     private router: Router,
   ) {
+    this.arrayTelemetries = [];
     this.telemetryForm = new FormGroup({
-      frecuency: new FormControl(''),
-      schema: new FormControl(''),
-      unit: new FormControl('')
+      frecuency: new FormControl('', [
+        Validators.required
+      ]),
+      schema: new FormControl('', [
+        Validators.required
+      ]),
+      unit: new FormControl('', [
+        Validators.required
+      ]),
     });
   }
   ngOnInit() {
   }
+
   onSubmit(){
-    console.log(this.telemetryForm.value);
-    this.deviceTemplateService.insertTelemetryToArray(this.telemetryForm.value);
+    this.arrayTelemetries.push(this.telemetryForm.value);
+    console.log(this.arrayTelemetries);
     this.telemetryForm.reset();
-    this.router.navigate(['']);
   }
+
 
 }
