@@ -25,17 +25,17 @@ constructor(private http: HttpClient) {
     this.arrayProperties = [];
 }
 
-public getDeviceTemplateById( uid: string): Observable<object>{
-  if (!uid) { uid = ''; }
-  return this.http.get <DeviceTemplate>(`${environment.base_url}/deviceTemplates/?id=${uid}` );
+public getDeviceTemplateById( uid: number): Observable<object>{
+  if (!uid) { uid = null; }
+  return this.http.get <DeviceTemplate>(`${environment.base_url}/DeviceTemplate/${uid}` );
 }
 
-public getAllDeviceTemplates(): Observable<object>{
-  return this.http.get(`${environment.base_url}/deviceTemplates/ReadAll`);
+public getAllDeviceTemplate(): Observable<object>{
+  return this.http.get(`${environment.base_url}/DeviceTemplate/ReadAll`);
 }
 
-public makeDeviceTemplate( data: DeviceTemplate ): Observable<object> {
-  return this.http.post(`${environment.base_url}/deviceTemplates/`, data);
+public createDeviceTemplate( data: DeviceTemplate ): Observable<object> {
+  return this.http.post(`${environment.base_url}/DeviceTemplate/NEW_`, data);
 }
 
 public updateDeviceTemplate(uid: string, data: DeviceTemplate): Observable<object> {
