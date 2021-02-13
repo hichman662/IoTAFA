@@ -13,7 +13,7 @@ const routes: Routes = [
     loadChildren: () => import('./add-device-template/add-device-template.module').then( m => m.AddDeviceTemplatePageModule)
   },
   {
-    path: 'profile-device-template',
+    path: 'profile-device-template/:Id',
     loadChildren: () => import('./profile-device-template/profile-device-template.module').then( m => m.ProfileDeviceTemplatePageModule)
   },
   {

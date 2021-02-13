@@ -2,7 +2,7 @@
     <ion-toolbar>
         <ion-back-button slot="start"></ion-back-button>
 
-        <ion-title class="ion-text-center">Device template 1 detail</ion-title>
+        <ion-title class="ion-text-center">{{ deviceTemplateProfile['Name']}} detail</ion-title>
 
 
         <ion-icon slot="end" size="large" src="assets/icon/deviceTemplate.svg"></ion-icon>
@@ -13,14 +13,17 @@
 <ion-content>
     <div class="ion-text-right">
 
-        <ion-button expand="full" shape="round" fill="outline" [routerLink]="['-caregiver']">Edit Device template
+        <ion-button expand="full" shape="round" fill="outline">Edit Device template
             <ion-icon slot="end" name="pencil"></ion-icon>
         </ion-button>
     </div>
     <ion-card>
 
-        <ion-item>
+        <ion-item [hidden]="deviceTemplateProfile['IsEdge'] === false">
             <ion-label>isEdge</ion-label>ON
+        </ion-item>
+        <ion-item [hidden]="deviceTemplateProfile['IsEdge'] === true">
+            <ion-label>isEdge</ion-label>OFF
         </ion-item>
 
         <ion-item>
