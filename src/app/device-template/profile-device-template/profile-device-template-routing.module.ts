@@ -13,15 +13,15 @@ const routes: Routes = [
     component: ProfileDeviceTemplatePage
   },
   {
-    path: 'telemetries',
+    path: 'telemetries/:Id',
     component: ListTelemetriesPage
   },
   {
-    path: 'properties',
+    path: 'properties/:Id',
     component: ListPropertiesPage
   },
   {
-    path: 'commands',
+    path: 'commands/:Id',
     component: ListCommandsPage
   }
 ];

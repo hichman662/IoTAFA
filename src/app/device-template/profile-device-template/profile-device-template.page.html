@@ -26,16 +26,20 @@
             <ion-label>isEdge</ion-label>OFF
         </ion-item>
 
-        <ion-item>
+        <ion-item *ngIf="deviceTemplateProfile['Type'] === 1">
             <ion-label>Device type</ion-label>Sensor
         </ion-item>
+        <ion-item *ngIf="deviceTemplateProfile['Type'] === 2">
+            <ion-label>Device type</ion-label>Actuator
+        </ion-item>
+
 
 
     </ion-card>
 
     <ion-list>
         <ion-item-sliding>
-            <ion-item lines="inset" detail [routerLink]="['telemetries']">
+            <ion-item lines="inset" detail [routerLink]="['telemetries',deviceTemplateProfile['Id']]">
 
                 <ion-avatar slot="start">
                     <img src="assets/icon/deviceTemplate.svg">
@@ -53,7 +57,7 @@
 
     <ion-list>
         <ion-item-sliding>
-            <ion-item lines="inset" detail [routerLink]="['properties']">
+            <ion-item lines="inset" detail [routerLink]="['properties',deviceTemplateProfile['Id']]">
 
                 <ion-avatar slot="start">
                     <img src="assets/icon/deviceTemplate.svg">
@@ -70,7 +74,7 @@
     </ion-list>
     <ion-list>
         <ion-item-sliding>
-            <ion-item lines="inset" detail [routerLink]="['commands']">
+            <ion-item lines="inset" detail [routerLink]="['commands',deviceTemplateProfile['Id']]">
 
                 <ion-avatar slot="start">
                     <img src="assets/icon/deviceTemplate.svg">

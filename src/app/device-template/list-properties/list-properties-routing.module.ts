@@ -7,11 +7,7 @@ const routes: Routes = [
   {
     path: '',
     component: ListPropertiesPage
-  },
-  {
-    path: 'profile',
-    loadChildren: () => import('../profile-property/profile-property.module').then( m => m.ProfilePropertyPageModule)
-  },
+  }
 ];
 
 @NgModule({

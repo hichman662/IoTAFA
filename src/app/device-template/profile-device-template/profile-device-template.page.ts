@@ -10,23 +10,22 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ProfileDeviceTemplatePage implements OnInit {
 
-  public deviceTemplateProfile : DeviceTemplate[] =[];
+  public deviceTemplateProfile: DeviceTemplate[] = [];
   private idPassedByURL: number = null;
   constructor(
               private route: ActivatedRoute,
-               private router: Router,
-               private deviceTemplateService :DeviceTemplateService
+              private router: Router,
+              private deviceTemplateService: DeviceTemplateService
   ) { }
 
   ngOnInit(): void {
     this.idPassedByURL = this.route.snapshot.params['Id'];
     this.deviceTemplateService.getDeviceTemplateById(this.idPassedByURL)
-    .subscribe((res : any ) =>{
-      this.deviceTemplateProfile = res;      
-    },(err) =>{
+    .subscribe((res: any ) => {
+      console.log(res);
+      this.deviceTemplateProfile = res;
+    }, (err) => {
       console.log(err);
     });
     }
-
-  
 }

@@ -17,27 +17,15 @@ const routes: Routes = [
     loadChildren: () => import('./profile-device-template/profile-device-template.module').then( m => m.ProfileDeviceTemplatePageModule)
   },
   {
-    path: 'profile-property',
-    loadChildren: () => import('./profile-property/profile-property.module').then( m => m.ProfilePropertyPageModule)
-  },
-  {
-    path: 'profile-command',
-    loadChildren: () => import('./profile-command/profile-command.module').then( m => m.ProfileCommandPageModule)
-  },
-  {
-    path: 'profile-telemetry',
-    loadChildren: () => import('./profile-telemetry/profile-telemetry.module').then( m => m.ProfileTelemetryPageModule)
-  },
-  {
-    path: 'list-telemetries',
+    path: 'list-telemetries/:Id',
     loadChildren: () => import('./list-telemetries/list-telemetries.module').then( m => m.ListTelemetriesPageModule)
   },
   {
-    path: 'list-commands',
+    path: 'list-commands/:Id',
     loadChildren: () => import('./list-commands/list-commands.module').then( m => m.ListCommandsPageModule)
   },
   {
-    path: 'list-properties',
+    path: 'list-properties/:Id',
     loadChildren: () => import('./list-properties/list-properties.module').then( m => m.ListPropertiesPageModule)
   },
   {
@@ -51,7 +39,12 @@ const routes: Routes = [
   {
     path: 'add-telemetry',
     loadChildren: () => import('./add-telemetry/add-telemetry.module').then( m => m.AddTelemetryPageModule)
+  },
+  {
+    path: 'profile-telemetry',
+    loadChildren: () => import('./profile-telemetry/profile-telemetry.module').then( m => m.ProfileTelemetryPageModule)
   }
+
 ];
 
 @NgModule({

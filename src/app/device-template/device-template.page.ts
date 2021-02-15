@@ -13,13 +13,13 @@ export class DeviceTemplatePage implements OnInit {
   public listDeviceTemplates: DeviceTemplate[] = [];
   constructor(
             private deviceTemplateService : DeviceTemplateService,
-            public alertController :AlertController
+            public alertController : AlertController
             ) {}
 
   ngOnInit():void {
     this.deviceTemplateService.getAllDeviceTemplate()
       .subscribe( (res : any) => {
-          this.listDeviceTemplates = res;      
+          this.listDeviceTemplates = res;
       },(err) => {
           console.log(err);
       });
