@@ -39,8 +39,7 @@ const routes: Routes = [
   {
     path: 'add-telemetry',
     loadChildren: () => import('./add-telemetry/add-telemetry.module').then( m => m.AddTelemetryPageModule)
-  },
-  {
+    },  {
     path: 'profile-telemetry',
     loadChildren: () => import('./profile-telemetry/profile-telemetry.module').then( m => m.ProfileTelemetryPageModule)
   }

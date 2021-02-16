@@ -3,7 +3,7 @@
         <ion-back-button slot="start"></ion-back-button>
         <ion-title class="ion-text-center">Telemetries</ion-title>
 
-        <ion-icon class="ionadd" name="add-circle-outline" size="large" slot="end" [routerLink]="['profile-telemetry']"></ion-icon>
+        <ion-icon class="ionadd" name="add-circle-outline" size="large" slot="end"></ion-icon>
 
 
 
@@ -24,7 +24,7 @@
         <div class="telemetry" *ngFor="let deviceTelemetry of deviceTemplateTelemetries">
 
             <ion-item-sliding>
-                <ion-item lines="inset" detail [routerLink]="['profile-telemetry']">
+                <ion-item lines="inset" detail [routerLink]="['telemetry',deviceTelemetry['Id']]">
 
 
                     <ion-avatar slot="start">
@@ -34,12 +34,13 @@
                 </ion-item>
 
                 <ion-item-options side="end">
-                    <ion-item-option color="danger" (click)="null" expandable>
+                    <ion-item-option color="danger" expandable>
                         <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
                     </ion-item-option>
                 </ion-item-options>
             </ion-item-sliding>
         </div>
     </ion-list>
+
 
 </ion-content>
