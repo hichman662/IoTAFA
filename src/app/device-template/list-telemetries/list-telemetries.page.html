@@ -12,8 +12,8 @@
 
 <ion-content>
     <!--  <div class="ion-text-right">
-      <ion-button rel="rel" expand="full" size="default" shape="round" fill="solid" [routerLink]="['add-device-template']">Add device template</ion-button>
-  </div> -->
+    <ion-button rel="rel" expand="full" size="default" shape="round" fill="solid" [routerLink]="['add-device-template']">Add device template</ion-button>
+</div> -->
 
     <ion-list-header>
         <ion-label>List of telemetries</ion-label>
@@ -24,7 +24,7 @@
         <div class="telemetry" *ngFor="let deviceTelemetry of deviceTemplateTelemetries">
 
             <ion-item-sliding>
-                <ion-item lines="inset" detail [routerLink]="['telemetry',deviceTelemetry['Id']]">
+                <ion-item lines="inset" detail [routerLink]="['profile-telemetry']">
 
 
                     <ion-avatar slot="start">

@@ -1,6 +1,7 @@
-import { ProfileTelemetryPage } from '../profile-telemetry/profile-telemetry.page';
-import { NgModule, Component } from '@angular/core';
+
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ProfileTelemetryPage } from '../profile-telemetry/profile-telemetry.page';
 
 import { ListTelemetriesPage } from './list-telemetries.page';
 
@@ -9,8 +10,12 @@ const routes: Routes = [
     path: '',
     component: ListTelemetriesPage
   },
-   {
-    path: 'telemetry/:Id',
+  /* {
+    path: 'profile-telemetry/:Id',
+    loadChildren: () => import('../profile-telemetry/profile-telemetry.module').then( m => m.ProfileTelemetryPageModule)
+  } */
+  {
+    path : 'profile-telemetry',
     component: ProfileTelemetryPage
   }
 ];

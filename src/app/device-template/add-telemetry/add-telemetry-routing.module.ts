@@ -1,3 +1,4 @@
+import { SpecificTelemetryPageModule } from './../specific-telemetry/specific-telemetry.module';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -7,7 +8,11 @@ const routes: Routes = [
   {
     path: '',
     component: AddTelemetryPage
-  }
+  },
+  {
+    path: 'SpecificTelemetry',
+    loadChildren: () => import('../specific-telemetry/specific-telemetry.module').then( m => SpecificTelemetryPageModule)
+  },
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 export class Command {
   constructor(
-    id: string,
+    id: number,
     name: string,
     isSynchronous?: boolean,
     deviceTemplate?: number

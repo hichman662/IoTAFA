@@ -12,6 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { IonicStorageModule } from '@ionic/storage';
 
 
 
@@ -25,7 +26,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       AppRoutingModule,
        DeviceTemplatePageModule,
         ReactiveFormsModule,
-         BrowserAnimationsModule
+         BrowserAnimationsModule,
+         IonicStorageModule.forRoot()
   ],
   providers: [
     StatusBar,

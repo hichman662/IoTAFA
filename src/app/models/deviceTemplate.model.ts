@@ -4,7 +4,7 @@ import { Property } from './property.model';
 
 export class DeviceTemplate {
   constructor(
-        id?: string,
+        id?: number,
         name?: string,
         isEdge?: boolean,
         type?: number,

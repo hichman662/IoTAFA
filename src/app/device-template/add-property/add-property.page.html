@@ -10,6 +10,48 @@
 </ion-header>
 
 <ion-content>
+    <br>
+
+    <div class="properties" line="">
+        <div class="property" *ngFor="let property of arrayProperties |keyvalue">
+            <mat-expansion-panel details>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <ion-item>
+                            <ion-thumbnail size="small" slot="start">
+                                <img src="assets/icon/deviceTemplate.svg">
+                            </ion-thumbnail>
+                            <ion-label>Property</ion-label>
+                        </ion-item>
+                    </mat-panel-title>
+
+                </mat-expansion-panel-header>
+                <ion-card>
+                    <ion-item>
+                        <ion-label>Name</ion-label>
+                        <ion-badge slot="end">{{property.value.name}}</ion-badge>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Is writable</ion-label>
+                        <ion-badge slot="end">{{property.value.isWritable}}</ion-badge>
+                    </ion-item>
+                    <ion-item>
+
+                        <ion-label>Is Cloudable</ion-label>
+                        <ion-badge slot="end">{{property.value.isCloudable}}</ion-badge>
+                    </ion-item>
+
+                </ion-card>
+                <!-- <p>Content panel.</p> -->
+
+            </mat-expansion-panel>
+
+
+
+        </div>
+    </div>
+
     <form [formGroup]="propertyForm" (ngSubmit)="onSubmit()">
         <ion-item>
             <ion-label position="stacked">Name</ion-label>
@@ -27,6 +69,9 @@
             <ion-toggle formControlName="isCloudable" class="form-control" checked="true"></ion-toggle>
         </ion-item>
 
-        <ion-button expand="block " color="medium" type="submit" shape="round" size="default" fill="solid" type="submit" class="btn btn-block btn-success">Add ANOTHER PROPERTY</ion-button>
+        <ion-button slot="start" shape="round " fill="solid " type="submit" class="btn btn-block btn-success" [disabled]="!propertyForm.valid">
+            Add property
+        </ion-button>
+        <ion-button slot="end" shape="round " color="danger" size="small" (click)="emptyArray()">Cancel</ion-button>
     </form>
 </ion-content>

@@ -59,9 +59,6 @@ export class AddTelemetryPage implements OnInit {
     });
 
     await alert.present();
-
-
-
 }
   onSubmit(){
     this.arrayTelemetries.push(this.telemetryForm.value);

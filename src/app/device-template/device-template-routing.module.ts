@@ -17,16 +17,24 @@ const routes: Routes = [
     loadChildren: () => import('./profile-device-template/profile-device-template.module').then( m => m.ProfileDeviceTemplatePageModule)
   },
   {
-    path: 'list-telemetries/:Id',
-    loadChildren: () => import('./list-telemetries/list-telemetries.module').then( m => m.ListTelemetriesPageModule)
+    path: 'profile-telemetry',
+    loadChildren: () => import('./profile-telemetry/profile-telemetry.module').then( m => m.ProfileTelemetryPageModule)
+  },
+/*   {
+    path: 'list-properties',
+    loadChildren: () => import('./list-properties/list-properties.module').then( m => m.ListPropertiesPageModule)
   },
   {
-    path: 'list-commands/:Id',
+    path: 'list-commands',
     loadChildren: () => import('./list-commands/list-commands.module').then( m => m.ListCommandsPageModule)
   },
   {
-    path: 'list-properties/:Id',
-    loadChildren: () => import('./list-properties/list-properties.module').then( m => m.ListPropertiesPageModule)
+    path: 'profile-telemetry',
+    loadChildren: () => import('./profile-telemetry/profile-telemetry.module').then( m => m.ProfileTelemetryPageModule)
+  },
+  {
+    path: 'profile-command',
+    loadChildren: () => import('./profile-command/profile-command.module').then( m => m.ProfileCommandPageModule)
   },
   {
     path: 'add-property',
@@ -39,10 +47,11 @@ const routes: Routes = [
   {
     path: 'add-telemetry',
     loadChildren: () => import('./add-telemetry/add-telemetry.module').then( m => m.AddTelemetryPageModule)
-    },  {
-    path: 'profile-telemetry',
-    loadChildren: () => import('./profile-telemetry/profile-telemetry.module').then( m => m.ProfileTelemetryPageModule)
-  }
+    },
+  {
+    path: 'specific-telemetry',
+    loadChildren: () => import('./specific-telemetry/specific-telemetry.module').then( m => m.SpecificTelemetryPageModule)
+  }*/
 
 ];
 

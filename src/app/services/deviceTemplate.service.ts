@@ -1,10 +1,10 @@
+import { Property } from './../models/property.model';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DeviceTemplate  } from '../models/deviceTemplate.model';
 import {of, Observable} from 'rxjs';
 import { Command } from '../models/command.model';
-import { Property } from '../models/property.model';
 import { Telemetry } from './../models/telemetry.model';
 
 @Injectable({
@@ -46,16 +46,15 @@ public deleteDeviceTemplate(uid) {
   return this.http.delete(`${environment.base_url}/DeviceTemplate/Destroy?p_devicetemplate_oid=${uid}`);
 }
 
+// Property
+public createProperty( data: Property): Observable<object> {
+  return this.http.post(`${environment.base_url}/Property/New_`, data);
+}
+
 insertCommandToArray(command): void{
   this.arrayCommands.push(command);
   console.log('Array the commands: ');
   console.log(this.arrayCommands);
-}
-
-insertPropertyToArray(property): void{
-  this.arrayProperties.push(property);
-  console.log('Array the properties: ');
-  console.log(this.arrayProperties);
 }
 
 insertTelemetryToArray(telemetry): void{

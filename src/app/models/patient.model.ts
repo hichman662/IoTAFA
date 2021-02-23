@@ -2,7 +2,7 @@ import { User } from './user.model';
 
 export class Patient{
     constructor(
-          id: string,
+          id: number,
           NIF: string,
           email: string,
           name: string,

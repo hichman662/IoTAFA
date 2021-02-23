@@ -12,20 +12,24 @@ import { AlertController } from '@ionic/angular';
 export class DeviceTemplatePage implements OnInit {
   public listDeviceTemplates: DeviceTemplate[] = [];
   constructor(
-            private deviceTemplateService : DeviceTemplateService,
-            public alertController : AlertController
+            private deviceTemplateService: DeviceTemplateService,
+            public alertController: AlertController
             ) {}
 
-  ngOnInit():void {
-    this.deviceTemplateService.getAllDeviceTemplate()
-      .subscribe( (res : any) => {
-          this.listDeviceTemplates = res;
-      },(err) => {
-          console.log(err);
-      });
+  ngOnInit(): void {
+
   }
 
- async deleteDeviceTemplate(id : number, name: string){
+  ionViewWillEnter() {
+    this.deviceTemplateService.getAllDeviceTemplate()
+    .subscribe( (res: any) => {
+        this.listDeviceTemplates = res;
+    }, ( err) => {
+        console.log(err);
+    });
+}
+
+ async deleteDeviceTemplate(id: number, name: string){
      console.log(id);
      const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
@@ -42,18 +46,17 @@ export class DeviceTemplatePage implements OnInit {
         handler: () => {
           console.log('Agree clicked');
           this.deviceTemplateService.deleteDeviceTemplate(id)
-          .subscribe( (res : any) => {
+          .subscribe( (res: any) => {
             window.location.reload();
-          },(err) => {
+          }, ( err) => {
               console.log(err);
           });
         }
       }]
     });
 
-    await alert.present();
+     await alert.present();
 
   }
- 
 
 }

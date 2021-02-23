@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { AddPropertyPageRoutingModule } from './add-property-routing.module';
 
 import { AddPropertyPage } from './add-property.page';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AddPropertyPageRoutingModule, ReactiveFormsModule
+    AddPropertyPageRoutingModule, ReactiveFormsModule, MatExpansionModule
   ],
   declarations: [AddPropertyPage]
 })

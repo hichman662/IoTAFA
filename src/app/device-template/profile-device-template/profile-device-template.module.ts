@@ -1,3 +1,6 @@
+import { ListTelemetriesPageModule } from './../list-telemetries/list-telemetries.module';
+import { ListPropertiesPageModule } from './../list-properties/list-properties.module';
+import { ListCommandsPageModule } from './../list-commands/list-commands.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule , ReactiveFormsModule} from '@angular/forms';
@@ -14,7 +17,10 @@ import { ProfileDeviceTemplatePage } from './profile-device-template.page';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    ProfileDeviceTemplatePageRoutingModule
+    ProfileDeviceTemplatePageRoutingModule,
+    ListCommandsPageModule,
+    ListPropertiesPageModule,
+    ListTelemetriesPageModule
   ],
   declarations: [ProfileDeviceTemplatePage]
 })

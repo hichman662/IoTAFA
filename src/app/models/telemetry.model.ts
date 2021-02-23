@@ -2,7 +2,7 @@
 
 export class Telemetry{
   constructor(
-        id?: string,
+        id?: number,
         frecuency?: number,
         schema?: number,
         unit?: number,

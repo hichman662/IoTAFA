@@ -19,8 +19,7 @@ export class ListPropertiesPage implements OnInit {
 
   ngOnInit(): void {
     this.idPassedByURL = this.route.snapshot.params['Id'];
-    this.deviceTemplateService.getDeviceTemplateById(this.idPassedByURL)
-    .subscribe((res: any ) => {
+    this.deviceTemplateService.getDeviceTemplateById(this.idPassedByURL).subscribe((res: any ) => {
       console.log(res);
       this.deviceTemplateProperties = res['Properties'];
     }, (err) => {

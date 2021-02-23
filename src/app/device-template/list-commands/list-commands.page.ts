@@ -13,7 +13,7 @@ export class ListCommandsPage implements OnInit {
 
 
   public deviceTemplateCommands: Command[] = [];
-  private idPassedByURL: number = null;
+  private idPassedByURL: number;
   constructor(
     private route: ActivatedRoute,
     private deviceTemplateService: DeviceTemplateService
@@ -23,7 +23,6 @@ export class ListCommandsPage implements OnInit {
     this.idPassedByURL = this.route.snapshot.params['Id'];
     this.deviceTemplateService.getDeviceTemplateById(this.idPassedByURL)
     .subscribe((res: any ) => {
-      console.log(res);
       this.deviceTemplateCommands = res['Commands'];
     }, (err) => {
       console.log(err);

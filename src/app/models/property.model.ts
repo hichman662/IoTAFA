@@ -1,6 +1,6 @@
 export class Property {
   constructor(
-        id: string,
+        id: number,
         name: string,
         isWritable: boolean,
         isCloudable: number,
