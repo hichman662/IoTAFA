@@ -15,15 +15,15 @@ const routes: Routes = [
     component: AddDeviceTemplatePage
   },
   {
-    path: 'add-property',
+    path: 'add-property/:Id',
     loadChildren: () => import('../add-property/add-property.module').then( m => m.AddPropertyPageModule)
   },
   {
-    path: 'add-telemetry',
+    path: 'add-telemetry/:Id',
     loadChildren: () => import('../add-telemetry/add-telemetry.module').then( m => m.AddTelemetryPageModule)
   },
   {
-    path: 'add-command',
+    path: 'add-command/:Id',
     loadChildren: () => import('../add-command/add-command.module').then( m => m.AddCommandPageModule)
   },
 

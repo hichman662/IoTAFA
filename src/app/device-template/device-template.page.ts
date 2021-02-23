@@ -3,6 +3,8 @@ import { DeviceTemplateService } from './../services/deviceTemplate.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Data } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-device-template',
@@ -13,11 +15,24 @@ export class DeviceTemplatePage implements OnInit {
   public listDeviceTemplates: DeviceTemplate[] = [];
   constructor(
             private deviceTemplateService: DeviceTemplateService,
-            public alertController: AlertController
+            public alertController: AlertController,
+            public loadingController: LoadingController
             ) {}
 
   ngOnInit(): void {
+    this.presentLoading();
+  }
 
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Please wait...',
+      duration: 1500
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed!');
   }
 
   ionViewWillEnter() {

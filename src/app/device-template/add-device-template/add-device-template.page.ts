@@ -18,12 +18,12 @@ import { Device } from '@capacitor/core';
 export class AddDeviceTemplatePage implements OnInit {
 
   // tslint:disable-next-line: ban-types
-  imOk = false;
+  deviceOk = false;
+  deviceRecentlyAdded = false;
   name = '';
   idDeviceTemplate: number;
+  nameDeviceTemplate: '';
   deviceTemplateForm: FormGroup;
-  telemetries: Telemetry [];
-  properties: Property [];
   deviceTemplate: DeviceTemplate ;
   constructor(
     private deviceTemplateService: DeviceTemplateService,
@@ -32,8 +32,6 @@ export class AddDeviceTemplatePage implements OnInit {
     private storage: Storage
   ) {
 
-    this.telemetries = [];
-    this.properties = [];
     this.deviceTemplate = null;
 
     this.deviceTemplateForm = new FormGroup({
@@ -48,11 +46,11 @@ export class AddDeviceTemplatePage implements OnInit {
    }
 
    ionViewWillEnter(){
-    this.storage.get('arrayProperties').then((val) => {
+  /*   this.storage.get('arrayProperties').then((val) => {
       console.log('I´m carrying properties', val);
       this.properties.push(val);
       console.log(this.properties);
-    });
+    }); */
   }
 
    ngOnInit() {
@@ -64,8 +62,11 @@ export class AddDeviceTemplatePage implements OnInit {
     this.deviceTemplateService.createDeviceTemplate(this.deviceTemplate)
     .subscribe( (res: any) => {
       this.name = this.deviceTemplateForm.get('name').value;
-      this.idDeviceTemplate = res['id'];
-      this.imOk = true;
+      this.idDeviceTemplate = res['Id'];
+      console.log(this.idDeviceTemplate);
+      this.nameDeviceTemplate = res['Name'];
+      this.deviceOk = true;
+      this.deviceRecentlyAdded = true;
       this.presentAlert();
     }, ( err ) => {
 
@@ -81,19 +82,19 @@ export class AddDeviceTemplatePage implements OnInit {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'SUCCESS!',
-      message: `The ${this.name} has been added successfully`,
+      message: `The ${this.name} has been added successfully, now you can add another parameters for ${this.name} `,
       buttons: [  {
-        text: 'Return',
+        text: 'Ok',
         handler: () => {
-          this.router.navigateByUrl('/tabs/tab1/device-template');
+          /* this.router.navigateByUrl('/tabs/tab1/device-template'); */
         }
-      },
+      }/* ,
       {
         text: 'Add another Device Template',
         handler: () => {
          this.deviceTemplateForm.reset();
         }
-      }
+      } */
       ]
     });
 

@@ -11,19 +11,19 @@
 
 <ion-content>
     <form [formGroup]="deviceTemplateForm" (ngSubmit)="onSubmit()">
-        <ion-item>
+        <ion-item [disabled]="deviceOk">
             <ion-label position="stacked">Device template name</ion-label>
             <ion-input type="text" formControlName="name" class="form-control"></ion-input>
             <div class="error" *ngIf="deviceTemplateForm.controls.name.errors && deviceTemplateForm.controls.name.touched">
                 To add Device template please fill out this field
             </div>
         </ion-item>
-        <ion-item>
+        <ion-item [disabled]="deviceOk">
             <ion-label>isEdge</ion-label>
             <ion-toggle formControlName="isEdge" class="form-control" checked="true"></ion-toggle>
         </ion-item>
 
-        <ion-item lines="full">
+        <ion-item lines="full" [disabled]="deviceOk">
             <ion-label>Device type</ion-label>
             <ion-select value="sensor" okText="Okay" cancelText="Dismiss" formControlName="type">
                 <div class="error" *ngIf="deviceTemplateForm.controls.type.errors && deviceTemplateForm.controls.type.touched">
@@ -70,24 +70,30 @@
             </mat-expansion-panel>
         </mat-accordion> -->
 
-        <ion-item detail [routerLink]="['add-telemetry']">
+
+
+        <br>
+        <br>
+        <ion-button expand="block " type="submit " shape="round " fill="solid " type="submit" class="btn btn-success" [disabled]="deviceOk" [disabled]="!deviceTemplateForm.valid">Add Device template</ion-button>
+    </form>
+
+    <ion-card>
+        <ion-card-header [hidden]="!deviceOk" color="success"> Add another parameters for {{nameDeviceTemplate}} </ion-card-header>
+
+        <ion-item detail [disabled]="!deviceOk" [routerLink]="['add-telemetry',idDeviceTemplate]">
             <ion-label>Telemetries</ion-label>
         </ion-item>
 
-        <ion-item detail [routerLink]="['add-property']">
+        <ion-item detail [disabled]="!deviceOk" [routerLink]="['add-property',idDeviceTemplate]">
             <ion-label>Properties</ion-label>
         </ion-item>
 
-        <ion-item detail [routerLink]="['add-command']">
+        <ion-item detail [disabled]="!deviceOk" [routerLink]="['add-command',idDeviceTemplate]">
             <ion-label>Commands</ion-label>
         </ion-item>
+    </ion-card>
 
-        <br>
-        <br>
-        <ion-button expand="block " type="submit " shape="round " fill="solid " type="submit" class="btn btn-success" [disabled]="!deviceTemplateForm.valid">Add Device template</ion-button>
-    </form>
-
-    <div class="telemetries">
+    <!--   <div class="telemetries">
         <div class="telemetry" *ngFor="let telemetry of telemetries |keyvalue">
 
             <ion-item-group>
@@ -106,6 +112,6 @@
 
 
         </div>
-    </div>
+    </div> -->
     <br>
 </ion-content>
