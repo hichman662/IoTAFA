@@ -1,8 +1,8 @@
+import { TelemetryService } from './../../services/telemetry.service';
 import { Telemetry } from './../../models/telemetry.model';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { DeviceTemplateService } from '../../services/deviceTemplate.service';
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -15,14 +15,20 @@ export class AddTelemetryPage implements OnInit {
   arrayTelemetries: Telemetry [] = null;
   isArrayEmpty: boolean;
   telemetryForm: FormGroup;
-
+  idDeviceTemplate: number;
+  
   constructor(
-    private deviceTemplateService: DeviceTemplateService,
+    private telemetryService: TelemetryService,
     private router: Router,
-    public alertController: AlertController
+    public alertController: AlertController,
+    private route: ActivatedRoute
   ) {
     this.arrayTelemetries = [];
     this.telemetryForm = new FormGroup({
+      DeviceTemplate_oid: new FormControl(),
+      name: new FormControl('', [
+        Validators.required
+      ]),
       frecuency: new FormControl('', [
         Validators.required
       ]),
@@ -32,10 +38,16 @@ export class AddTelemetryPage implements OnInit {
       unit: new FormControl('', [
         Validators.required
       ]),
+      type: new FormControl('', [
+        Validators.required
+      ]),
     });
   }
-  ngOnInit() {
+  ngOnInit(): void{
+    this.idDeviceTemplate = this.route.snapshot.params['Id'];
+    this.telemetryForm.get('DeviceTemplate_oid').setValue(this.idDeviceTemplate);
   }
+
 
   async emptyArray() {
     const alert = await this.alertController.create({
@@ -61,6 +73,13 @@ export class AddTelemetryPage implements OnInit {
     await alert.present();
 }
   onSubmit(){
+    this.telemetryService.createTelemetry(this.telemetryForm.value)
+      .subscribe( (res: any) => {
+        console.log(res);
+        console.log('telemetry added');
+      }, ( err ) => {
+  
+      });
     this.arrayTelemetries.push(this.telemetryForm.value);
     console.log(this.arrayTelemetries);
     this.telemetryForm.reset();

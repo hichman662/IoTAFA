@@ -80,7 +80,7 @@
     <ion-card>
         <ion-card-header [hidden]="!deviceOk" color="success"> Add another parameters for {{nameDeviceTemplate}} </ion-card-header>
 
-        <ion-item detail [disabled]="!deviceOk" [routerLink]="['add-telemetry',idDeviceTemplate]">
+        <ion-item detail [routerLink]="['add-telemetry',idDeviceTemplate]">
             <ion-label>Telemetries</ion-label>
         </ion-item>
 
@@ -114,4 +114,58 @@
         </div>
     </div> -->
     <br>
+
+    <div class="telemetries" line="">
+        <div class="telemetry" *ngFor="let telemetry of arrayTelemetries|keyvalue">
+            <mat-expansion-panel details>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <ion-item>
+                            <ion-thumbnail size="small" slot="start">
+                                <img src="assets/icon/deviceTemplate.svg">
+                            </ion-thumbnail>
+                            <ion-label>{{telemetry.value.Name}}</ion-label>
+                        </ion-item>
+                    </mat-panel-title>
+
+                </mat-expansion-panel-header>
+
+                <!--   <ion-item-sliding>
+            <ion-item-options side="end">
+                <ion-item-option color="danger" (click)="null" expandable>
+                    <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+                </ion-item-option>
+            </ion-item-options>
+        </ion-item-sliding> -->
+
+                <ion-card>
+                    <ion-item>
+                        <ion-label>Frecuency</ion-label>
+                        <ion-badge slot="end">{{telemetry.value.Frecuency}}</ion-badge>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Unit</ion-label>
+                        <ion-badge slot="end">{{telemetry.value.Unit}}</ion-badge>
+                    </ion-item>
+                    <ion-item>
+
+                        <ion-label>Schema</ion-label>
+                        <ion-badge slot="end">{{telemetry.value.Schema}}</ion-badge>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Type</ion-label>
+                        <ion-badge slot="end">{{telemetry.value.Type}}</ion-badge>
+                    </ion-item>
+
+
+
+                </ion-card>
+                <!-- <p>Content panel.</p> -->
+
+            </mat-expansion-panel>
+
+
+
+        </div>
+    </div>
 </ion-content>

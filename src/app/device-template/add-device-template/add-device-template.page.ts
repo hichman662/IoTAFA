@@ -19,12 +19,12 @@ export class AddDeviceTemplatePage implements OnInit {
 
   // tslint:disable-next-line: ban-types
   deviceOk = false;
-  deviceRecentlyAdded = false;
   name = '';
   idDeviceTemplate: number;
   nameDeviceTemplate: '';
   deviceTemplateForm: FormGroup;
   deviceTemplate: DeviceTemplate ;
+  arrayTelemetries: Telemetry [] = [];
   constructor(
     private deviceTemplateService: DeviceTemplateService,
     public alertController: AlertController,
@@ -51,6 +51,17 @@ export class AddDeviceTemplatePage implements OnInit {
       this.properties.push(val);
       console.log(this.properties);
     }); */
+    if(this.idDeviceTemplate != null){
+    this.deviceTemplateService.getDeviceTemplateById(this.idDeviceTemplate)
+    .subscribe( (res: any) => {
+      this.arrayTelemetries = res['Telemetries'];
+      console.log(this.arrayTelemetries);
+      
+      
+    }, ( err ) => {
+
+    });
+  }
   }
 
    ngOnInit() {
@@ -66,7 +77,7 @@ export class AddDeviceTemplatePage implements OnInit {
       console.log(this.idDeviceTemplate);
       this.nameDeviceTemplate = res['Name'];
       this.deviceOk = true;
-      this.deviceRecentlyAdded = true;
+      
       this.presentAlert();
     }, ( err ) => {
 

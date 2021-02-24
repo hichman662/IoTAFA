@@ -22,4 +22,9 @@ export class TelemetryService {
   public deleteTelemetry(uid) {
     return this.http.delete(`${environment.base_url}/Telemetry/Destroy?p_telemetry_oid=${uid}`);
   }
+
+  public createTelemetry( data: Telemetry ): Observable<object> {
+    return this.http.post(`${environment.base_url}/Telemetry/New_`, data);
+  }
+  
 }
