@@ -7,6 +7,7 @@
         <ion-icon slot="end" size="large" src="assets/icon/deviceTemplate.svg"></ion-icon>
 
     </ion-toolbar>
+
 </ion-header>
 
 <ion-content>
@@ -74,13 +75,13 @@
 
         <br>
         <br>
-        <ion-button expand="block " type="submit " shape="round " fill="solid " type="submit" class="btn btn-success" [disabled]="deviceOk" [disabled]="!deviceTemplateForm.valid">Add Device template</ion-button>
+        <ion-button expand="block " type="submit" class="save" size="small" fill="solid" type="submit" color="light" [disabled]="deviceOk" [disabled]="!deviceTemplateForm.valid">Save</ion-button>
     </form>
 
     <ion-card>
         <ion-card-header [hidden]="!deviceOk" color="success"> Add another parameters for {{nameDeviceTemplate}} </ion-card-header>
 
-        <ion-item detail [routerLink]="['add-telemetry',idDeviceTemplate]">
+        <ion-item detail [disabled]="!deviceOk" [routerLink]="['add-telemetry',idDeviceTemplate]">
             <ion-label>Telemetries</ion-label>
         </ion-item>
 
@@ -93,26 +94,6 @@
         </ion-item>
     </ion-card>
 
-    <!--   <div class="telemetries">
-        <div class="telemetry" *ngFor="let telemetry of telemetries |keyvalue">
-
-            <ion-item-group>
-                <ion-list>
-                    <ion-item>
-                        <ion-label>{{telemetry.value.frecuency}}</ion-label>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label>{{telemetry.value.unit}}</ion-label>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label>{{telemetry.value.schema}}</ion-label>
-                    </ion-item>
-                </ion-list>
-            </ion-item-group>
-
-
-        </div>
-    </div> -->
     <br>
 
     <div class="telemetries" line="">
@@ -168,4 +149,7 @@
 
         </div>
     </div>
+
+
+
 </ion-content>

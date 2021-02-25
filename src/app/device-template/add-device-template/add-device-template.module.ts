@@ -16,7 +16,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     CommonModule,
     FormsModule,
     IonicModule,
-    AddDeviceTemplatePageRoutingModule, ReactiveFormsModule, MatExpansionModule, 
+    AddDeviceTemplatePageRoutingModule, ReactiveFormsModule, MatExpansionModule
   ],
   declarations: [AddDeviceTemplatePage]
 })

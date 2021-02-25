@@ -11,19 +11,17 @@ import { Telemetry } from './../models/telemetry.model';
   providedIn: 'root'
 })
 export class DeviceTemplateService {
-  arrayTelemetries: Telemetry [];
-  arrayCommands: Command [];
-  arrayProperties: Property [];
+  
   deviceTemplate: DeviceTemplate;
   /* private deviceTemplate: DeviceTemplate;
   private TOKEN = localStorage.getItem ('TOKEN');
   private headers: HttpHeaders = new HttpHeaders({Authorization: this.TOKEN}); */
 
 constructor(private http: HttpClient) {
-    this.arrayTelemetries = [];
-    this.arrayCommands = [];
-    this.arrayProperties = [];
+    
 }
+
+//Device template
 
 public getAllDeviceTemplate(): Observable<object>{
   return this.http.get(`${environment.base_url}/DeviceTemplate/ReadAll`);
@@ -47,33 +45,49 @@ public deleteDeviceTemplate(uid) {
 }
 
 // Property
+
 public createProperty( data: Property): Observable<object> {
   return this.http.post(`${environment.base_url}/Property/New_`, data);
 }
 
-insertCommandToArray(command): void{
-  this.arrayCommands.push(command);
-  console.log('Array the commands: ');
-  console.log(this.arrayCommands);
+public getPropertyById( uid: number): Observable<object>{
+  if (!uid) { uid = null; }
+  return this.http.get <Property>(`${environment.base_url}/Property/${uid}`);
+}
+public updateProperty(uid: number, data: Property): Observable<object> {
+  return this.http.put(`${environment.base_url}/Property/Modify?idProperty=${uid}`, data);
 }
 
-insertTelemetryToArray(telemetry): void{
-  this.arrayTelemetries.push(telemetry);
-  console.log('Array the Telemetry: ')
-  console.log(this.arrayTelemetries);
+public deleteProperty(uid) {
+  return this.http.delete(`${environment.base_url}/Property/Destroy?p_property_oid=${uid}`);
 }
 
-getArrayProperties(): Property[]{
-  return this.arrayProperties;
+public getAllProperties(): Observable<object>{
+  return this.http.get(`${environment.base_url}/Property/ReadAll`);
 }
 
-getArrayTelemetries(): Telemetry[] {
-  return this.arrayTelemetries;
+// Command
+
+public createCommand( data: Command): Observable<object> {
+  return this.http.post(`${environment.base_url}/Command/New_`, data);
+}
+public getCommandById( uid: number): Observable<object>{
+  if (!uid) { uid = null; }
+  return this.http.get <Command>(`${environment.base_url}/Command/${uid}`);
 }
 
-getArrayCommands(): Command[] {
-  return this.arrayCommands;
+public deleteCommand(uid) {
+  return this.http.delete(`${environment.base_url}/Command/Destroy?p_command_oid=${uid}`);
 }
+
+public getAllCommands(): Observable<object>{
+  return this.http.get(`${environment.base_url}/Command/ReadAll`);
+}
+
+public updateCommand(uid: number, data: Command): Observable<object> {
+  return this.http.put(`${environment.base_url}/Command/Modify?idCommand=${uid}`, data);
+}
+
 
 
 }

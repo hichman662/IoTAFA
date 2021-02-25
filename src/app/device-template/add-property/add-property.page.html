@@ -11,7 +11,7 @@
 
 <ion-content>
     <br>
-
+    <!-- 
     <div class="properties" line="">
         <div class="property" *ngFor="let property of arrayProperties |keyvalue">
             <mat-expansion-panel details>
@@ -43,14 +43,14 @@
                     </ion-item>
 
                 </ion-card>
-                <!-- <p>Content panel.</p> -->
+                
 
             </mat-expansion-panel>
 
 
 
         </div>
-    </div>
+    </div> -->
 
     <form [formGroup]="propertyForm" (ngSubmit)="onSubmit()">
         <ion-item>
@@ -72,6 +72,6 @@
         <ion-button slot="start" shape="round " fill="solid " type="submit" class="btn btn-block btn-success" [disabled]="!propertyForm.valid">
             Add property
         </ion-button>
-        <ion-button slot="end" shape="round " color="danger" size="small" (click)="emptyArray()">Cancel</ion-button>
+        <ion-button slot="end" shape="round " color="danger" size="small">Cancel</ion-button>
     </form>
 </ion-content>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl , Validators} from '@angular/forms';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Property } from 'src/app/models/property.model';
 import { DeviceTemplateService } from '../../services/deviceTemplate.service';
@@ -12,65 +12,65 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['./add-property.page.scss'],
 })
 export class AddPropertyPage implements OnInit{
-
+  
+  idDeviceTemplate: number;
   propertyForm: FormGroup;
-  arrayProperties: Property [] = null;
-  isArrayEmpty: boolean;
-  nav: any;
-
+  name = '';
   constructor(
-    private storage: Storage,
     private router: Router,
     private deviceTemplateService: DeviceTemplateService,
-    public alertController: AlertController
+    public alertController: AlertController,
+    private route: ActivatedRoute
   ) {
 
-    this.arrayProperties = [];
     this.propertyForm = new FormGroup({
+      DeviceTemplate_oid: new FormControl(),
       name: new FormControl('', [
         Validators.required
       ]),
       isWritable: new FormControl(true),
       isCloudable: new FormControl(true),
-      DeviceTemplate_oid: new FormControl(0)
+      Telemetries_oid: new FormControl(0)
     });
   }
 
-  ngOnInit() {}
+  ngOnInit():void {
+    this.idDeviceTemplate = this.route.snapshot.params['Id'];
+    this.propertyForm.get('DeviceTemplate_oid').setValue(this.idDeviceTemplate);
+  }
 
-  async emptyArray() {
+  async saveAlert() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Unsaved changes',
-      message: 'Are you sure you want to cancel?',
-      buttons: [  {
-        text: 'Cancel',
-        handler: () => {
-          console.log('Disagree clicked');
-        }
-      },
+      header: 'SUCCESS!',
+      message: `Property ${this.name} has been added successfully`,
+      buttons: [ 
       {
-        text: 'Agree',
+        text: 'Ok',
         handler: () => {
-          console.log('Agree clicked');
-          this.arrayProperties = [];
           this.router.navigateByUrl('tabs/tab1/device-template/add-device-template');
         }
       }]
     });
 
     await alert.present();
-
 }
   ionViewWillLeave(){
-    this.storage.set('arrayProperties', this.arrayProperties);
-    console.log(`I´m going Outside:` + this.storage);
+    
   }
 
   onSubmit(){
-    this.arrayProperties.push(this.propertyForm.value);
-    console.log(this.propertyForm.value);
-    this.propertyForm.setValue({name: 'Another property name', isCloudable: true, isWritable: true});
+    this.deviceTemplateService.createProperty(this.propertyForm.value)
+    .subscribe( (res: any) => {
+      console.log(res);
+      console.log('Property added');
+      this.name = res['Name'];
+      this.saveAlert();
+    }, ( err ) => {
+
+    });
+  
+  this.propertyForm.reset();
   }
 
 

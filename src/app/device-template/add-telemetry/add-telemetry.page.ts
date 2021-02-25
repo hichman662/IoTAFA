@@ -11,19 +11,17 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./add-telemetry.page.scss'],
 })
 export class AddTelemetryPage implements OnInit {
-
-  arrayTelemetries: Telemetry [] = null;
-  isArrayEmpty: boolean;
   telemetryForm: FormGroup;
   idDeviceTemplate: number;
-  
+  name = '';
+
   constructor(
     private telemetryService: TelemetryService,
     private router: Router,
     public alertController: AlertController,
     private route: ActivatedRoute
   ) {
-    this.arrayTelemetries = [];
+  
     this.telemetryForm = new FormGroup({
       DeviceTemplate_oid: new FormControl(),
       name: new FormControl('', [
@@ -43,47 +41,41 @@ export class AddTelemetryPage implements OnInit {
       ]),
     });
   }
+
   ngOnInit(): void{
     this.idDeviceTemplate = this.route.snapshot.params['Id'];
     this.telemetryForm.get('DeviceTemplate_oid').setValue(this.idDeviceTemplate);
   }
 
-
-  async emptyArray() {
+  async saveAlert() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Unsaved changes',
-      message: 'Are you sure you want to cancel?',
-      buttons: [  {
-        text: 'Cancel',
-        handler: () => {
-          console.log('Disagree clicked');
-        }
-      },
+      header: 'SUCCESS!',
+      message: `Telemetry ${this.name} has been added successfully`,
+      buttons: [ 
       {
-        text: 'Agree',
+        text: 'Ok',
         handler: () => {
-          console.log('Agree clicked');
-          this.arrayTelemetries = [];
           this.router.navigateByUrl('tabs/tab1/device-template/add-device-template');
         }
       }]
     });
 
     await alert.present();
-}
+  }
+
   onSubmit(){
     this.telemetryService.createTelemetry(this.telemetryForm.value)
       .subscribe( (res: any) => {
         console.log(res);
         console.log('telemetry added');
+        this.name = res['Name'];
+        this.saveAlert();
       }, ( err ) => {
   
       });
-    this.arrayTelemetries.push(this.telemetryForm.value);
-    console.log(this.arrayTelemetries);
+    
     this.telemetryForm.reset();
   }
-
 
 }
