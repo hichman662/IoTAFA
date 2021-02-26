@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ListTelemetriesPage } from './list-telemetries.page';
-import { ProfileTelemetryPage } from '../profile-telemetry/profile-telemetry.page';
 
 const routes: Routes = [
   {
@@ -10,7 +9,8 @@ const routes: Routes = [
   },
   {
     path : 'profileTelemetry/:Id',
-    component: ProfileTelemetryPage
+    loadChildren: () => import('../profile-telemetry/profile-telemetry.module').then( m => m.ProfileTelemetryPageModule)
+
   }
 ];
 

@@ -1,8 +1,8 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ProfilePropertyPageModule } from './../profile-property/profile-property.module';
-import { ProfilePropertyPage } from './../profile-property/profile-property.page';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -16,7 +16,10 @@ import { ListPropertiesPage } from './list-properties.page';
     FormsModule,
     IonicModule,
     ListPropertiesPageRoutingModule,
-    ProfilePropertyPageModule
+    ProfilePropertyPageModule,
+    HttpClientModule,
+    ReactiveFormsModule
+
   ],
   declarations: [ListPropertiesPage]
 })

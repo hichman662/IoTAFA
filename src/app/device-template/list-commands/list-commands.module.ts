@@ -1,8 +1,8 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ProfileCommandPageModule } from './../profile-command/profile-command.module';
-import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -16,7 +16,9 @@ import { ListCommandsPage } from './list-commands.page';
     FormsModule,
     IonicModule,
     ListCommandsPageRoutingModule,
-    ProfileCommandPageModule
+    ProfileCommandPageModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   declarations: [ListCommandsPage]
 })

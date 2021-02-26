@@ -10,7 +10,7 @@ const routes: Routes = [
     component: ListCommandsPage
   },
   {
-    path: 'profile-command',
+    path: 'profile-command/:Id',
     loadChildren: () => import('../profile-command/profile-command.module').then( m => m.ProfileCommandPageModule)
 
   }

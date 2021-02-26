@@ -26,7 +26,7 @@
         <div class="telemetry" *ngFor="let deviceProperty of deviceTemplateProperties">
 
             <ion-item-sliding>
-                <ion-item lines="inset" detail [routerLink]="['profileProperty']">
+                <ion-item lines="inset" detail [routerLink]="['profileProperty',deviceProperty['Id']]">
 
 
                     <ion-avatar slot="start">

@@ -10,7 +10,6 @@ import { ListTelemetriesPage } from './list-telemetries.page';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -22,12 +21,9 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     ReactiveFormsModule,
     CommonModule,
-    RouterModule,
     ProfileTelemetryPageModule
   ],
   declarations: [ListTelemetriesPage]
 })
 export class ListTelemetriesPageModule {}
-
-
 
