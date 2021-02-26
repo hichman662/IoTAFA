@@ -16,8 +16,10 @@
 </div> -->
 
     <ion-list-header>
-        <ion-label>List of properties</ion-label>
-
+        <ion-label *ngIf="!arrayIsEmpty">List of properties</ion-label>
+        <ion-item *ngIf="arrayIsEmpty">
+            <ion-label>There is no property</ion-label>
+        </ion-item>
     </ion-list-header>
 
     <ion-list>

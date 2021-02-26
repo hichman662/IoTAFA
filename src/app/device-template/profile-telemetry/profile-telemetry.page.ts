@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, Data } from '@angular/router';
 
 @Component({
   selector: 'app-profile-telemetry',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileTelemetryPage implements OnInit {
 
-  constructor() { }
+  constructor(
+     private route: ActivatedRoute,
+     private router: Router) { }
 
   ngOnInit() {
   }

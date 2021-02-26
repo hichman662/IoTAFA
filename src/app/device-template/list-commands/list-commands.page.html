@@ -15,9 +15,12 @@
   <ion-button rel="rel" expand="full" size="default" shape="round" fill="solid" [routerLink]="['add-device-template']">Add device template</ion-button>
 </div> -->
 
-    <ion-list-header>
-        <ion-label>List of commands</ion-label>
 
+    <ion-list-header>
+        <ion-label *ngIf="!arrayIsEmpty">List of commands</ion-label>
+        <ion-item *ngIf="arrayIsEmpty">
+            <ion-label>There is no command</ion-label>
+        </ion-item>
     </ion-list-header>
 
     <ion-list>

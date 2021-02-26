@@ -1,8 +1,6 @@
-import { DisabilityProfilePageModule } from './../disability-profile/disability-profile.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Tab1Page } from './tab1.page';
-import { DeviceTemplatePageModule } from '../device-template/device-template.module';
 
 const routes: Routes = [
   {

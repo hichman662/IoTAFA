@@ -15,11 +15,12 @@ const routes: Routes = [
   {
     path: 'profile-device-template/:Id',
     loadChildren: () => import('./profile-device-template/profile-device-template.module').then( m => m.ProfileDeviceTemplatePageModule)
-  },   {
+  },
+  /*{
     path: 'profile-property',
     loadChildren: () => import('./profile-property/profile-property.module').then( m => m.ProfilePropertyPageModule)
   },
-/*
+
   {
     path: 'profile-telemetry',
     loadChildren: () => import('./profile-telemetry/profile-telemetry.module').then( m => m.ProfileTelemetryPageModule)

@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./list-properties.page.scss'],
 })
 export class ListPropertiesPage implements OnInit {
-
+  public arrayIsEmpty = false;
   public deviceTemplateProperties: Property[] = [];
   private idPassedByURL: number = null;
   constructor(
@@ -22,6 +22,9 @@ export class ListPropertiesPage implements OnInit {
     this.deviceTemplateService.getDeviceTemplateById(this.idPassedByURL).subscribe((res: any ) => {
      console.log(res);
      this.deviceTemplateProperties = res['Properties'];
+     if (this.deviceTemplateProperties.length === 0){
+      this.arrayIsEmpty = true;
+    }
     }, (err) => {
       console.log(err);
     });

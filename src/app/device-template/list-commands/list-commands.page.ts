@@ -11,7 +11,7 @@ import { Command } from 'src/app/models/command.model';
 
 export class ListCommandsPage implements OnInit {
 
-
+  public arrayIsEmpty = false;
   public deviceTemplateCommands: Command[] = [];
   private idPassedByURL: number;
   constructor(
@@ -24,6 +24,9 @@ export class ListCommandsPage implements OnInit {
     this.deviceTemplateService.getDeviceTemplateById(this.idPassedByURL)
     .subscribe((res: any ) => {
       this.deviceTemplateCommands = res['Commands'];
+      if (this.deviceTemplateCommands.length === 0){
+        this.arrayIsEmpty = true;
+      }
     }, (err) => {
       console.log(err);
     });

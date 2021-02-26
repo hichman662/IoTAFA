@@ -1,3 +1,4 @@
+import { ProfileCommandPageModule } from './../profile-command/profile-command.module';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -14,7 +15,8 @@ import { ListCommandsPage } from './list-commands.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ListCommandsPageRoutingModule
+    ListCommandsPageRoutingModule,
+    ProfileCommandPageModule
   ],
   declarations: [ListCommandsPage]
 })

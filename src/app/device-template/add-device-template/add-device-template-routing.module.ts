@@ -11,10 +11,6 @@ const routes: Routes = [
     component: AddDeviceTemplatePage
   },
   {
-    path: 'add-device-template',
-    component: AddDeviceTemplatePage
-  },
-  {
     path: 'add-property/:Id',
     loadChildren: () => import('../add-property/add-property.module').then( m => m.AddPropertyPageModule)
   },

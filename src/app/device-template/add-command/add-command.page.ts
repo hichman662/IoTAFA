@@ -39,7 +39,7 @@ export class AddCommandPage implements OnInit {
       cssClass: 'my-custom-class',
       header: 'SUCCESS!',
       message: `Command ${this.name} has been added successfully`,
-      buttons: [ 
+      buttons: [
       {
         text: 'Ok',
         handler: () => {
