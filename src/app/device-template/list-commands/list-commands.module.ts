@@ -1,5 +1,4 @@
 import { HttpClientModule } from '@angular/common/http';
-import { ProfileCommandPageModule } from './../profile-command/profile-command.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -16,7 +15,6 @@ import { ListCommandsPage } from './list-commands.page';
     FormsModule,
     IonicModule,
     ListCommandsPageRoutingModule,
-    ProfileCommandPageModule,
     HttpClientModule,
     ReactiveFormsModule
   ],

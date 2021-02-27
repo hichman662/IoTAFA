@@ -21,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     DeviceTemplatePageRoutingModule,
     ReactiveFormsModule,
     MatExpansionModule,
-    HttpClientModule  ],
+    HttpClientModule,
+  RouterModule  ],
   declarations: [DeviceTemplatePage]
 })
 export class DeviceTemplatePageModule {}
