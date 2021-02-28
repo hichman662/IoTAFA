@@ -1,3 +1,4 @@
+import { ComponentTelemetryComponent } from '../component-telemetry/component-telemetry.component';
 
 import { ListCommandsPage } from './../list-commands/list-commands.page';
 import { ListPropertiesPage } from './../list-properties/list-properties.page';
@@ -9,20 +10,8 @@ import { ProfileDeviceTemplatePage } from './profile-device-template.page';
 const routes: Routes = [
   {
     path: '',
-    component: ProfileDeviceTemplatePage
-  },
-  {
-    path: 'telemetries/:Id',
-    component: ListTelemetriesPage
-  },
-  {
-    path: 'properties/:Id',
-    component: ListPropertiesPage
-  },
-  {
-    path: 'commands/:Id',
-    component: ListCommandsPage
-  }
+    component: ProfileDeviceTemplatePage,
+   }
 ];
 
 @NgModule({

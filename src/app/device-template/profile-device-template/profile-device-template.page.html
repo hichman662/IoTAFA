@@ -1,18 +1,5 @@
-<!-- <ion-header>
-    <ion-toolbar>
-        <ion-back-button slot="start"></ion-back-button>
-
-        <ion-title class="ion-text-center">{{ deviceTemplateProfile['Name']}} detail</ion-title>
-
-
-        <ion-icon slot="end" size="large" src="assets/icon/deviceTemplate.svg"></ion-icon>
-
-    </ion-toolbar>
-</ion-header> -->
 <ion-header>
-
     <ion-toolbar>
-        <!-- <ion-icon class="ionadd" name="add-outline" slot="end" [routerLink]="['add-device-template']"></ion-icon> -->
         <ion-buttons slot="start">
             <ion-back-button text="Device templates" icon="chevron-back-outline"></ion-back-button>
         </ion-buttons>
@@ -20,68 +7,53 @@
             <ion-button>
             </ion-button>
         </ion-buttons>
-
     </ion-toolbar>
     <ion-row>
         <ion-col size="4" class="ion-align-self-start">
-
         </ion-col>
         <ion-col size="4" class="ion-align-self-end">
             <ion-card color="transparent" class="deviceTemplate-card">
                 <ion-img src='assets/icon/deviceTemp.png'></ion-img>
-
             </ion-card>
         </ion-col>
         <ion-col size="4" class="ion-align-self-center">
         </ion-col>
-
     </ion-row>
     <ion-row>
         <ion-col size="1" class="ion-align-self-start">
-
         </ion-col>
         <ion-col size="10" class="ion-align-self-center">
-
             <ion-list-header>
                 <ion-label class="text-top">{{ deviceTemplateProfile['Name']}}</ion-label>
             </ion-list-header>
-
         </ion-col>
         <ion-col size="1" class="ion-align-self-end">
-
         </ion-col>
-
     </ion-row>
-    <ion-row class="iconText">
-        <ion-col size="3" class="ion-align-self-center">
-            <ion-icon name="reader-outline" [routerLink]="['add-device-template']"></ion-icon>
+
+    <ion-segment value="all" color="tertiary" scrollable="true" mode="md" [(ngModel)]="segmentModel" (ionChange)="segmentChanged($event)" lines="none">
+        <ion-segment-button value="profile">
+            <ion-icon name="reader-outline"></ion-icon>
             <ion-label>Profile</ion-label>
-        </ion-col>
-        <ion-col size="3" class="ion-align-self-center">
-            <ion-icon name="pie-chart-outline" [routerLink]="['add-device-template']"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="telemetries">
+            <ion-icon name="radio-outline"></ion-icon>
             <ion-label>Telemetries</ion-label>
-        </ion-col>
-        <ion-col size="3" class="ion-align-self-center">
-            <ion-icon name="flash-outline" [routerLink]="['add-device-template']"></ion-icon>
-            <ion-label>Commands</ion-label>
-        </ion-col>
-        <ion-col size="3" class="ion-align-self-center">
-            <ion-icon name="options-outline" [routerLink]="['add-device-template']"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="properties">
+            <ion-icon name="options-outline"></ion-icon>
             <ion-label>Properties</ion-label>
-        </ion-col>
-    </ion-row>
+        </ion-segment-button>
+        <ion-segment-button value="commands">
+            <ion-icon name="flash-outline"></ion-icon>
+            <ion-label>Commands</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+
 </ion-header>
 
-
 <ion-content>
-    <!-- <div class="ion-text-right">
-
-        <ion-button expand="full" shape="round" fill="outline">Edit Device template
-            <ion-icon slot="end" name="pencil"></ion-icon>
-        </ion-button>
-    </div> -->
-    <ion-card>
-
+    <div *ngIf="segmentModel === 'profile'">
         <ion-item [hidden]="deviceTemplateProfile['IsEdge'] === false">
             <ion-label>isEdge</ion-label>ON
         </ion-item>
@@ -96,61 +68,17 @@
             <ion-label>Device type</ion-label>Actuator
         </ion-item>
 
+    </div>
+    <div *ngIf="segmentModel === 'telemetries'">
 
+        <app-component-telemetry></app-component-telemetry>
+    </div>
+    <div *ngIf="segmentModel === 'properties'">
+        <app-component-property></app-component-property>
 
-    </ion-card>
+    </div>
+    <div *ngIf="segmentModel === 'commands'">
+        <app-component-command></app-component-command>
 
-    <ion-list>
-        <ion-item-sliding>
-            <ion-item lines="inset" detail [routerLink]="['telemetries',deviceTemplateProfile['Id']]">
-
-                <ion-avatar slot="start">
-                    <img src="assets/icon/deviceTemplate.svg">
-                </ion-avatar>
-                <ion-label>Telemetries</ion-label>
-            </ion-item>
-
-            <ion-item-options side="end">
-                <ion-item-option color="danger" expandable>
-                    <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
-                </ion-item-option>
-            </ion-item-options>
-        </ion-item-sliding>
-    </ion-list>
-
-    <ion-list>
-        <ion-item-sliding>
-            <ion-item lines="inset" detail [routerLink]="['properties',deviceTemplateProfile['Id']]">
-
-                <ion-avatar slot="start">
-                    <img src="assets/icon/deviceTemplate.svg">
-                </ion-avatar>
-                <ion-label>Properties</ion-label>
-            </ion-item>
-
-            <ion-item-options side="end">
-                <ion-item-option color="danger" expandable>
-                    <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
-                </ion-item-option>
-            </ion-item-options>
-        </ion-item-sliding>
-    </ion-list>
-    <ion-list>
-        <ion-item-sliding>
-            <ion-item lines="inset" detail [routerLink]="['commands',deviceTemplateProfile['Id']]">
-
-                <ion-avatar slot="start">
-                    <img src="assets/icon/deviceTemplate.svg">
-                </ion-avatar>
-                <ion-label>Commands</ion-label>
-            </ion-item>
-
-            <ion-item-options side="end">
-                <ion-item-option color="danger" expandable>
-                    <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
-                </ion-item-option>
-            </ion-item-options>
-        </ion-item-sliding>
-    </ion-list>
-
+    </div>
 </ion-content>

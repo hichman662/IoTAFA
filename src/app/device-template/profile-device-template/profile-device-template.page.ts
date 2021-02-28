@@ -9,7 +9,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./profile-device-template.page.scss'],
 })
 export class ProfileDeviceTemplatePage implements OnInit {
-
+  
+  segmentModel = "profile";
   public deviceTemplateProfile: DeviceTemplate[] = [];
   private idPassedByURL: number = null;
   constructor(
@@ -27,5 +28,9 @@ export class ProfileDeviceTemplatePage implements OnInit {
     }, (err) => {
       console.log(err);
     });
+    }
+
+    segmentChanged(ev: any) {
+      console.log('Segment changed', ev);
     }
 }

@@ -1,4 +1,6 @@
-import { ListTelemetriesPageModule } from './../list-telemetries/list-telemetries.module';
+import { ComponentCommandComponent } from './../component-command/component-command.component';
+import { ComponentPropertyComponent } from './../component-property/component-property.component';
+import { ComponentTelemetryComponent } from '../component-telemetry/component-telemetry.component';
 import { ListPropertiesPageModule } from './../list-properties/list-properties.module';
 import { ListCommandsPageModule } from './../list-commands/list-commands.module';
 import { NgModule } from '@angular/core';
@@ -19,9 +21,11 @@ import { ProfileDeviceTemplatePage } from './profile-device-template.page';
     IonicModule,
     ProfileDeviceTemplatePageRoutingModule,
     ListCommandsPageModule,
-    ListPropertiesPageModule,
-    ListTelemetriesPageModule
+    ListPropertiesPageModule
   ],
-  declarations: [ProfileDeviceTemplatePage]
+  declarations: [ProfileDeviceTemplatePage,
+     ComponentTelemetryComponent,
+     ComponentPropertyComponent,
+     ComponentCommandComponent]
 })
 export class ProfileDeviceTemplatePageModule {}
