@@ -18,14 +18,15 @@ import { Device } from '@capacitor/core';
 export class AddDeviceTemplatePage implements OnInit {
 
   // tslint:disable-next-line: ban-types
+  segmentModel = "deviceTemplate";
   deviceOk = false;
   name = '';
   idDeviceTemplate: number;
   nameDeviceTemplate: '';
   deviceTemplateForm: FormGroup;
   deviceTemplate: DeviceTemplate ;
-  arrayTelemetries: Telemetry [] = [];
-  constructor(
+/*   arrayTelemetries: Telemetry [] = [];
+ */  constructor(
     private deviceTemplateService: DeviceTemplateService,
     public alertController: AlertController,
     private router: Router,
@@ -54,8 +55,8 @@ export class AddDeviceTemplatePage implements OnInit {
     if(this.idDeviceTemplate != null){
     this.deviceTemplateService.getDeviceTemplateById(this.idDeviceTemplate)
     .subscribe( (res: any) => {
-      this.arrayTelemetries = res['Telemetries'];
-      console.log(this.arrayTelemetries);
+     /*  this.arrayTelemetries = res['Telemetries'];
+      console.log(this.arrayTelemetries); */
       
       
     }, ( err ) => {
@@ -74,7 +75,7 @@ export class AddDeviceTemplatePage implements OnInit {
     .subscribe( (res: any) => {
       this.name = this.deviceTemplateForm.get('name').value;
       this.idDeviceTemplate = res['Id'];
-      console.log(this.idDeviceTemplate);
+       console.log(this.idDeviceTemplate);
       this.nameDeviceTemplate = res['Name'];
       this.deviceOk = true;
       
@@ -111,5 +112,8 @@ export class AddDeviceTemplatePage implements OnInit {
 
     await alert.present();
   }
-
+  
+  segmentChanged(ev: any) {
+       console.log('Segment changed', ev);
+     }
 }

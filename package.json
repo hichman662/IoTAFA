@@ -30,6 +30,7 @@
     "@ionic-native/status-bar": "^5.0.0",
     "@ionic/angular": "^5.0.0",
     "@ionic/storage": "^2.3.1",
+    "animate.css": "^4.1.1",
     "ionic2-super-tabs": "^5.2.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
