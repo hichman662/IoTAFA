@@ -30,7 +30,7 @@ export class DeviceTemplatePage implements OnInit {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
       message: 'Please wait...',
-      duration: 1500
+      duration: 2000
     });
     await loading.present();
 
