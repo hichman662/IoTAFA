@@ -1,9 +1,11 @@
+import { DeviceTemplate } from './../../models/deviceTemplate.model';
 import { Component, OnInit } from '@angular/core';
 import { TelemetryService } from './../../services/telemetry.service';
 import { Telemetry } from './../../models/telemetry.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
 @Component({
   selector: 'app-add-telemetry-component',
   templateUrl: './add-telemetry-component.component.html',
@@ -15,14 +17,15 @@ export class AddTelemetryComponentComponent implements OnInit {
   idDeviceTemplate: number;
   name = '';
   arrayTelemetries: Telemetry [] = [];
-  
+
   constructor(
     private telemetryService: TelemetryService,
     private router: Router,
     public alertController: AlertController,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private storage: Storage
   ) {
-  
+
     this.telemetryForm = new FormGroup({
       DeviceTemplate_oid: new FormControl(),
       name: new FormControl('', [
@@ -44,8 +47,11 @@ export class AddTelemetryComponentComponent implements OnInit {
   }
 
   ngOnInit(): void{
-    this.idDeviceTemplate = this.route.snapshot.params['Id'];
-    this.telemetryForm.get('DeviceTemplate_oid').setValue(this.idDeviceTemplate);
+    this.storage.get('idDeviceTemplate').then((val) => {
+      console.log('I´m carrying id device template inside telemetry', val);
+      this.telemetryForm.get('DeviceTemplate_oid').setValue(val);
+      console.log(this.telemetryForm.value.DeviceTemplate_oid);
+    });
   }
 
   async saveAlert() {
@@ -69,7 +75,7 @@ export class AddTelemetryComponentComponent implements OnInit {
     this.telemetryService.createTelemetry(this.telemetryForm.value)
       .subscribe( (res: any) => {
         console.log(res);
-        this.arrayTelemetries = res;
+        this.arrayTelemetries.push(res);
         console.log('telemetry added');
         this.name = res['Name'];
         this.saveAlert();

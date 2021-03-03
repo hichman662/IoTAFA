@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: '',
     component: AddDeviceTemplatePage
-  },
+   },
   {
     path: 'add-property/:Id',
     loadChildren: () => import('../add-property/add-property.module').then( m => m.AddPropertyPageModule)

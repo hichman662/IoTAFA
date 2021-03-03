@@ -20,8 +20,14 @@ import { AddPropertyComponentComponent } from '../add-property-component/add-pro
     CommonModule,
     FormsModule,
     IonicModule,
-    AddDeviceTemplatePageRoutingModule, ReactiveFormsModule, MatExpansionModule, RouterModule
+    AddDeviceTemplatePageRoutingModule,
+     ReactiveFormsModule,
+      MatExpansionModule,
+       RouterModule
   ],
-  declarations: [AddDeviceTemplatePage, AddCommandComponentComponent,AddTelemetryComponentComponent,AddPropertyComponentComponent]
+  declarations: [AddDeviceTemplatePage,
+     AddCommandComponentComponent,
+      AddTelemetryComponentComponent,
+      AddPropertyComponentComponent]
 })
 export class AddDeviceTemplatePageModule {}

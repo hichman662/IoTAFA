@@ -25,8 +25,8 @@ export class AddDeviceTemplatePage implements OnInit {
   nameDeviceTemplate: '';
   deviceTemplateForm: FormGroup;
   deviceTemplate: DeviceTemplate ;
-/*   arrayTelemetries: Telemetry [] = [];
- */  constructor(
+
+  constructor(
     private deviceTemplateService: DeviceTemplateService,
     public alertController: AlertController,
     private router: Router,
@@ -46,28 +46,9 @@ export class AddDeviceTemplatePage implements OnInit {
     });
    }
 
-   ionViewWillEnter(){
-  /*   this.storage.get('arrayProperties').then((val) => {
-      console.log('I´m carrying properties', val);
-      this.properties.push(val);
-      console.log(this.properties);
-    }); */
-    if(this.idDeviceTemplate != null){
-    this.deviceTemplateService.getDeviceTemplateById(this.idDeviceTemplate)
-    .subscribe( (res: any) => {
-     /*  this.arrayTelemetries = res['Telemetries'];
-      console.log(this.arrayTelemetries); */
-      
-      
-    }, ( err ) => {
+   ionViewWillEnter(){}
 
-    });
-  }
-  }
-
-   ngOnInit() {
-
-  }
+   ngOnInit() {}
 
    onSubmit(){
     this.deviceTemplate = this.deviceTemplateForm.value;
@@ -75,20 +56,18 @@ export class AddDeviceTemplatePage implements OnInit {
     .subscribe( (res: any) => {
       this.name = this.deviceTemplateForm.get('name').value;
       this.idDeviceTemplate = res['Id'];
-       console.log(this.idDeviceTemplate);
+      console.log(this.idDeviceTemplate);
       this.nameDeviceTemplate = res['Name'];
       this.deviceOk = true;
-      
+      this.storage.set('idDeviceTemplate', this.idDeviceTemplate);
+
       this.presentAlert();
     }, ( err ) => {
 
     });
+
   }
 
-/*   this.storage.set('DeviceTemplate_oid', this.idDeviceTemplate);
-      this.storage.get('arrayProperties').then((val) => {
-        console.log('I´m carrying properties', val);
-        this.properties.push(val); */
 
   async presentAlert() {
     const alert = await this.alertController.create({
@@ -98,6 +77,7 @@ export class AddDeviceTemplatePage implements OnInit {
       buttons: [  {
         text: 'Ok',
         handler: () => {
+          this.showStorage();
           /* this.router.navigateByUrl('/tabs/tab1/device-template'); */
         }
       }/* ,
@@ -112,8 +92,15 @@ export class AddDeviceTemplatePage implements OnInit {
 
     await alert.present();
   }
-  
+
   segmentChanged(ev: any) {
        console.log('Segment changed', ev);
      }
+
+showStorage(){
+  this.storage.get('idDeviceTemplate').then((val) => {
+    console.log('I´m carrying id device template', val);
+  });
+}
+
 }

@@ -6,6 +6,7 @@ import { AlertController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
 
 
+
 @Component({
   selector: 'app-device-template',
   templateUrl: './device-template.page.html',
@@ -16,7 +17,9 @@ export class DeviceTemplatePage implements OnInit {
   constructor(
             private deviceTemplateService: DeviceTemplateService,
             public alertController: AlertController,
-            public loadingController: LoadingController
+            public loadingController: LoadingController,
+            public router: Router,
+
             ) {}
 
   ngOnInit(): void {
@@ -62,7 +65,7 @@ export class DeviceTemplatePage implements OnInit {
           console.log('Agree clicked');
           this.deviceTemplateService.deleteDeviceTemplate(id)
           .subscribe( (res: any) => {
-            window.location.reload();
+            this.ionViewWillEnter();
           }, ( err) => {
               console.log(err);
           });
@@ -73,5 +76,6 @@ export class DeviceTemplatePage implements OnInit {
      await alert.present();
 
   }
+
 
 }

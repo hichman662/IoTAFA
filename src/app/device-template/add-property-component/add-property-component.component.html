@@ -1,3 +1,23 @@
-<p>
-  add-property-component works!
-</p>
+<br>
+<form [formGroup]="propertyForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+        <ion-label position="stacked">Name</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+        <div class="error" *ngIf="propertyForm.controls.name.errors && propertyForm.controls.name.touched">
+            Please fill out this field
+        </div>
+    </ion-item>
+    <ion-item>
+        <ion-label>isWritable</ion-label>
+        <ion-toggle formControlName="isWritable" class="form-control" checked="true"></ion-toggle>
+    </ion-item>
+    <ion-item>
+        <ion-label>isCloudable</ion-label>
+        <ion-toggle formControlName="isCloudable" class="form-control" checked="true"></ion-toggle>
+    </ion-item>
+
+    <ion-button slot="start" shape="round " fill="solid " type="submit" class="btn btn-block btn-success" [disabled]="!propertyForm.valid">
+        Add property
+    </ion-button>
+    <ion-button slot="end" shape="round " color="danger" size="small">Cancel</ion-button>
+</form>

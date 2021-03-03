@@ -1,6 +1,7 @@
+<br>
 <form [formGroup]="telemetryForm" (ngSubmit)="onSubmit()">
     <ion-item>
-        <ion-label position="stacked">Telemetry name</ion-label>
+        <ion-label position="stacked">Name</ion-label>
         <ion-input type="text" formControlName="name" class="form-control"></ion-input>
         <div class="error" *ngIf="telemetryForm.controls.name.errors && telemetryForm.controls.name.touched">
             To add Telemetry please fill out this field
@@ -65,8 +66,8 @@
 
         </ion-select>
     </ion-item>
-    <ion-button slot="start" shape="round " fill="solid " type="submit" class="btn btn-block btn-success" [disabled]="!telemetryForm.valid">
-        Add telemetry
+    <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [disabled]="!telemetryForm.valid">
+        Save
     </ion-button>
 
 
