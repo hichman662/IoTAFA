@@ -1,4 +1,3 @@
-<br>
 <form [formGroup]="propertyForm" (ngSubmit)="onSubmit()">
     <ion-item>
         <ion-label position="stacked">Name</ion-label>
@@ -15,9 +14,7 @@
         <ion-label>isCloudable</ion-label>
         <ion-toggle formControlName="isCloudable" class="form-control" checked="true"></ion-toggle>
     </ion-item>
-
-    <ion-button slot="start" shape="round " fill="solid " type="submit" class="btn btn-block btn-success" [disabled]="!propertyForm.valid">
-        Add property
-    </ion-button>
-    <ion-button slot="end" shape="round " color="danger" size="small">Cancel</ion-button>
+    <br>
+    <br>
+    <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [disabled]="!propertyForm.valid">Done </ion-button>
 </form>

@@ -1,4 +1,3 @@
-<br>
 <form [formGroup]="telemetryForm" (ngSubmit)="onSubmit()">
     <ion-item>
         <ion-label position="stacked">Name</ion-label>
@@ -66,8 +65,9 @@
 
         </ion-select>
     </ion-item>
+    <br>
     <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [disabled]="!telemetryForm.valid">
-        Save
+        Done
     </ion-button>
 
 

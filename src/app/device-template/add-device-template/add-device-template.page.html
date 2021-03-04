@@ -61,8 +61,10 @@
 </ion-header>
 
 <ion-content>
+
     <div *ngIf="segmentModel === 'deviceTemplate'">
         <form [formGroup]="deviceTemplateForm" (ngSubmit)="onSubmit()">
+            <ion-card-header [hidden]="!deviceOk" color="success" class="animate__animated animate__slideInUp animate__fast"> You can add another parameters for {{nameDeviceTemplate}} </ion-card-header>
             <ion-item [disabled]="deviceOk">
                 <ion-label position="stacked">Name</ion-label>
                 <ion-input type="text" formControlName="name" class="form-control"></ion-input>
@@ -87,10 +89,11 @@
             </ion-item>
             <br>
             <br>
-            <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [hidden]="deviceOk" [disabled]="!deviceTemplateForm.valid">Save</ion-button>
+
+            <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [hidden]="deviceOk" [disabled]="!deviceTemplateForm.valid">Done</ion-button>
         </form>
         <ion-card>
-            <ion-card-header [hidden]="!deviceOk" color="success" class="animate__animated animate__slideInUp animate__fast"> You can add another parameters for {{nameDeviceTemplate}} </ion-card-header>
+
 
             <!--   <ion-item detail [disabled]="!deviceOk" [routerLink]="['add-telemetry',idDeviceTemplate]">
                 <ion-label>Telemetries</ion-label>
