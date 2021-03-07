@@ -15,10 +15,15 @@ const routes: Routes = [
     loadChildren: () => import('./intro/intro.module').then( m => m.IntroPageModule)
   },
   {
-    path: '',
+    path: '**',
     redirectTo: '/login',
     pathMatch: 'full'
+  },
+  {
+    path: 'tab0',
+    loadChildren: () => import('./tab0/tab0.module').then( m => m.Tab0PageModule)
   }
+
 
 ];
 @NgModule({

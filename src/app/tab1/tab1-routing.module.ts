@@ -5,7 +5,12 @@ import { Tab1Page } from './tab1.page';
 const routes: Routes = [
   {
     path: '',
+    loadChildren: () => import('../device-template/device-template.module').then( m => m.DeviceTemplatePageModule)
+  }
+  /* {
+    path: '',
     component: Tab1Page,
+    
   },
   {
     path: 'caregivers',
@@ -22,7 +27,7 @@ const routes: Routes = [
   {
     path: 'telemetry-data',
     loadChildren: () => import('../telemetry-data/telemetry-data.module').then( m => m.TelemetryDataPageModule)
-  }
+  } */
 ];
 
 @NgModule({
