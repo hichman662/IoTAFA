@@ -15,7 +15,11 @@ const routes: Routes = [
   {
     path: 'profile-device-template/:Id',
     loadChildren: () => import('./profile-device-template/profile-device-template.module').then( m => m.ProfileDeviceTemplatePageModule)
+  },  {
+    path: 'profile-command',
+    loadChildren: () => import('./profile-command/profile-command.module').then( m => m.ProfileCommandPageModule)
   },
+
   /*{
     path: 'profile-property',
     loadChildren: () => import('./profile-property/profile-property.module').then( m => m.ProfilePropertyPageModule)

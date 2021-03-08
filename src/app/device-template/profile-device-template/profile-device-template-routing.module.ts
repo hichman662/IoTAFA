@@ -11,7 +11,22 @@ const routes: Routes = [
   {
     path: '',
     component: ProfileDeviceTemplatePage,
-   }
+   },
+   {
+    path : 'profileTelemetry/:Id',
+    loadChildren: () => import('../profile-telemetry/profile-telemetry.module').then( m => m.ProfileTelemetryPageModule)
+
+  },
+  {
+    path: 'profileProperty/:Id',
+    loadChildren: () => import('../profile-property/profile-property.module').then( m => m.ProfilePropertyPageModule)
+
+  },
+  {
+    path: 'profileCommand/:Id',
+    loadChildren: () => import('../profile-command/profile-command.module').then( m => m.ProfileCommandPageModule)
+
+  }
 ];
 
 @NgModule({

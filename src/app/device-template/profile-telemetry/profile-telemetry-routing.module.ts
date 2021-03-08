@@ -10,11 +10,11 @@ const routes: Routes = [
   {
     path: '',
     component: ProfileTelemetryPage
-  }/* ,
+  } ,
   {
     path: 'profileTelemetry/:Id',
     component: ProfileTelemetryPage
-  } */
+  }
 ];
 
 @NgModule({

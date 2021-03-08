@@ -45,7 +45,7 @@
             <ion-icon name="reader-outline"></ion-icon>
             <ion-label>Profile</ion-label>
         </ion-segment-button>
-        <ion-segment-button value="telemetries">
+        <ion-segment-button value="telemetries" [disabled]="!deviceOk">
             <ion-icon name="radio-outline"></ion-icon>
             <ion-label>Telemetries</ion-label>
         </ion-segment-button>
@@ -93,19 +93,6 @@
             <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [hidden]="deviceOk" [disabled]="!deviceTemplateForm.valid">Done</ion-button>
         </form>
         <ion-card>
-
-
-            <!--   <ion-item detail [disabled]="!deviceOk" [routerLink]="['add-telemetry',idDeviceTemplate]">
-                <ion-label>Telemetries</ion-label>
-            </ion-item>
-    
-            <ion-item detail [disabled]="!deviceOk" [routerLink]="['add-property',idDeviceTemplate]">
-                <ion-label>Properties</ion-label>
-            </ion-item>
-    
-            <ion-item detail [disabled]="!deviceOk" [routerLink]="['add-command',idDeviceTemplate]">
-                <ion-label>Commands</ion-label>
-            </ion-item> -->
         </ion-card>
     </div>
     <div *ngIf="segmentModel === 'telemetries'">
@@ -120,11 +107,6 @@
         <app-add-command-component></app-add-command-component>
 
     </div>
-
-
-
-
-
     <br>
 
 </ion-content>

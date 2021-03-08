@@ -2,18 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { DeviceTemplateService } from './../../services/deviceTemplate.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
-import { Property } from 'src/app/models/property.model';
+import { Command } from 'src/app/models/command.model';
+
 
 @Component({
-  selector: 'app-profile-property',
-  templateUrl: './profile-property.page.html',
-  styleUrls: ['./profile-property.page.scss'],
+  selector: 'app-profile-command',
+  templateUrl: './profile-command.page.html',
+  styleUrls: ['./profile-command.page.scss'],
 })
-export class ProfilePropertyPage implements OnInit {
+export class ProfileCommandPage implements OnInit {
 
   segmentModel = "profile";
   public arrayIsEmpty = false;
-  public property: Property[] = [];
+  public command: Command[] = [];
   private idPassedByURL: number = null;
   constructor(
     private route: ActivatedRoute,
@@ -26,9 +27,9 @@ export class ProfilePropertyPage implements OnInit {
 
   ngOnInit(): void {
     this.idPassedByURL = this.route.snapshot.params['Id'];
-    this.deviceTemplateService.getPropertyById(this.idPassedByURL).subscribe((res: any ) => {
+    this.deviceTemplateService.getCommandById(this.idPassedByURL).subscribe((res: any ) => {
      console.log(res);
-     this.property = res;
+     this.command = res;
     }, (err) => {
       console.log(err);
     });

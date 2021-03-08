@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ProfilePropertyPage } from './profile-property.page';
+import { ProfileCommandPage } from './profile-command.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ProfilePropertyPage
+    component: ProfileCommandPage
   },
   {
-    path: 'profileTelemetry/:Id',
-    component: ProfilePropertyPage
+    path: 'profileCommand/:Id',
+    component: ProfileCommandPage
   }
 ];
 
@@ -18,4 +18,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ProfilePropertyPageRoutingModule {}
+export class ProfileCommandPageRoutingModule {}
