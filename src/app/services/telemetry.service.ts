@@ -33,6 +33,10 @@ export class TelemetryService {
     return this.http.post(`${environment.base_url}/Telemetry/New_`, data);
   }
 
+  public updateTelemetry(uid: number, data: Telemetry): Observable<object> {
+    return this.http.put(`${environment.base_url}/Telemetry/Modify?idTelemetry=${uid}`, data);
+  }
+
   // Evenet telemetry
   public createEventTelemetry( data: EventTelemetry ): Observable<object> {
     return this.http.post(`${environment.base_url}/EventTelemetry/New_`, data);

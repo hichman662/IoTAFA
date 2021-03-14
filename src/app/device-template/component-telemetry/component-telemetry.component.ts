@@ -17,13 +17,26 @@ export class ComponentTelemetryComponent implements OnInit {
   private idPassedByURL: number = null;
   constructor(
     private route: ActivatedRoute,
-  private deviceTemplateService: DeviceTemplateService,
+    private deviceTemplateService: DeviceTemplateService,
     public alertController: AlertController,
     public loadingController: LoadingController,
     private telemetryService: TelemetryService,
     private router: Router
 
   ) { }
+
+
+  ionViewWillEnter() {
+    this.idPassedByURL = this.route.snapshot.params['Id'];
+    this.deviceTemplateService.getDeviceTemplateById(this.idPassedByURL).subscribe((res: any ) => {
+      this.deviceTemplateTelemetries = res['Telemetries'];
+      if (this.deviceTemplateTelemetries.length === 0){
+        this.arrayIsEmpty = true;
+      }
+    }, (err) => {
+      console.log(err);
+    });
+}
    ngOnInit(): void {
     this.idPassedByURL = this.route.snapshot.params['Id'];
     this.deviceTemplateService.getDeviceTemplateById(this.idPassedByURL).subscribe((res: any ) => {
@@ -53,7 +66,7 @@ export class ComponentTelemetryComponent implements OnInit {
            console.log('Agree clicked');
            this.telemetryService.deleteTelemetry(id)
            .subscribe( (res: any) => {
-             window.location.reload();
+            this.ionViewWillEnter();
            }, ( err) => {
                console.log(err);
            });

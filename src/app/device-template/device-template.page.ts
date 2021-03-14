@@ -5,8 +5,6 @@ import { ActivatedRoute, Router, Data } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
 
-
-
 @Component({
   selector: 'app-device-template',
   templateUrl: './device-template.page.html',

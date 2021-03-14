@@ -15,10 +15,19 @@ const routes: Routes = [
   {
     path: 'profile-device-template/:Id',
     loadChildren: () => import('./profile-device-template/profile-device-template.module').then( m => m.ProfileDeviceTemplatePageModule)
-  },  {
+  },
+  {
     path: 'profile-command',
     loadChildren: () => import('./profile-command/profile-command.module').then( m => m.ProfileCommandPageModule)
   },
+  {
+    path: 'edit-device-template/:Id',
+    loadChildren: () => import('./edit-device-template/edit-device-template.module').then( m => m.EditDeviceTemplatePageModule)
+  },  {
+    path: 'edit-telemetry',
+    loadChildren: () => import('./edit-telemetry/edit-telemetry.module').then( m => m.EditTelemetryPageModule)
+  },
+
 
   /*{
     path: 'profile-property',

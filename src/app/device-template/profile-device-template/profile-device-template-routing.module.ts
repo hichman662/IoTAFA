@@ -26,6 +26,11 @@ const routes: Routes = [
     path: 'profileCommand/:Id',
     loadChildren: () => import('../profile-command/profile-command.module').then( m => m.ProfileCommandPageModule)
 
+  },
+  {
+    path: 'editTelemetry/:IdTel',
+    loadChildren: () => import('../edit-telemetry/edit-telemetry.module').then( m => m.EditTelemetryPageModule)
+
   }
 ];
 

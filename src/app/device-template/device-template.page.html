@@ -1,14 +1,14 @@
 <!-- <ion-header>
-    <ion-toolbar color="translucent">
-        <ion-back-button slot="start"></ion-back-button>
-        <ion-title class="ion-text-center">Home</ion-title>
+        <ion-toolbar color="translucent">
+            <ion-back-button slot="start"></ion-back-button>
+            <ion-title class="ion-text-center">Home</ion-title>
 
-        <ion-icon class="ionadd" name="add-circle-outline" size="large" slot="end" [routerLink]="['add-device-template']"></ion-icon>
+            <ion-icon class="ionadd" name="add-circle-outline" size="large" slot="end" [routerLink]="['add-device-template']"></ion-icon>
 
 
 
-    </ion-toolbar>
-</ion-header> -->
+        </ion-toolbar>
+    </ion-header> -->
 <ion-header>
 
     <ion-toolbar>
@@ -75,6 +75,11 @@
                     <ion-item-option color="danger" (click)="deleteDeviceTemplate(deviceTemplate['Id'], deviceTemplate['Name'])" expandable>
 
                         <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+
+                    </ion-item-option>
+                    <ion-item-option color="success" expandable [routerLink]="['edit-device-template',deviceTemplate['Id']]">
+
+                        <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
 
                     </ion-item-option>
                 </ion-item-options>

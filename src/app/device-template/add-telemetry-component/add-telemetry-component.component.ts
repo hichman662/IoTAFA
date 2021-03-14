@@ -117,7 +117,7 @@ export class AddTelemetryComponentComponent implements OnInit {
 
   onSubmit(){
     this.ngOnInit();
-
+//if(type telemetry==location) --> creatTelemetryLocation
     this.telemetryService.createTelemetry(this.telemetryForm.value)
       .subscribe( (res: any) => {
         console.log(res);
