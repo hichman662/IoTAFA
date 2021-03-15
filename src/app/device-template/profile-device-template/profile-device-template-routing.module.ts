@@ -31,6 +31,16 @@ const routes: Routes = [
     path: 'editTelemetry/:IdTel',
     loadChildren: () => import('../edit-telemetry/edit-telemetry.module').then( m => m.EditTelemetryPageModule)
 
+  },
+  {
+    path: 'editCommand/:IdCom',
+    loadChildren: () => import('../edit-command/edit-command.module').then( m => m.EditCommandPageModule)
+
+  },
+  {
+    path: 'editProperty/:IdPro',
+    loadChildren: () => import('../edit-property/edit-property.module').then( m => m.EditPropertyPageModule)
+
   }
 ];
 

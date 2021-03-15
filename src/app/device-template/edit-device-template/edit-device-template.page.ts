@@ -1,13 +1,11 @@
-import { Property } from './../../models/property.model';
 import { DeviceTemplate } from './../../models/deviceTemplate.model';
 import { DeviceTemplateService } from './../../services/deviceTemplate.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Telemetry } from '../../models/telemetry.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
-import { Device } from '@capacitor/core';
+
 
 @Component({
   selector: 'app-edit-device-template',
@@ -47,7 +45,7 @@ export class EditDeviceTemplatePage implements OnInit {
    ionViewWillEnter(){}
 
    ngOnInit() {
-        this.idPassedByURL = this.route.snapshot.params['IdTel'];
+        this.idPassedByURL = this.route.snapshot.params['Id'];
         this.deviceTemplateService.getDeviceTemplateById(this.idPassedByURL).subscribe((res: any ) => {
           this.deviceTemplateForm.get('name').setValue(res['Name']);
           this.deviceTemplateForm.get('isEdge').setValue(res['IsEdge']);

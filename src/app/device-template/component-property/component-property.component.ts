@@ -30,4 +30,5 @@ export class ComponentPropertyComponent implements OnInit {
     });
     }
 
+
 }

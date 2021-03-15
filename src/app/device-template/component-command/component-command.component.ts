@@ -29,5 +29,9 @@ export class ComponentCommandComponent implements OnInit {
       console.log(err);
     });
     }
+    
+  segmentChanged(ev: any) {
+    console.log('Segment changed', ev);
+  }
 
 }
