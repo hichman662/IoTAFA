@@ -3,7 +3,7 @@ import { TelemetryService } from '../../services/telemetry.service';
 import { DeviceTemplateService } from '../../services/deviceTemplate.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Telemetry } from 'src/app/models/telemetry.model';
-import { AlertController, LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController, IonItemSliding } from '@ionic/angular';
 
 @Component({
   selector: 'app-component-telemetry',
@@ -48,7 +48,8 @@ export class ComponentTelemetryComponent implements OnInit {
       console.log(err);
     });
     }
-    async deleteTelemetry(id: number, name: string){
+    async deleteTelemetry(slidingItem: IonItemSliding, id: number, name: string){
+      slidingItem.close();
       console.log(id);
       const alert = await this.alertController.create({
        cssClass: 'my-custom-class',
@@ -76,5 +77,10 @@ export class ComponentTelemetryComponent implements OnInit {
       await alert.present();
 
    }
+   
+
+  closeSliding(slidingItem: IonItemSliding){
+    slidingItem.close();
+  }
 }
 

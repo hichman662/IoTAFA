@@ -2,8 +2,8 @@ import { DeviceTemplate } from './../models/deviceTemplate.model';
 import { DeviceTemplateService } from './../services/deviceTemplate.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Data } from '@angular/router';
-import { AlertController } from '@ionic/angular';
-import { LoadingController } from '@ionic/angular';
+import { AlertController, IonItemSliding } from '@ionic/angular';
+import {  LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-device-template',
@@ -11,6 +11,7 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['./device-template.page.scss'],
 })
 export class DeviceTemplatePage implements OnInit {
+  
   public listDeviceTemplates: DeviceTemplate[] = [];
   constructor(
             private deviceTemplateService: DeviceTemplateService,
@@ -45,9 +46,14 @@ export class DeviceTemplatePage implements OnInit {
     });
 }
 
- async deleteDeviceTemplate(id: number, name: string){
-     console.log(id);
-     const alert = await this.alertController.create({
+  closeSliding(slidingItem: IonItemSliding){
+    slidingItem.close();
+  }
+
+ async deleteDeviceTemplate(slidingItem: IonItemSliding, id: number, name: string){
+    slidingItem.close();
+    console.log(id);
+    const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Remove Device Template',
       message: `Are you sure you want remove ${name}?`,
@@ -71,7 +77,7 @@ export class DeviceTemplatePage implements OnInit {
       }]
     });
 
-     await alert.present();
+    await alert.present();
 
   }
 

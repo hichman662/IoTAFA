@@ -1,3 +1,4 @@
+import { IonItemSliding, AlertController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { Property } from './../../models/property.model';
 import { DeviceTemplateService } from './../../services/deviceTemplate.service';
@@ -15,7 +16,8 @@ export class ComponentPropertyComponent implements OnInit {
   
   constructor(
     private route: ActivatedRoute,
-    private deviceTemplateService: DeviceTemplateService) { }
+    private deviceTemplateService: DeviceTemplateService,
+    public alertController: AlertController) { }
 
      ngOnInit(): void {
     this.idPassedByURL = this.route.snapshot.params['Id'];
@@ -29,6 +31,45 @@ export class ComponentPropertyComponent implements OnInit {
       console.log(err);
     });
     }
+
+    ionViewWillEnter(){
+
+    }
+
+    closeSliding(slidingItem: IonItemSliding){
+      slidingItem.close();
+    }
+
+    async deleteProperty(slidingItem: IonItemSliding , id: number, name: string){
+      slidingItem.close();
+      console.log(id);
+      const alert = await this.alertController.create({
+       cssClass: 'my-custom-class',
+       header: 'Remove Property',
+       message: `Are you sure you want remove ${name}?`,
+       buttons: [  {
+         text: 'Cancel',
+         handler: () => {
+           console.log('Disagree clicked');
+         }
+       },
+       {
+         text: 'Agree',
+         handler: () => {
+           console.log('Agree clicked');
+           this.deviceTemplateService.deleteProperty(id)
+           .subscribe( (res: any) => {
+             this.ionViewWillEnter();
+           }, ( err) => {
+               console.log(err);
+           });
+         }
+       }]
+     });
+ 
+      await alert.present();
+ 
+   }
 
 
 }

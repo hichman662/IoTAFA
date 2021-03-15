@@ -1,3 +1,4 @@
+import { AlertController, IonItemSliding } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { DeviceTemplateService } from './../../services/deviceTemplate.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,7 +15,8 @@ export class ComponentCommandComponent implements OnInit {
   private idPassedByURL: number;
   constructor(
     private route: ActivatedRoute,
-    private deviceTemplateService: DeviceTemplateService
+    private deviceTemplateService: DeviceTemplateService,
+    public alertController: AlertController
   ) { }
 
   ngOnInit(): void {
@@ -29,7 +31,46 @@ export class ComponentCommandComponent implements OnInit {
       console.log(err);
     });
     }
-    
+
+    ionViewWillEnter(){
+
+    }
+
+    closeSliding(slidingItem: IonItemSliding){
+      slidingItem.close();
+    }
+
+    async deleteCommand(slidingItem: IonItemSliding , id: number, name: string){
+      slidingItem.close();
+      console.log(id);
+      const alert = await this.alertController.create({
+       cssClass: 'my-custom-class',
+       header: 'Remove Command',
+       message: `Are you sure you want remove ${name}?`,
+       buttons: [  {
+         text: 'Cancel',
+         handler: () => {
+           console.log('Disagree clicked');
+         }
+       },
+       {
+         text: 'Agree',
+         handler: () => {
+           console.log('Agree clicked');
+           this.deviceTemplateService.deleteCommand(id)
+           .subscribe( (res: any) => {
+             this.ionViewWillEnter();
+           }, ( err) => {
+               console.log(err);
+           });
+         }
+       }]
+     });
+ 
+      await alert.present();
+ 
+   }
+
   segmentChanged(ev: any) {
     console.log('Segment changed', ev);
   }
