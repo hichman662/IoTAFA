@@ -52,7 +52,7 @@ export class AddPropertyComponentComponent implements OnInit {
       {
         text: 'Ok',
         handler: () => {
-          this.router.navigateByUrl('tabs/tab1/device-template/add-device-template');
+          /* this.router.navigateByUrl('tabs/tab1/device-template/add-device-template'); */
         }
       }]
     });
@@ -64,6 +64,7 @@ export class AddPropertyComponentComponent implements OnInit {
   }
 
   onSubmit(){
+    this.ngOnInit();
     this.deviceTemplateService.createProperty(this.propertyForm.value)
     .subscribe( (res: any) => {
       console.log(res);

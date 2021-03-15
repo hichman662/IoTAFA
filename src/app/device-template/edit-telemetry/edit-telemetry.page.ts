@@ -71,7 +71,7 @@ export class EditTelemetryPage implements OnInit {
       {
         text: 'Ok',
         handler: () => {
-          this.router.navigateByUrl('tabs/tab1/device-template/add-device-template');
+          /* this.router.navigateByUrl('tabs/tab1/device-template/add-device-template'); */
         }
       }]
     });

@@ -33,6 +33,7 @@ export class AddCommandComponentComponent implements OnInit {
   }
 
   ngOnInit(){
+    
     this.storage.get('idDeviceTemplate').then((val) => {
       console.log('I´m carrying id device template inside Command', val);
       this.commandForm.get('DeviceTemplate_oid').setValue(val);
@@ -49,7 +50,7 @@ export class AddCommandComponentComponent implements OnInit {
       {
         text: 'Ok',
         handler: () => {
-          this.router.navigateByUrl('tabs/tab1/device-template/add-device-template');
+          /* this.router.navigateByUrl('tabs/tab1/device-template/add-device-template'); */
         }
       }]
     });
@@ -57,6 +58,7 @@ export class AddCommandComponentComponent implements OnInit {
     await alert.present();
 }
 onSubmit() {
+  this.ngOnInit();
   this.deviceTemplateService.createCommand(this.commandForm.value)
   .subscribe( (res: any) => {
     console.log(res);
