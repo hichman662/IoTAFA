@@ -1,13 +1,16 @@
-import { Patient } from './patient.model';
+import { PatientProfile } from './patientProfile.model';
 
 export class User{
   constructor(
-        id: number,
-        NIF: string,
-        email: string,
-        password: number,
-        dateOfBirth: Date,
-        patient: Patient[]
+        email?: string,
+        birthDate?: Date,
+        address?: string,
+        name?: string,
+        surename?: string,
+        photo?: string,
+        isActive?: boolean,
+        type?: number,
+        patient?: PatientProfile[]
         )
   {}
 }

@@ -23,7 +23,8 @@ const routes: Routes = [
   {
     path: 'edit-device-template/:Id',
     loadChildren: () => import('./edit-device-template/edit-device-template.module').then( m => m.EditDeviceTemplatePageModule)
-  },  {
+  },
+  {
     path: 'edit-telemetry',
     loadChildren: () => import('./edit-telemetry/edit-telemetry.module').then( m => m.EditTelemetryPageModule)
   },
@@ -34,50 +35,7 @@ const routes: Routes = [
   {
     path: 'edit-command',
     loadChildren: () => import('./edit-command/edit-command.module').then( m => m.EditCommandPageModule)
-  },
-
-
-  /*{
-    path: 'profile-property',
-    loadChildren: () => import('./profile-property/profile-property.module').then( m => m.ProfilePropertyPageModule)
-  },
-
-  {
-    path: 'profile-telemetry',
-    loadChildren: () => import('./profile-telemetry/profile-telemetry.module').then( m => m.ProfileTelemetryPageModule)
-  },
- {
-    path: 'list-properties',
-    loadChildren: () => import('./list-properties/list-properties.module').then( m => m.ListPropertiesPageModule)
-  },
-  {
-    path: 'list-commands',
-    loadChildren: () => import('./list-commands/list-commands.module').then( m => m.ListCommandsPageModule)
-  },
-  {
-    path: 'profile-telemetry',
-    loadChildren: () => import('./profile-telemetry/profile-telemetry.module').then( m => m.ProfileTelemetryPageModule)
-  },
-  {
-    path: 'profile-command',
-    loadChildren: () => import('./profile-command/profile-command.module').then( m => m.ProfileCommandPageModule)
-  },
-  {
-    path: 'add-property',
-    loadChildren: () => import('./add-property/add-property.module').then( m => m.AddPropertyPageModule)
-  },
-  {
-    path: 'add-command',
-    loadChildren: () => import('./add-command/add-command.module').then( m => m.AddCommandPageModule)
-  },
-  {
-    path: 'add-telemetry',
-    loadChildren: () => import('./add-telemetry/add-telemetry.module').then( m => m.AddTelemetryPageModule)
-    },
-  {
-    path: 'specific-telemetry',
-    loadChildren: () => import('./specific-telemetry/specific-telemetry.module').then( m => m.SpecificTelemetryPageModule)
-  }*/
+  }
 
 ];
 
