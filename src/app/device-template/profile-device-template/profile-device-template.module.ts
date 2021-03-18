@@ -20,7 +20,7 @@ import { ProfileDeviceTemplatePage } from './profile-device-template.page';
     ProfileDeviceTemplatePageRoutingModule
   ],
   declarations: [ProfileDeviceTemplatePage,
-     ComponentTelemetryComponent,
+    ComponentTelemetryComponent,
      ComponentPropertyComponent,
      ComponentCommandComponent]
 })

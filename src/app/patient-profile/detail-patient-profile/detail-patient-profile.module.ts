@@ -1,3 +1,6 @@
+import { ComponentConditionComponent } from './../component-condition/component-condition.component';
+import { ComponentAccessModeComponent } from './../component-access-mode/component-access-mode.component';
+import { ComponentDisabilityComponent } from './../component-disability/component-disability.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +18,6 @@ import { DetailPatientProfilePage } from './detail-patient-profile.page';
     IonicModule,
     DetailPatientProfilePageRoutingModule
   ],
-  declarations: [DetailPatientProfilePage]
+  declarations: [DetailPatientProfilePage, ComponentDisabilityComponent, ComponentAccessModeComponent, ComponentConditionComponent]
 })
 export class DetailPatientProfilePageModule {}
