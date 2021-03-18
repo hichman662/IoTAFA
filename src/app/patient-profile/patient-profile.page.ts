@@ -1,8 +1,9 @@
-import { DeviceTemplateService } from './../services/deviceTemplate.service';
+import { PatientProfileService } from './../services/patientProfile.service';
+import { PatientProfile } from './../models/patientProfile.model';
 import { Router } from '@angular/router';
 import { IonItemSliding, AlertController, LoadingController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
-import { DeviceTemplate } from '../models/deviceTemplate.model';
+
 
 @Component({
   selector: 'app-patient-profile',
@@ -10,10 +11,10 @@ import { DeviceTemplate } from '../models/deviceTemplate.model';
   styleUrls: ['./patient-profile.page.scss'],
 })
 export class PatientProfilePage implements OnInit {
-
-  public listDeviceTemplates: DeviceTemplate[] = [];
+ 
+  public listPatientProfile: PatientProfile[] = [];
   constructor(
-            private deviceTemplateService: DeviceTemplateService,
+            private patientProfileService: PatientProfileService,
             public alertController: AlertController,
             public loadingController: LoadingController,
             public router: Router,
@@ -37,9 +38,9 @@ export class PatientProfilePage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.deviceTemplateService.getAllDeviceTemplate()
+    this.patientProfileService.getAllPatientProfile()
     .subscribe( (res: any) => {
-        this.listDeviceTemplates = res;
+        this.listPatientProfile = res;
     }, ( err) => {
         console.log(err);
     });
@@ -49,12 +50,12 @@ export class PatientProfilePage implements OnInit {
     slidingItem.close();
   }
 
- async deleteDeviceTemplate(slidingItem: IonItemSliding, id: number, name: string){
+ async deletePatientProfile(slidingItem: IonItemSliding, id: number){
     slidingItem.close();
     console.log(id);
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Remove Device Template',
+      header: 'Remove Patient Profile',
       message: `Are you sure you want remove ${name}?`,
       buttons: [  {
         text: 'Cancel',
@@ -66,7 +67,7 @@ export class PatientProfilePage implements OnInit {
         text: 'Agree',
         handler: () => {
           console.log('Agree clicked');
-          this.deviceTemplateService.deleteDeviceTemplate(id)
+          this.patientProfileService.deletePatientProfile(id)
           .subscribe( (res: any) => {
             this.ionViewWillEnter();
           }, ( err) => {
@@ -78,6 +79,10 @@ export class PatientProfilePage implements OnInit {
 
     await alert.present();
 
+  }
+
+  segmentChanged(ev: any) {
+    console.log('Segment changed', ev);
   }
 
 

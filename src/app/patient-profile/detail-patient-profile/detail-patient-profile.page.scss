@@ -56,7 +56,12 @@ ion-loading {
 .iconText>ion-col>ion-label {
     position: flex;
     font-size: 12px;
-    margin-left: 10px;
+    margin-left: 14px;
+}
+
+.segmentIcon {
+    margin-right: 7px;
+    height: 14px;
 }
 
 app-component-telemetry {
