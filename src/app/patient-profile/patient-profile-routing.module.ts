@@ -15,6 +15,18 @@ const routes: Routes = [
   {
     path: 'add-patient-profile',
     loadChildren: () => import('./add-patient-profile/add-patient-profile.module').then( m => m.AddPatientProfilePageModule)
+  },
+  {
+    path: 'detail-disability',
+    loadChildren: () => import('./detail-disability/detail-disability.module').then( m => m.DetailDisabilityPageModule)
+  },
+  {
+    path: 'detail-condition',
+    loadChildren: () => import('./detail-condition/detail-condition.module').then( m => m.DetailConditionPageModule)
+  },
+  {
+    path: 'detail-access-mode',
+    loadChildren: () => import('./detail-access-mode/detail-access-mode.module').then( m => m.DetailAccessModePageModule)
   }
 ];
 

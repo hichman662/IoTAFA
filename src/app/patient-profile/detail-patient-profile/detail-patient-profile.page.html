@@ -2,10 +2,10 @@
 
     <ion-toolbar>
 
-        <ion-icon size="large" class="ionadd" name="add-outline" slot="end" [routerLink]="['add-patient-profile']"></ion-icon>
+
 
         <ion-buttons slot="start">
-            <ion-back-button text="Home" defaultHref="/tabs/tab2" icon="chevron-back-outline"></ion-back-button>
+            <ion-back-button text="Patient profiles" defaultHref="/tabs/tab2" icon="chevron-back-outline"></ion-back-button>
         </ion-buttons>
         <ion-buttons slot="end">
             <ion-button>
@@ -53,7 +53,7 @@
             <ion-label>Disability</ion-label>
         </ion-segment-button>
         <ion-segment-button value="condition">
-            <ion-icon name="pulse-outline"></ion-icon>
+            <ion-icon name="list-circle-outline"></ion-icon>
             <ion-label>Condition</ion-label>
         </ion-segment-button>
         <ion-segment-button value="accessMode">
@@ -77,30 +77,31 @@
             </ion-item>
 
             <ion-list-header>
-                <ion-icon class="segmentIcon" name="globe-outline"></ion-icon>region</ion-list-header>
+                <ion-icon class="segmentIcon" name="globe-outline"></ion-icon>Region</ion-list-header>
             <ion-item>
 
                 <ion-label> {{patientProfile['Region']}}</ion-label>
 
             </ion-item>
+
+
+            <ion-list-header>
+                <ion-icon class="segmentIcon" name="language-outline"></ion-icon>Preferred language</ion-list-header>
+            <ion-item>
+
+                <ion-label *ngIf="patientProfile['PreferredLanguage'] == 1"> ES</ion-label>
+                <ion-label *ngIf="patientProfile['PreferredLanguage'] == 2"> EN</ion-label>
+                <ion-label *ngIf="patientProfile['PreferredLanguage'] == 3"> FR</ion-label>
+                <ion-label *ngIf="patientProfile['PreferredLanguage'] == 4"> IT</ion-label>
+                <ion-label *ngIf="patientProfile['PreferredLanguage'] == 5"> PR</ion-label>
+                <ion-label *ngIf="patientProfile['PreferredLanguage'] == 6"> DE</ion-label>
+                <ion-label *ngIf="patientProfile['PreferredLanguage'] == 7"> JA</ion-label>
+                <ion-label *ngIf="patientProfile['PreferredLanguage'] == 8"> KO</ion-label>
+                <ion-label *ngIf="patientProfile['PreferredLanguage'] == 9"> ZH</ion-label>
+
+
+            </ion-item>
         </ion-list>
-
-        <ion-list-header>
-            <ion-icon class="segmentIcon" name="language-outline"></ion-icon>Preferred language</ion-list-header>
-        <ion-item>
-
-            <ion-label *ngIf="patientProfile['PreferredLanguage'] == 1"> ES</ion-label>
-            <ion-label *ngIf="patientProfile['PreferredLanguage'] == 2"> EN</ion-label>
-            <ion-label *ngIf="patientProfile['PreferredLanguage'] == 3"> FR</ion-label>
-            <ion-label *ngIf="patientProfile['PreferredLanguage'] == 4"> IT</ion-label>
-            <ion-label *ngIf="patientProfile['PreferredLanguage'] == 5"> PR</ion-label>
-            <ion-label *ngIf="patientProfile['PreferredLanguage'] == 6"> DE</ion-label>
-            <ion-label *ngIf="patientProfile['PreferredLanguage'] == 7"> JA</ion-label>
-            <ion-label *ngIf="patientProfile['PreferredLanguage'] == 8"> KO</ion-label>
-            <ion-label *ngIf="patientProfile['PreferredLanguage'] == 9"> ZH</ion-label>
-
-
-        </ion-item>
     </div>
     <div *ngIf="segmentModel === 'disability'">
 

@@ -47,7 +47,7 @@ public getAllCondition(): Observable<object>{
     return this.http.get(`${environment.base_url}/Condition/ReadAll`);
   }
 
-  public getConditioneById( uid: number): Observable<object>{
+  public getConditionById( uid: number): Observable<object>{
     if (!uid) { uid = null; }
     return this.http.get <Condition>(`${environment.base_url}/Condition/${uid}` );
   }

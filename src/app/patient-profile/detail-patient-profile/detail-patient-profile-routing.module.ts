@@ -7,6 +7,14 @@ const routes: Routes = [
   {
     path: '',
     component: DetailPatientProfilePage
+  },
+  {
+    path: 'condition/:Id',
+    loadChildren: () => import('../detail-condition/detail-condition.module').then( m => m.DetailConditionPageModule)
+  },
+  {
+    path: 'disability/:Id',
+    loadChildren: () => import('../detail-disability/detail-disability.module').then( m => m.DetailDisabilityPageModule)
   }
 ];
 

@@ -1,0 +1,107 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="Patient profile" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+    <ion-row>
+        <ion-col size="4" class="ion-align-self-start">
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-end">
+            <ion-card color="transparent" class="deviceTemplate-card">
+                <ion-img src='assets/icon/condition.png'></ion-img>
+            </ion-card>
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-center">
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col size="1" class="ion-align-self-start">
+        </ion-col>
+        <ion-col size="10" class="ion-align-self-center">
+            <ion-list-header>
+                <ion-label class="text-top">{{condition['Id']}}</ion-label>
+            </ion-list-header>
+        </ion-col>
+        <ion-col size="1" class="ion-align-self-end">
+        </ion-col>
+    </ion-row>
+
+    <ion-segment value="all" color="tertiary" class="animate__animated animate__slideInUp animate__fast" scrollable="true" mode="md" [(ngModel)]="segmentModel" (ionChange)="segmentChanged($event)" lines="none">
+        <ion-segment-button value="features">
+            <ion-icon name="reader-outline"></ion-icon>
+            <ion-label>Condition detail</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+
+</ion-header>
+
+<ion-content>
+    <div *ngIf="segmentModel === 'features'">
+        <ion-list>
+            <ion-list-header>
+                <ion-icon class="segmentIcon" name="business-outline"></ion-icon>Clinical status</ion-list-header>
+            <ion-item>
+
+                <ion-label *ngIf="condition['ClinicalStatus'] == 1"> Active</ion-label>
+                <ion-label *ngIf="condition['ClinicalStatus'] == 2"> Recurrence</ion-label>
+                <ion-label *ngIf="condition['ClinicalStatus'] == 3"> Relapce</ion-label>
+                <ion-label *ngIf="condition['ClinicalStatus'] == 4"> Inactive</ion-label>
+                <ion-label *ngIf="condition['ClinicalStatus'] == 5"> Remission</ion-label>
+                <ion-label *ngIf="condition['ClinicalStatus'] == 6"> Resolved</ion-label>
+            </ion-item>
+
+            <ion-list-header>
+
+                <ion-icon class="segmentIcon" name="enter-outline"></ion-icon>Initial date</ion-list-header>
+            <ion-item>
+
+                <ion-label> {{condition['DateInitial'] | date}}</ion-label>
+
+            </ion-item>
+            <ion-list-header>
+
+                <ion-icon class="segmentIcon" name="exit-outline"></ion-icon>End date</ion-list-header>
+            <ion-item>
+
+                <ion-label> {{condition['DateEnd'] | date}}</ion-label>
+
+            </ion-item>
+            <ion-list-header>
+                <ion-icon class="segmentIcon" name="clipboard-outline"></ion-icon>Description</ion-list-header>
+            <ion-item>
+
+                <ion-label> {{condition['Description']}}</ion-label>
+
+            </ion-item>
+
+
+
+            <ion-list-header>
+                <ion-icon class="segmentIcon" name="fitness-outline"></ion-icon>Disease</ion-list-header>
+            <ion-item>
+
+                <ion-label *ngIf="condition['Disease'] == 1"> Alzheimer</ion-label>
+                <ion-label *ngIf="condition['Disease'] == 2"> Parkinson</ion-label>
+                <ion-label *ngIf="condition['Disease'] == 3"> Cancer</ion-label>
+                <ion-label *ngIf="condition['Disease'] == 4"> Heart Disease</ion-label>
+                <ion-label *ngIf="condition['Disease'] == 5"> Obesity</ion-label>
+                <ion-label *ngIf="condition['Disease'] == 6"> Diabetes</ion-label>
+                <ion-label *ngIf="condition['Disease'] == 7"> Epilepsy</ion-label>
+                <ion-label *ngIf="condition['Disease'] == 8"> Apnea Sleep</ion-label>
+                <ion-label *ngIf="condition['Disease'] == 9"> Narcolepsy</ion-label>
+                <ion-label *ngIf="condition['Disease'] == 10"> Eating disorders</ion-label>
+                <ion-label *ngIf="condition['Disease'] == 11"> Osteoporosis</ion-label>
+                <ion-label *ngIf="condition['Disease'] == 12"> Asthma</ion-label>
+                <ion-label *ngIf="condition['Disease'] == 13"> Fibrosis</ion-label>
+                <ion-label *ngIf="condition['Disease'] == 14"> Oral_Health</ion-label>
+
+
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>
