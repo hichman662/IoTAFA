@@ -1,0 +1,41 @@
+<ion-item [hidden]="!arrayIsEmpty" line="none">
+    <ion-label class="arrayEmpty" color="warning">There is no Adaptation detail Required</ion-label>
+</ion-item>
+
+<ion-list>
+
+    <div class="condition" *ngFor="let detailReq of adaptationDetailRequired ">
+
+        <ion-item-sliding #slidingItem>
+
+            <ion-item lines="inset">
+
+                <ion-label text-wrap *ngIf="detailReq['AdaptationRequest'] == 1"> Enhanced</ion-label>
+                <ion-label text-wrap *ngIf="detailReq['AdaptationRequest'] == 2"> RealTime</ion-label>
+                <ion-label text-wrap *ngIf="detailReq['AdaptationRequest'] == 3"> Record</ion-label>
+                <ion-label text-wrap *ngIf="detailReq['AdaptationRequest'] == 4"> Symbolic</ion-label>
+                <ion-label text-wrap *ngIf="detailReq['AdaptationRequest'] == 5"> Synthesized</ion-label>
+                <ion-label text-wrap *ngIf="detailReq['AdaptationRequest'] == 6"> Verbatim</ion-label>
+
+                <ion-note slot="end">{{detailReq['Description']}}</ion-note>
+
+            </ion-item>
+
+            <ion-item-options side="end" (ionSwipe)="deleteAdaptationTypeRequired(slidingItem, detailReq['Id'])">
+
+                <ion-item-option color="danger" expandable (click)="deleteAdaptationTypeRequired(slidingItem, detailReq['Id']) ">
+                    <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+                </ion-item-option>
+
+            </ion-item-options>
+            <ion-item-options side="start">
+
+                <ion-item-option color="success" (click)="closeSliding(slidingItem)" expandable [routerLink]="['editCondition',detailReq['Id']] ">
+
+                    <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+
+                </ion-item-option>
+            </ion-item-options>
+        </ion-item-sliding>
+    </div>
+</ion-list>

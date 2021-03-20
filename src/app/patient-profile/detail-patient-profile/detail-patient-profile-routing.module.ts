@@ -15,6 +15,10 @@ const routes: Routes = [
   {
     path: 'disability/:Id',
     loadChildren: () => import('../detail-disability/detail-disability.module').then( m => m.DetailDisabilityPageModule)
+  },
+  {
+    path: 'accessMode/:Id',
+    loadChildren: () => import('../detail-access-mode/detail-access-mode.module').then( m => m.DetailAccessModePageModule)
   }
 ];
 
