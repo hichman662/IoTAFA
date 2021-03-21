@@ -113,16 +113,14 @@
         <ion-card>
         </ion-card>
     </div>
-    <div *ngIf="segmentModel === 'disability'">
-        <!--   <app-add-telemetry-component></app-add-telemetry-component> -->
+
+    <div *ngIf="segmentModel === 'condition'">
 
     </div>
-    <div *ngIf="segmentModel === 'condition'">
-        <!--  <app-add-property-component></app-add-property-component> -->
-
+    <div *ngIf="segmentModel === 'disability'">
+        <app-add-disability></app-add-disability>
     </div>
     <div *ngIf="segmentModel === 'accessMode'">
-        <!-- <app-add-command-component></app-add-command-component> -->
 
     </div>
     <br>
