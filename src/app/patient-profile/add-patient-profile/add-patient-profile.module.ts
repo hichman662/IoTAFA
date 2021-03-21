@@ -1,6 +1,8 @@
+import { RouterModule } from '@angular/router';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -13,7 +15,10 @@ import { AddPatientProfilePage } from './add-patient-profile.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    AddPatientProfilePageRoutingModule
+    AddPatientProfilePageRoutingModule,
+    ReactiveFormsModule,
+    MatExpansionModule,
+     RouterModule
   ],
   declarations: [AddPatientProfilePage]
 })

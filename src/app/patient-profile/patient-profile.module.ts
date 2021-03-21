@@ -20,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     PatientProfilePageRoutingModule,
     MatExpansionModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   declarations: [PatientProfilePage]
 })
