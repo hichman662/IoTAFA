@@ -48,14 +48,15 @@
             <ion-icon name="receipt-outline"></ion-icon>
             <ion-label>Features</ion-label>
         </ion-segment-button>
-        <ion-segment-button value="disability">
-            <ion-icon name="accessibility-outline"></ion-icon>
-            <ion-label>Disability</ion-label>
-        </ion-segment-button>
         <ion-segment-button value="condition">
             <ion-icon name="list-circle-outline"></ion-icon>
             <ion-label>Condition</ion-label>
         </ion-segment-button>
+        <ion-segment-button value="disability">
+            <ion-icon name="accessibility-outline"></ion-icon>
+            <ion-label>Disability</ion-label>
+        </ion-segment-button>
+
         <ion-segment-button value="accessMode">
             <ion-icon name="keypad-outline"></ion-icon>
             <ion-label>Access Mode</ion-label>
@@ -103,14 +104,15 @@
             </ion-item>
         </ion-list>
     </div>
-    <div *ngIf="segmentModel === 'disability'">
-
-        <app-component-disability></app-component-disability>
-    </div>
     <div *ngIf="segmentModel === 'condition'">
         <app-component-condition></app-component-condition>
 
     </div>
+    <div *ngIf="segmentModel === 'disability'">
+
+        <app-component-disability></app-component-disability>
+    </div>
+
     <div *ngIf="segmentModel === 'accessMode'">
         <app-component-access-mode></app-component-access-mode>
 
