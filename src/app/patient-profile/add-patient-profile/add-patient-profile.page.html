@@ -45,11 +45,11 @@
             <ion-icon name="receipt-outline"></ion-icon>
             <ion-label text-wrap>Features</ion-label>
         </ion-segment-button>
-        <ion-segment-button value="condition">
+        <ion-segment-button value="condition" [disabled]="!patientOk">
             <ion-icon name="list-circle-outline"></ion-icon>
             <ion-label text-wrap>Condition</ion-label>
         </ion-segment-button>
-        <ion-segment-button value="disability">
+        <ion-segment-button value="disability" [disabled]="!patientOk">
             <ion-icon name="accessibility-outline"></ion-icon>
             <ion-label text-wrap>Disability</ion-label>
         </ion-segment-button>

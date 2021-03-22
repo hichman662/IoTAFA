@@ -9,6 +9,7 @@ import { Storage } from '@ionic/storage';
 
 import { PatientProfile } from 'src/app/models/patientProfile.model';
 
+
 @Component({
   selector: 'app-add-patient-profile',
   templateUrl: './add-patient-profile.page.html',
@@ -16,12 +17,15 @@ import { PatientProfile } from 'src/app/models/patientProfile.model';
 })
 export class AddPatientProfilePage implements OnInit {
 
+ 
+
   segmentModel = "patientProfile";
   patientOk = false;
   name = '';
   idPatientProfile: number;
   patientProfileForm: FormGroup;
   patientProfile: PatientProfile ;
+  conditionOk= false;
 
   constructor(
     private patientProfileService: PatientProfileService,
@@ -48,7 +52,14 @@ export class AddPatientProfilePage implements OnInit {
 
    ionViewWillEnter(){}
 
-   ngOnInit() {}
+   ngAfterViewInit() {
+
+  }
+
+   ngOnInit() {
+
+    console.log(this.conditionOk);
+   }
 
    onSubmit(){
     this.patientProfile = this.patientProfileForm.value;

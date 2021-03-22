@@ -69,6 +69,7 @@ onSubmit() {
   .subscribe( (res: any) => {
     console.log(res);
     console.log('Disability added');
+    this.storage.set('idDisability', res['Id']);
     this.name = res['Name'];
     this.saveAlert();
   }, ( err ) => {

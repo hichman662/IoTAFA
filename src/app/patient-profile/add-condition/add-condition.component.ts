@@ -17,6 +17,7 @@ export class AddConditionComponent implements OnInit {
   conditionForm: FormGroup;
   idDisability: number;
   name = '';
+  conditionOk = false;
   constructor(
     private router: Router,
     private patientProfileService: PatientProfileService,
@@ -71,6 +72,7 @@ onSubmit() {
   this.patientProfileService.createCondition(this.conditionForm.value)
   .subscribe( (res: any) => {
     console.log(res);
+    this.conditionOk = true;
     console.log('Condition added');
     this.name = res['Description'];
     this.saveAlert();

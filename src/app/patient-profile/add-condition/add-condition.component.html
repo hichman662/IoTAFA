@@ -41,7 +41,10 @@
     <ion-item>
         <ion-label position="stacked">Date End</ion-label>
         <div item-content>
-            <ion-datetime pickerFormat="YYYY MM DD" min="2014" max="2029-12-31" formControlName="DateEnd"></ion-datetime>
+            <ion-datetime pickerFormat="YYYY MM DD" min="2018" max="2029-12-31" formControlName="DateEnd"></ion-datetime>
+        </div>
+        <div class="error" *ngIf="conditionForm.controls.DateEnd.errors && conditionForm.controls.DateEnd.touched">
+            Please fill out this field
         </div>
 
     </ion-item>
@@ -64,5 +67,5 @@
 
     <br>
     <br>
-    <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light">Done</ion-button>
+    <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [disabled]="!conditionForm.valid">Done</ion-button>
 </form>

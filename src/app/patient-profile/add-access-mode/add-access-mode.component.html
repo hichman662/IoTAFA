@@ -1,3 +1,47 @@
-<p>
-  add-access-mode works!
-</p>
+<form [formGroup]="accessModeForm" (ngSubmit)="onSubmit()">
+    <ion-item lines="full">
+        <ion-label>Type</ion-label>
+        <ion-select value="Auditory" okText="Okay" cancelText="Dismiss" formControlName="TypeAccessMode">
+            <div class="error" *ngIf="accessModeForm.controls.TypeAccessMode.errors && accessModeForm.controls.TypeAccessMode.touched">
+                Please fill out this field
+            </div>
+            <ion-select-option value="1">Auditory</ion-select-option>
+            <ion-select-option value="2">Colour</ion-select-option>
+            <ion-select-option value="3">Item Size</ion-select-option>
+            <ion-select-option value="4">Olfactory</ion-select-option>
+            <ion-select-option value="5">Orientation</ion-select-option>
+            <ion-select-option value="6">Position</ion-select-option>
+            <ion-select-option value="7">Tactile</ion-select-option>
+            <ion-select-option value="8">Text On Image</ion-select-option>
+            <ion-select-option value="9">Textual</ion-select-option>
+            <ion-select-option value="10">Visual</ion-select-option>
+
+        </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked">Description</ion-label>
+        <ion-input name="name" type="text" formControlName="Description"></ion-input>
+        <div class="error" *ngIf="accessModeForm.controls.Description.errors && accessModeForm.controls.Description.touched">
+            Please fill out this field
+        </div>
+    </ion-item>
+
+    <ion-item lines="full">
+        <ion-label>Device Template</ion-label>
+        <ion-select value="" okText="Okay" cancelText="Dismiss" formControlName="DeviceTemplate_oid">
+            <div class="error" *ngIf="accessModeForm.controls.DeviceTemplate_oid.errors && accessModeForm.controls.DeviceTemplate_oid.touched">
+                Please fill out this field
+            </div>
+            <div>
+                <ion-select-option *ngFor="let deviceTemplate of allDeviceTemplates" [value]="deviceTemplate['Id']">{{deviceTemplate['Name']}}</ion-select-option>
+            </div>
+
+        </ion-select>
+    </ion-item>
+
+
+
+    <br>
+    <br>
+    <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [disabled]="!accessModeForm.valid">Done</ion-button>
+</form>
