@@ -7,6 +7,7 @@ export class AccessMode {
     Id: number,
     // tslint:disable-next-line: variable-name
     Patient_oid?: number,
+    Name?: string,
     // tslint:disable-next-line: variable-name
     Disability_oid?: number,
     Description?: string,

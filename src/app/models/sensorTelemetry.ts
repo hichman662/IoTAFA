@@ -4,7 +4,8 @@ export class SensorTelemetry{
         Id?: number,
         SensorType?: string,
         // tslint:disable-next-line: variable-name
-        Telemetry_oid?: number[]
+        Telemetry_oid?: number[],
+        Name?: string
         )
   {}
 

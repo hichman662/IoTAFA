@@ -38,7 +38,13 @@ export class AddPatientProfilePage implements OnInit {
     this.patientProfile = null;
 
     this.patientProfileForm = new FormGroup({
-      region: new FormControl('', [
+      Name: new FormControl('', [
+        Validators.required
+      ]),
+      Description: new FormControl('', [
+        Validators.required
+      ]),
+      Region: new FormControl('', [
         Validators.required
       ]),
       PreferredLanguage: new FormControl('', [
@@ -58,7 +64,6 @@ export class AddPatientProfilePage implements OnInit {
 
    ngOnInit() {
 
-    console.log(this.conditionOk);
    }
 
    onSubmit(){
@@ -67,7 +72,7 @@ export class AddPatientProfilePage implements OnInit {
     .subscribe( (res: any) => {
      /*  this.name = this.patientProfileForm.get('Id').value; */
       this.idPatientProfile = res['Id'];
-      this.name = res['Id'];
+      this.name = res['Name'];
       console.log(this.idPatientProfile);
      
       this.patientOk = true;

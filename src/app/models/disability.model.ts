@@ -5,6 +5,7 @@ export class Disability {
     Id: number,
     // tslint:disable-next-line: variable-name
     Patient_oid: number,
+    Description: string,
     Name: string,
     Type?: number,
     Severity?: number,

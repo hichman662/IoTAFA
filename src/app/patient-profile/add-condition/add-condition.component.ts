@@ -12,12 +12,6 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['./add-condition.component.scss'],
 })
 export class AddConditionComponent implements OnInit {
-
-  
-  conditionForm: FormGroup;
-  idDisability: number;
-  name = '';
-  conditionOk = false;
   constructor(
     private router: Router,
     private patientProfileService: PatientProfileService,
@@ -26,6 +20,9 @@ export class AddConditionComponent implements OnInit {
     private storage: Storage
   ) {
     this.conditionForm = new FormGroup({
+      Name: new FormControl('', [
+        Validators.required
+      ]),
       PatientProfile_oid: new FormControl(),
       Disease: new FormControl('', [
         Validators.required
@@ -42,6 +39,12 @@ export class AddConditionComponent implements OnInit {
       ])
     });
   }
+
+  startDate = null;
+  conditionForm: FormGroup;
+  idDisability: number;
+  name = '';
+  conditionOk = false;
 
   ngOnInit(){
     this.storage.get('idPatientProfile').then((val) => {

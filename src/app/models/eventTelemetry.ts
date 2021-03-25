@@ -3,7 +3,9 @@ export class EventTelemetry{
           Id?: number,
           Severity?: number,
           EventCommand_oid?: number,
-          Telemetry_oid?: number[]
+          Notification_oid?: number,
+          Telemetry_oid?: number[],
+          Name?: string
           )
     {}
 }

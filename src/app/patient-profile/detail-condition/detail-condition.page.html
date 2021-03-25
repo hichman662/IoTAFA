@@ -24,7 +24,7 @@
         </ion-col>
         <ion-col size="10" class="ion-align-self-center">
             <ion-list-header>
-                <ion-label class="text-top">{{condition['Id']}}</ion-label>
+                <ion-label class="text-top">{{condition['Name']}} Condition</ion-label>
             </ion-list-header>
         </ion-col>
         <ion-col size="1" class="ion-align-self-end">
@@ -68,16 +68,11 @@
                 <ion-icon class="segmentIcon" name="exit-outline"></ion-icon>End date</ion-list-header>
             <ion-item>
 
-                <ion-label> {{condition['DateEnd'] | date}}</ion-label>
+                <ion-label *ngIf="condition['DateEnd'] !== null"> {{condition['DateEnd'] | date}}</ion-label>
+                <ion-label *ngIf="condition['DateEnd'] == null"> Undefined </ion-label>
 
             </ion-item>
-            <ion-list-header>
-                <ion-icon class="segmentIcon" name="clipboard-outline"></ion-icon>Description</ion-list-header>
-            <ion-item>
 
-                <ion-label> {{condition['Description']}}</ion-label>
-
-            </ion-item>
 
 
 
@@ -100,6 +95,13 @@
                 <ion-label *ngIf="condition['Disease'] == 13"> Fibrosis</ion-label>
                 <ion-label *ngIf="condition['Disease'] == 14"> Oral_Health</ion-label>
 
+
+            </ion-item>
+            <ion-list-header>
+                <ion-icon class="segmentIcon" name="clipboard-outline"></ion-icon>Description</ion-list-header>
+            <ion-item>
+
+                <ion-label> {{condition['Description']}}</ion-label>
 
             </ion-item>
         </ion-list>

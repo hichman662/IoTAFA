@@ -28,6 +28,9 @@ export class AddDisabilityComponent implements OnInit {
       Name: new FormControl('', [
         Validators.required
       ]),
+      Description: new FormControl('', [
+        Validators.required
+      ]),
       Type: new FormControl('', [
         Validators.required
       ]),

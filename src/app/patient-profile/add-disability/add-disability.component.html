@@ -35,6 +35,13 @@
 
         </ion-select>
     </ion-item>
+    <ion-item>
+        <ion-label position="stacked">Description</ion-label>
+        <ion-input name="name" type="text" formControlName="Description"></ion-input>
+        <div class="error" *ngIf="disabilityForm.controls.Description.errors && disabilityForm.controls.Description.touched">
+            Please fill out this field
+        </div>
+    </ion-item>
     <br>
     <br>
     <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [disabled]="!disabilityForm.valid">Done</ion-button>

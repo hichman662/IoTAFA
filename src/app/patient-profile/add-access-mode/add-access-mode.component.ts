@@ -1,9 +1,10 @@
+import { AccessMode } from './../../models/accessMode.model';
 import { AccessModeService } from './../../services/accessMode.service';
 import { DeviceTemplateService } from './../../services/deviceTemplate.service';
 
 import { Component, OnInit } from '@angular/core';
 
-import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
@@ -16,12 +17,13 @@ import { DeviceTemplate } from 'src/app/models/deviceTemplate.model';
   styleUrls: ['./add-access-mode.component.scss'],
 })
 export class AddAccessModeComponent implements OnInit {
-
+  disabilityOk = false;
   accessModeForm: FormGroup;
   idDisability: number;
   name = '';
   conditionOk = false;
-  allDeviceTemplates: DeviceTemplate[]=[];
+  allDeviceTemplates: DeviceTemplate[] = [];
+  accessMode: AccessMode ;
   constructor(
     private router: Router,
     private accessModeService: AccessModeService,
@@ -31,16 +33,19 @@ export class AddAccessModeComponent implements OnInit {
     private deviceTemplateService: DeviceTemplateService
   ) {
     this.accessModeForm = new FormGroup({
+      Name: new FormControl('', [
+        Validators.required
+      ]),
       PatientProfile_oid: new FormControl(),
       Disability_oid: new FormControl(),
-      DeviceTemplate_oid: new FormControl(),
-      TypeAccessMode: new FormControl('', [
+      DeviceTemplate_oid: new FormControl (['']),
+      TypeAccessMode: new FormControl(Number, [
         Validators.required
       ]),
       Description: new FormControl('', [
         Validators.required
       ]),
-      
+
     });
   }
 
@@ -60,7 +65,12 @@ export class AddAccessModeComponent implements OnInit {
 
     this.storage.get('idDisability').then((val) => {
       console.log('I´m carrying id disability', val);
-      this.accessModeForm.get('Disability_oid').setValue(val);
+      if(val !== null){
+        this.accessModeForm.get('Disability_oid').setValue(val);
+        this.disabilityOk = true;
+
+      }
+   
       console.log(this.accessModeForm.value.Disability_oid);
     });
 
@@ -83,8 +93,9 @@ export class AddAccessModeComponent implements OnInit {
     await alert.present();
 }
 onSubmit() {
+  this.accessMode = this.accessModeForm.value;
   this.ngOnInit();
-  this.accessModeService.createAccessMode(this.accessModeForm.value)
+  this.accessModeService.createAccessMode(this.accessMode)
   .subscribe( (res: any) => {
     console.log(res);
     this.name = res['Description'];

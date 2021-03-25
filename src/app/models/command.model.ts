@@ -1,9 +1,15 @@
 export class Command {
   constructor(
-    id: number,
-    name: string,
-    isSynchronous?: boolean,
-    deviceTemplate?: number
+    Id: number,
+    Name: string,
+    IsSynchronous?: boolean,
+    // tslint:disable-next-line: variable-name
+    DeviceTemplate_oid?: number,
+    Type?: number,
+    Description?: string,
+    // tslint:disable-next-line: variable-name
+    Telemetries_oid?: number[]
+
     )
     {}
 }

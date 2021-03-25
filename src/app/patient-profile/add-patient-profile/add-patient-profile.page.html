@@ -43,7 +43,7 @@
     <ion-segment value="all" color="tertiary" scrollable="true" mode="md" [(ngModel)]="segmentModel" (ionChange)="segmentChanged($event)" lines="none">
         <ion-segment-button value="patientProfile">
             <ion-icon name="receipt-outline"></ion-icon>
-            <ion-label text-wrap>Features</ion-label>
+            <ion-label text-wrap>Details</ion-label>
         </ion-segment-button>
         <ion-segment-button value="condition" [disabled]="!patientOk">
             <ion-icon name="list-circle-outline"></ion-icon>
@@ -67,9 +67,16 @@
         <form [formGroup]="patientProfileForm" (ngSubmit)="onSubmit()">
             <ion-card-header [hidden]="!patientOk" color="success" class="animate__animated animate__slideInUp animate__fast"> You can add another parameters for {{name}} </ion-card-header>
             <ion-item [disabled]="patientOk">
+                <ion-label position="stacked">Name</ion-label>
+                <ion-input type="text" formControlName="Name" class="form-control"></ion-input>
+                <div class="error" *ngIf="patientProfileForm.controls.Name.errors && patientProfileForm.controls.Name.touched">
+                    To add Patient Profile please fill out this field
+                </div>
+            </ion-item>
+            <ion-item [disabled]="patientOk">
                 <ion-label position="stacked">Region</ion-label>
-                <ion-input type="text" formControlName="region" class="form-control"></ion-input>
-                <div class="error" *ngIf="patientProfileForm.controls.region.errors && patientProfileForm.controls.region.touched">
+                <ion-input type="text" formControlName="Region" class="form-control"></ion-input>
+                <div class="error" *ngIf="patientProfileForm.controls.Region.errors && patientProfileForm.controls.Region.touched">
                     To add Patient Profile please fill out this field
                 </div>
             </ion-item>
@@ -104,6 +111,13 @@
                     <ion-select-option value="4">Sound</ion-select-option>
 
                 </ion-select>
+            </ion-item>
+            <ion-item [disabled]="patientOk">
+                <ion-label position="stacked">Description</ion-label>
+                <ion-input type="text" formControlName="Description" class="form-control"></ion-input>
+                <div class="error" *ngIf="patientProfileForm.controls.Description.errors && patientProfileForm.controls.Description.touched">
+                    To add Patient Profile please fill out this field
+                </div>
             </ion-item>
             <br>
             <br>

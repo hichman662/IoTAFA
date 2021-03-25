@@ -4,6 +4,7 @@ export class Condition {
             Id: number,
             // tslint:disable-next-line: variable-name
             PatientProfile_oid?: number,
+            Nombre?: string,
             DateInitial?: Date,
             DateEnd?: Date,
             Description?: string,

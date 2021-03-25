@@ -34,7 +34,7 @@
         <ion-col size="10" class="ion-align-self-center">
 
             <ion-list-header>
-                <ion-label class="text-top">Patient profile detail</ion-label>
+                <ion-label class="text-top">{{patientProfile['Name']}}</ion-label>
             </ion-list-header>
 
         </ion-col>
@@ -44,9 +44,9 @@
 
     </ion-row>
     <ion-segment value="all" color="tertiary" class="animate__animated animate__slideInUp animate__fast" scrollable="true" mode="md" [(ngModel)]="segmentModel" (ionChange)="segmentChanged($event)" lines="none">
-        <ion-segment-button value="features">
+        <ion-segment-button value="details">
             <ion-icon name="receipt-outline"></ion-icon>
-            <ion-label>Features</ion-label>
+            <ion-label>Details</ion-label>
         </ion-segment-button>
         <ion-segment-button value="condition">
             <ion-icon name="list-circle-outline"></ion-icon>
@@ -65,18 +65,24 @@
 </ion-header>
 <ion-content>
 
-    <div class="segment" *ngIf="segmentModel === 'features'">
+    <div class="segment" *ngIf="segmentModel === 'details'">
         <ion-list>
+            <ion-list-header>
+                <ion-icon class="segmentIcon" name="clipboard-outline"></ion-icon>Description</ion-list-header>
+            <ion-item>
+
+                <ion-label text-wrap> {{patientProfile['Description']}}</ion-label>
+
+            </ion-item>
             <ion-list-header>
                 <ion-icon class="segmentIcon" name="warning-outline"></ion-icon>Hazard value</ion-list-header>
             <ion-item>
-
+                <ion-label *ngIf="patientProfile['HazardAvoidance'] == 0"> Undefined</ion-label>
                 <ion-label *ngIf="patientProfile['HazardAvoidance'] == 1"> Flashing</ion-label>
                 <ion-label *ngIf="patientProfile['HazardAvoidance'] == 2"> Motion Simulation</ion-label>
                 <ion-label *ngIf="patientProfile['HazardAvoidance'] == 3"> Olfatory Hazard</ion-label>
                 <ion-label *ngIf="patientProfile['HazardAvoidance'] == 4"> Sound</ion-label>
             </ion-item>
-
             <ion-list-header>
                 <ion-icon class="segmentIcon" name="globe-outline"></ion-icon>Region</ion-list-header>
             <ion-item>

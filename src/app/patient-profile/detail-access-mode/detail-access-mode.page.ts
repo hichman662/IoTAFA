@@ -14,7 +14,7 @@ import {  LoadingController } from '@ionic/angular';
 })
 export class DetailAccessModePage implements OnInit {
 
-  segmentModel = "features";
+  segmentModel = "details";
   public arrayIsEmpty = false;
   public accessMode: AccessMode[] = [];
   private idPassedByURL: number = null;

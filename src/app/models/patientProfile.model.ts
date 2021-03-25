@@ -5,6 +5,8 @@ import { Disability } from './disability.model';
 export class PatientProfile {
   constructor(
       Id: number,
+      Name?: string,
+      Description?: string,
       // tslint:disable-next-line: no-shadowed-variable
       AccessMode?: AccessMode[],
       PreferredLanguage?: number,

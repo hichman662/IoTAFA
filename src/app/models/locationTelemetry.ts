@@ -4,6 +4,7 @@ export class LocationTelemetry{
           Latitud?: number,
           Longitude?: number,
           Altitude?: number,
+          Name?: string,
           // tslint:disable-next-line: variable-name
           Telemetry_oid?: number[]
           )

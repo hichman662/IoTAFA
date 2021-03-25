@@ -24,7 +24,7 @@
         </ion-col>
         <ion-col size="10" class="ion-align-self-center">
             <ion-list-header>
-                <ion-label class="text-top">Access mode</ion-label>
+                <ion-label text-wrap class="text-top">{{accessMode['Name']}}</ion-label>
             </ion-list-header>
         </ion-col>
         <ion-col size="1" class="ion-align-self-end">
@@ -32,9 +32,9 @@
     </ion-row>
 
     <ion-segment value="all" color="tertiary" class="animate__animated animate__slideInUp animate__fast" scrollable="true" mode="md" [(ngModel)]="segmentModel" (ionChange)="segmentChanged($event)" lines="none">
-        <ion-segment-button value="features">
+        <ion-segment-button value="details">
             <ion-icon name="reader-outline"></ion-icon>
-            <ion-label>Features</ion-label>
+            <ion-label>Details</ion-label>
         </ion-segment-button>
         <ion-segment-button value="AdaptionRequest">
             <ion-icon name="chatbox-ellipses-outline"></ion-icon>
@@ -53,7 +53,7 @@
 </ion-header>
 
 <ion-content>
-    <div *ngIf="segmentModel === 'features'">
+    <div *ngIf="segmentModel === 'details'">
         <ion-list>
             <ion-list-header>
                 <ion-icon class="segmentIcon" name="qr-code-outline"></ion-icon>Access mode type</ion-list-header>
@@ -75,7 +75,7 @@
                 <ion-icon class="segmentIcon" name="clipboard-outline"></ion-icon>Description</ion-list-header>
             <ion-item>
 
-                <ion-label> {{accessMode['Description']}}</ion-label>
+                <ion-label text-wrap> {{accessMode['Description']}}</ion-label>
 
             </ion-item>
         </ion-list>

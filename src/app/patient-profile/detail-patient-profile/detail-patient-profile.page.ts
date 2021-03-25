@@ -12,7 +12,7 @@ import { Disability } from 'src/app/models/disability.model';
 export class DetailPatientProfilePage implements OnInit {
 
   
-  segmentModel = "features";
+  segmentModel = "details";
   public patientProfile: PatientProfile[] = [];
   public disability: Disability[] = [];
   private idPassedByURL: number = null;

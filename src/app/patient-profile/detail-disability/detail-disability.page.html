@@ -61,8 +61,12 @@
                 <ion-label *ngIf="disability['Severity'] == 1"> Severe</ion-label>
                 <ion-label *ngIf="disability['Severity'] == 2"> Moderate</ion-label>
                 <ion-label *ngIf="disability['Severity'] == 3"> Mild</ion-label>
+            </ion-item>
+            <ion-list-header>
+                <ion-icon class="segmentIcon" name="clipboard-outline"></ion-icon>Description</ion-list-header>
+            <ion-item>
 
-
+                <ion-label> {{disability['Description']}}</ion-label>
 
             </ion-item>
         </ion-list>

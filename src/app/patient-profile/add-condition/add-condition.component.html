@@ -1,4 +1,11 @@
 <form [formGroup]="conditionForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+        <ion-label position="stacked">Name</ion-label>
+        <ion-input type="text" formControlName="Name" class="form-control"></ion-input>
+        <div class="error" *ngIf="conditionForm.controls.Name.errors && conditionForm.controls.Name.touched">
+            To add Patient Profile please fill out this field
+        </div>
+    </ion-item>
     <ion-item lines="full">
         <ion-label>Disease</ion-label>
         <ion-select value="Auditory" okText="Okay" cancelText="Dismiss" formControlName="Disease">
@@ -21,13 +28,7 @@
             <ion-select-option value="14">Oral Health</ion-select-option>
         </ion-select>
     </ion-item>
-    <ion-item>
-        <ion-label position="stacked">Description</ion-label>
-        <ion-input name="name" type="text" formControlName="Description"></ion-input>
-        <div class="error" *ngIf="conditionForm.controls.Description.errors && conditionForm.controls.Description.touched">
-            Please fill out this field
-        </div>
-    </ion-item>
+
     <ion-item>
         <ion-label position="stacked">Date Initial</ion-label>
         <div item-content>
@@ -41,7 +42,7 @@
     <ion-item>
         <ion-label position="stacked">Date End</ion-label>
         <div item-content>
-            <ion-datetime pickerFormat="YYYY MM DD" min="2018" max="2029-12-31" formControlName="DateEnd"></ion-datetime>
+            <ion-datetime pickerFormat="YYYY MM DD" min="2018" max="2029-12-31" [(ngModel)]="startDate" formControlName="DateEnd"></ion-datetime>
         </div>
         <div class="error" *ngIf="conditionForm.controls.DateEnd.errors && conditionForm.controls.DateEnd.touched">
             Please fill out this field
@@ -64,6 +65,14 @@
 
         </ion-select>
     </ion-item>
+    <ion-item>
+        <ion-label position="stacked">Description</ion-label>
+        <ion-input name="name" type="text" formControlName="Description"></ion-input>
+        <div class="error" *ngIf="conditionForm.controls.Description.errors && conditionForm.controls.Description.touched">
+            Please fill out this field
+        </div>
+    </ion-item>
+
 
     <br>
     <br>

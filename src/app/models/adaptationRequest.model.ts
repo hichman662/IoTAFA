@@ -5,7 +5,8 @@ export class AdaptationRequest {
     AccessModeTarget?: number,
     // tslint:disable-next-line: variable-name
     AccessMode_oid?: number,
-    LanguageOfAdaptation?: number
+    LanguageOfAdaptation?: number,
+    Description?: string
 
         )
   {}

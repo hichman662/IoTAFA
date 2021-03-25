@@ -15,9 +15,22 @@
                 <ion-label *ngIf="request['AccessModeTarget'] == 5"> Orientation</ion-label>
                 <ion-label *ngIf="request['AccessModeTarget'] == 6"> Position</ion-label>
                 <ion-label *ngIf="request['AccessModeTarget'] == 7"> Tactile</ion-label>
-                <ion-label *ngIf="request['AccessModeTarget'] == 8"> Text on image</ion-label>
+                <ion-label text-wrap *ngIf="request['AccessModeTarget'] == 8"> Text on image</ion-label>
                 <ion-label *ngIf="request['AccessModeTarget'] == 9"> Textual</ion-label>
                 <ion-label *ngIf="request['AccessModeTarget'] == 10"> Visual</ion-label>
+
+
+                <ion-note *ngIf="request['LanguageOfAdaptation'] == 1">Language: ES</ion-note>
+                <ion-note *ngIf="request['LanguageOfAdaptation'] == 2">Language: EN</ion-note>
+                <ion-note *ngIf="request['LanguageOfAdaptation'] == 3">Language: FR</ion-note>
+                <ion-note *ngIf="request['LanguageOfAdaptation'] == 4">Language: IT</ion-note>
+                <ion-note *ngIf="request['LanguageOfAdaptation'] == 5">Language: PR</ion-note>
+                <ion-note *ngIf="request['LanguageOfAdaptation'] == 6">Language: DE</ion-note>
+                <ion-note *ngIf="request['LanguageOfAdaptation'] == 7">Language: JA</ion-note>
+                <ion-note *ngIf="request['LanguageOfAdaptation'] == 8">Language: KO</ion-note>
+                <ion-note *ngIf="request['LanguageOfAdaptation'] == 9">Language: ZH</ion-note>
+
+                <ion-note slot="end">{{request['Description']}}</ion-note>
             </ion-item>
             <ion-item-options side="end" (ionSwipe)="deleteAdaptationRequest(slidingItem, request['Id'])">
 
