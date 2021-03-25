@@ -63,7 +63,7 @@ export class AddPatientProfilePage implements OnInit {
   }
 
    ngOnInit() {
-
+    this.resetLocalStorage();
    }
 
    onSubmit(){
@@ -74,7 +74,7 @@ export class AddPatientProfilePage implements OnInit {
       this.idPatientProfile = res['Id'];
       this.name = res['Name'];
       console.log(this.idPatientProfile);
-     
+
       this.patientOk = true;
       this.storage.set('idPatientProfile', this.idPatientProfile);
 
@@ -83,6 +83,10 @@ export class AddPatientProfilePage implements OnInit {
 
     });
 
+  }
+
+ resetLocalStorage(){
+    this.storage.clear();
   }
 
 

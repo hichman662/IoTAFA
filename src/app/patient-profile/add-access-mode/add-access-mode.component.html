@@ -2,7 +2,7 @@
     <ion-card-header [hidden]="disabilityOk" color="warning" class="animate__animated animate__slideInUp animate__fast"> To add access mode, you have to add disability first</ion-card-header>
     <ion-item>
         <ion-label position="stacked">Name</ion-label>
-        <ion-input name="name" type="text" formControlName="Description"></ion-input>
+        <ion-input name="name" type="text" formControlName="Name"></ion-input>
         <div class="error" *ngIf="accessModeForm.controls.Name.errors && accessModeForm.controls.Name.touched">
             Please fill out this field
         </div>

@@ -36,9 +36,9 @@ export class AddAccessModeComponent implements OnInit {
       Name: new FormControl('', [
         Validators.required
       ]),
-      PatientProfile_oid: new FormControl(),
+      Patient_oid: new FormControl(),
       Disability_oid: new FormControl(),
-      DeviceTemplate_oid: new FormControl (['']),
+      DeviceTemplate_oid: new FormControl ([0]),
       TypeAccessMode: new FormControl(Number, [
         Validators.required
       ]),
@@ -52,8 +52,8 @@ export class AddAccessModeComponent implements OnInit {
   ngOnInit(){
     this.storage.get('idPatientProfile').then((val) => {
       console.log('I´m carrying id Patient Profile', val);
-      this.accessModeForm.get('PatientProfile_oid').setValue(val);
-      console.log(this.accessModeForm.value.PatientProfile_oid);
+      this.accessModeForm.get('Patient_oid').setValue(val);
+      console.log(this.accessModeForm.value.Patient_oid);
     });
 
     this.deviceTemplateService.getAllDeviceTemplate()
@@ -98,7 +98,7 @@ onSubmit() {
   this.accessModeService.createAccessMode(this.accessMode)
   .subscribe( (res: any) => {
     console.log(res);
-    this.name = res['Description'];
+    this.name = res['Name'];
     this.saveAlert();
   }, ( err ) => {
 
