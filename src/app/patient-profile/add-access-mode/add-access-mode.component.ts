@@ -1,3 +1,6 @@
+import { AdaptationTypeRequired } from './../../models/adaptationTypeRequired.model';
+import { AdaptationRequest } from './../../models/adaptationRequest.model';
+import { AdaptationDetailRequired } from './../../models/adaptationDetailRequired.model';
 import { AccessMode } from './../../models/accessMode.model';
 import { AccessModeService } from './../../services/accessMode.service';
 import { DeviceTemplateService } from './../../services/deviceTemplate.service';
@@ -17,13 +20,21 @@ import { DeviceTemplate } from 'src/app/models/deviceTemplate.model';
   styleUrls: ['./add-access-mode.component.scss'],
 })
 export class AddAccessModeComponent implements OnInit {
+  segmentModel = "AdaptionRequest";
   disabilityOk = false;
-  accessModeForm: FormGroup;
   idDisability: number;
-  name = '';
+  accessModeOk = false;
   conditionOk = false;
+  name = '';
+  accessModeForm: FormGroup;
+  adaptionRequestForm: FormGroup;
+  adaptationTypeRequiredForm: FormGroup;
+  adaptationDetailRequiredForm: FormGroup;
   allDeviceTemplates: DeviceTemplate[] = [];
   accessMode: AccessMode ;
+  adaptationDetailRequired: AdaptationDetailRequired;
+  adaptationRequest: AdaptationRequest;
+  adaptationTypeRequired: AdaptationTypeRequired;
   constructor(
     private router: Router,
     private accessModeService: AccessModeService,
@@ -45,9 +56,42 @@ export class AddAccessModeComponent implements OnInit {
       Description: new FormControl('', [
         Validators.required
       ]),
-
+    });
+    /* adaption Request Form */
+    this.adaptionRequestForm = new FormGroup({
+      AccessMode_oid: new FormControl(),
+      AccessModeTarget: new FormControl(Number, [
+        Validators.required
+      ]),
+      LanguageOfAdaptation: new FormControl(Number, [
+        Validators.required
+      ]),
+      Description: new FormControl('', [
+        Validators.required
+      ]),
+    });
+    /* adaptation Type Required Form */
+    this.adaptationTypeRequiredForm = new FormGroup({
+      AccessMode_oid: new FormControl(),
+      AdaptionRequest: new FormControl(Number, [
+        Validators.required
+      ]),
+      Description: new FormControl('', [
+        Validators.required
+      ])
+    });
+    /* Adaptation Detail Required */
+    this.adaptationDetailRequiredForm = new FormGroup({
+      AccessMode_oid: new FormControl(),
+      AdaptationRequest: new FormControl(Number, [
+        Validators.required
+      ]),
+      Description: new FormControl('', [
+        Validators.required
+      ])
     });
   }
+
 
   ngOnInit(){
     this.storage.get('idPatientProfile').then((val) => {
@@ -60,7 +104,6 @@ export class AddAccessModeComponent implements OnInit {
     .subscribe( (res: any) => {
       this.allDeviceTemplates = res;
         }, ( err ) => {
-  
     });
 
     this.storage.get('idDisability').then((val) => {
@@ -70,7 +113,6 @@ export class AddAccessModeComponent implements OnInit {
         this.disabilityOk = true;
 
       }
-   
       console.log(this.accessModeForm.value.Disability_oid);
     });
 
@@ -97,8 +139,12 @@ onSubmit() {
   this.ngOnInit();
   this.accessModeService.createAccessMode(this.accessMode)
   .subscribe( (res: any) => {
+    this.accessModeOk = true;
     console.log(res);
     this.name = res['Name'];
+    this.adaptionRequestForm.get('AccessMode_oid').setValue(res['Id']);
+    this.adaptationTypeRequiredForm.get('AccessMode_oid').setValue(res['Id']);
+    this.adaptationDetailRequiredForm.get('AccessMode_oid').setValue(res['Id']);
     this.saveAlert();
   }, ( err ) => {
 
@@ -107,4 +153,90 @@ onSubmit() {
   this.accessModeForm.reset();
 }
 
+SubmitAdaptionRequest(){
+  this.adaptationRequest = this.adaptionRequestForm.value;
+  this.accessModeService.createAdaptationRequest(this.adaptationRequest)
+  .subscribe( (res: any) => {
+    console.log(res);
+    this.adaptionRequestsaveAlert();
+  }, ( err ) => {
+
+  });
+
+  this.adaptionRequestForm.reset();
+
+}
+async adaptionRequestsaveAlert() {
+  const alert = await this.alertController.create({
+    cssClass: 'my-custom-class',
+    header: 'SUCCESS!',
+    message: `Adaptation request has been added successfully`,
+    buttons: [
+    {
+      text: 'Ok',
+      handler: () => {
+        // some command
+      }
+    }]
+  });
+
+  await alert.present();
+}
+SubmitAdaptionTypeRequired(){
+  this.adaptationTypeRequired = this.adaptationTypeRequiredForm.value;
+  this.accessModeService.createAdaptationTypeRequired(this.adaptationTypeRequired)
+  .subscribe( (res: any) => {
+    console.log(res);
+    this.adaptionTypeRequiredsaveAlert();
+  }, ( err ) => {
+
+  });
+
+  this.adaptationTypeRequiredForm.reset();
+}
+
+async adaptionTypeRequiredsaveAlert() {
+  const alert = await this.alertController.create({
+    cssClass: 'my-custom-class',
+    header: 'SUCCESS!',
+    message: `Adaptation type required has been added successfully`,
+    buttons: [
+    {
+      text: 'Ok',
+      handler: () => {
+        // some command
+      }
+    }]
+  });
+
+  await alert.present();
+}
+SubmitadaptationDetailRequired(){
+  this.adaptationDetailRequired = this.adaptationDetailRequiredForm.value;
+  this.accessModeService.createAdaptationDetailRequired(this.adaptationDetailRequired)
+  .subscribe( (res: any) => {
+    console.log(res);
+    this.adaptationDetailRequiredsaveAlert();
+  }, ( err ) => {
+
+  });
+
+  this.adaptationDetailRequiredForm.reset();
+}
+async adaptationDetailRequiredsaveAlert() {
+  const alert = await this.alertController.create({
+    cssClass: 'my-custom-class',
+    header: 'SUCCESS!',
+    message: `Adaptation detail required has been added successfully`,
+    buttons: [
+    {
+      text: 'Ok',
+      handler: () => {
+        // some command
+      }
+    }]
+  });
+
+  await alert.present();
+}
 }

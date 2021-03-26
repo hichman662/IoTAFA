@@ -1,4 +1,5 @@
-<form [formGroup]="accessModeForm" (ngSubmit)="onSubmit()">
+<ion-card-header [hidden]="!accessModeOk" color="success" class="animate__animated animate__slideInUp animate__fast"> Now you can add parameters for {{name}}</ion-card-header>
+<form [formGroup]="accessModeForm" (ngSubmit)="onSubmit()" [hidden]="accessModeOk">
     <ion-card-header [hidden]="disabilityOk" color="warning" class="animate__animated animate__slideInUp animate__fast"> To add access mode, you have to add disability first</ion-card-header>
     <ion-item>
         <ion-label position="stacked">Name</ion-label>
@@ -47,9 +48,143 @@
         </ion-select>
     </ion-item>
 
-
-
-    <br>
-    <br>
     <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [disabled]="!accessModeForm.valid || !disabilityOk">Done</ion-button>
 </form>
+
+<ion-segment [hidden]="!accessModeOk" value="all" color="tertiary" scrollable="true" mode="md" [(ngModel)]="segmentModel" lines="none">
+    <ion-segment-button value="AdaptionRequest">
+        <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+        <ion-label text-wrap>Adaptation request</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="AdaptionTypeRequired">
+        <ion-icon name="star-half-outline"></ion-icon>
+        <ion-label text-wrap>Adaptation type required</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="AdaptionDetailRequired">
+        <ion-icon name="telescope-outline"></ion-icon>
+        <ion-label text-wrap>Adaptation detail required</ion-label>
+    </ion-segment-button>
+</ion-segment>
+
+<!--  form adaptionRequestForm -->
+<div *ngIf="segmentModel === 'AdaptionRequest'" [hidden]="!accessModeOk">
+    <form [formGroup]="adaptionRequestForm" (ngSubmit)="SubmitAdaptionRequest()">
+        <ion-item lines="full">
+            <ion-label>Language of adaptation</ion-label>
+            <ion-select value="ES" okText="Okay" cancelText="Dismiss" formControlName="LanguageOfAdaptation">
+                <div class="error" *ngIf="adaptionRequestForm.controls.LanguageOfAdaptation.errors && adaptionRequestForm.controls.LanguageOfAdaptation.touched">
+                    Please fill out this field
+                </div>
+                <ion-select-option value="1">ES</ion-select-option>
+                <ion-select-option value="2">EN</ion-select-option>
+                <ion-select-option value="3">FR</ion-select-option>
+                <ion-select-option value="4">IT</ion-select-option>
+                <ion-select-option value="5">PR</ion-select-option>
+                <ion-select-option value="6">DE</ion-select-option>
+                <ion-select-option value="7">JA</ion-select-option>
+                <ion-select-option value="8">KO</ion-select-option>
+                <ion-select-option value="9">ZH</ion-select-option>
+
+            </ion-select>
+        </ion-item>
+        <ion-item lines="full">
+            <ion-label>Access mode target</ion-label>
+            <ion-select value="auditory" okText="Okay" cancelText="Dismiss" formControlName="AccessModeTarget">
+                <div class="error" *ngIf="adaptionRequestForm.controls.AccessModeTarget.errors && adaptionRequestForm.controls.AccessModeTarget.touched">
+                    Please fill out this field
+                </div>
+                <ion-select-option value="1">Auditory</ion-select-option>
+                <ion-select-option value="2">Colour</ion-select-option>
+                <ion-select-option value="3">Item size</ion-select-option>
+                <ion-select-option value="4">Olfactory</ion-select-option>
+                <ion-select-option value="5">Orientation</ion-select-option>
+                <ion-select-option value="6">Position</ion-select-option>
+                <ion-select-option value="7">Tactile</ion-select-option>
+                <ion-select-option value="8">Text on image</ion-select-option>
+                <ion-select-option value="9">Textual</ion-select-option>
+                <ion-select-option value="10">Visual</ion-select-option>
+
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Description</ion-label>
+            <ion-input type="text" formControlName="Description" class="form-control"></ion-input>
+            <div class="error" *ngIf="adaptionRequestForm.controls.Description.errors && adaptionRequestForm.controls.Description.touched">
+                To add adaption Request please fill out this field
+            </div>
+        </ion-item>
+        <br>
+        <br>
+
+        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [disabled]="!adaptionRequestForm.valid">Done</ion-button>
+    </form>
+</div>
+
+<!-- Adaption Type Required -->
+<div *ngIf="segmentModel === 'AdaptionTypeRequired'" [hidden]="!accessModeOk">
+    <form [formGroup]="adaptationTypeRequiredForm" (ngSubmit)="SubmitAdaptionTypeRequired()">
+        <ion-item lines="full">
+            <ion-label>Adaptation Type Value</ion-label>
+            <ion-select value="alternativeText" okText="Okay" cancelText="Dismiss" formControlName="AdaptionRequest">
+                <div class="error" *ngIf="adaptationTypeRequiredForm.controls.AdaptionRequest.errors && adaptationTypeRequiredForm.controls.AdaptionRequest.touched">
+                    Please fill out this field
+                </div>
+                <ion-select-option value="1">Alternative Text</ion-select-option>
+                <ion-select-option value="2">Audio Description</ion-select-option>
+                <ion-select-option value="3">Captions</ion-select-option>
+                <ion-select-option value="4">E_book</ion-select-option>
+                <ion-select-option value="5">Haptic</ion-select-option>
+                <ion-select-option value="6">High Contrast</ion-select-option>
+                <ion-select-option value="7">Long Description</ion-select-option>
+                <ion-select-option value="8">Sign Language</ion-select-option>
+                <ion-select-option value="9">Transcript</ion-select-option>
+
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">Description</ion-label>
+            <ion-input type="text" formControlName="Description" class="form-control"></ion-input>
+            <div class="error" *ngIf="adaptationTypeRequiredForm.controls.Description.errors && adaptationTypeRequiredForm.controls.Description.touched">
+                To add adaptation type required please fill out this field
+            </div>
+        </ion-item>
+        <br>
+        <br>
+
+        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [disabled]="!adaptationTypeRequiredForm.valid">Done</ion-button>
+    </form>
+</div>
+<!-- adaptation Detail Required Form -->
+<div *ngIf="segmentModel === 'AdaptionDetailRequired'" [hidden]="!accessModeOk">
+    <form [formGroup]="adaptationDetailRequiredForm" (ngSubmit)="SubmitadaptationDetailRequired()">
+        <ion-item lines="full">
+            <ion-label>Adaptation detail value</ion-label>
+            <ion-select value="alternativeText" okText="Okay" cancelText="Dismiss" formControlName="AdaptationRequest">
+                <div class="error" *ngIf="adaptationDetailRequiredForm.controls.AdaptationRequest.errors && adaptationDetailRequiredForm.controls.AdaptationRequest.touched">
+                    Please fill out this field
+                </div>
+                <ion-select-option value="1">Enhanced</ion-select-option>
+                <ion-select-option value="2">RealTime</ion-select-option>
+                <ion-select-option value="3">Record</ion-select-option>
+                <ion-select-option value="4">Symbolic</ion-select-option>
+                <ion-select-option value="5">Synthesized</ion-select-option>
+                <ion-select-option value="6">Verbatim</ion-select-option>
+
+
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">Description</ion-label>
+            <ion-input type="text" formControlName="Description" class="form-control"></ion-input>
+            <div class="error" *ngIf="adaptationDetailRequiredForm.controls.Description.errors && adaptationDetailRequiredForm.controls.Description.touched">
+                To add adaptation detail required please fill out this field
+            </div>
+        </ion-item>
+        <br>
+        <br>
+
+        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [disabled]="!adaptationDetailRequiredForm.valid">Done</ion-button>
+    </form>
+</div>
