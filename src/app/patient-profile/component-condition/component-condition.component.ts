@@ -47,13 +47,13 @@ export class ComponentConditionComponent implements OnInit {
       console.log(err);
     });
     }
-    async deleteCondition(slidingItem: IonItemSliding, id: number){
+    async deleteCondition(slidingItem: IonItemSliding, id: number, name: string){
       slidingItem.close();
       console.log(id);
       const alert = await this.alertController.create({
        cssClass: 'my-custom-class',
-       header: 'Remove Telemetry',
-       message: `Are you sure you want remove the condition?`,
+       header: 'Remove Condition',
+       message: `Are you sure you want remove ${name}?`,
        buttons: [  {
          text: 'Cancel',
          handler: () => {

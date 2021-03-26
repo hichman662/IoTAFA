@@ -13,9 +13,9 @@
                 <ion-label>{{accessMode['Name']}}</ion-label>
             </ion-item>
 
-            <ion-item-options side="end" (ionSwipe)="deleteAccessMode(slidingItem, accessMode['Id'])">
+            <ion-item-options side="end" (ionSwipe)="deleteAccessMode(slidingItem, accessMode['Id'], accessMode['Name'])">
 
-                <ion-item-option color="danger" expandable (click)="deleteAccessMode(slidingItem, accessMode['Id'])">
+                <ion-item-option color="danger" expandable (click)="deleteAccessMode(slidingItem, accessMode['Id'], accessMode['Name'])">
                     <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
                 </ion-item-option>
 

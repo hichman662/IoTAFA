@@ -24,11 +24,17 @@ export class AddCommandComponentComponent implements OnInit {
   ) {
     this.commandForm = new FormGroup({
       DeviceTemplate_oid: new FormControl(),
-      name: new FormControl('', [
+      Name: new FormControl('', [
+        Validators.required
+      ]),
+      Description: new FormControl('', [
+        Validators.required
+      ]),
+      Type: new FormControl('', [
         Validators.required
       ]),
       IsSynchronous: new FormControl(true),
-      Telemetries_oid: new FormControl(0)
+      Telemetries_oid: new FormControl([0])
     });
   }
 

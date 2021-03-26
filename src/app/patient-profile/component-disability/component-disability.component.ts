@@ -51,7 +51,7 @@ export class ComponentDisabilityComponent implements OnInit {
       console.log(id);
       const alert = await this.alertController.create({
        cssClass: 'my-custom-class',
-       header: 'Remove Telemetry',
+       header: 'Remove Disability',
        message: `Are you sure you want remove ${name}?`,
        buttons: [  {
          text: 'Cancel',

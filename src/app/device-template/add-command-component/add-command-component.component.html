@@ -2,8 +2,15 @@
 
     <ion-item>
         <ion-label position="stacked">Name</ion-label>
-        <ion-input name="name" type="text" formControlName="name"></ion-input>
-        <div class="error" *ngIf="commandForm.controls.name.errors && commandForm.controls.name.touched">
+        <ion-input name="name" type="text" formControlName="Name"></ion-input>
+        <div class="error" *ngIf="commandForm.controls.Name.errors && commandForm.controls.Name.touched">
+            Please fill out this field
+        </div>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked">Description</ion-label>
+        <ion-input name="Description" type="text" formControlName="Description"></ion-input>
+        <div class="error" *ngIf="commandForm.controls.Description.errors && commandForm.controls.Description.touched">
             Please fill out this field
         </div>
     </ion-item>
@@ -11,7 +18,27 @@
         <ion-label>isSynchronous</ion-label>
         <ion-toggle name="isSyn" formControlName="IsSynchronous" checked="true"></ion-toggle>
     </ion-item>
+    <ion-item lines="full">
+        <ion-label>Type</ion-label>
+        <ion-select value="Type" okText="Okay" cancelText="Dismiss" formControlName="Type">
+            <div class="error" *ngIf="commandForm.controls.Type.errors && commandForm.controls.Type.touched">
+                Please fill out this field
+            </div>
+            <ion-select-option value="1">Create</ion-select-option>
+            <ion-select-option value="2">Execute</ion-select-option>
+            <ion-select-option value="3">Delete</ion-select-option>
+            <ion-select-option value="4">Update</ion-select-option>
+            <ion-select-option value="5">Get By ID</ion-select-option>
+            <ion-select-option value="6">Get Property</ion-select-option>
+            <ion-select-option value="7">Set Property</ion-select-option>
+            <ion-select-option value="8">List</ion-select-option>
+            <ion-select-option value="9">Reboot</ion-select-option>
+            <ion-select-option value="10">Login</ion-select-option>
+
+
+        </ion-select>
+    </ion-item>
     <br>
     <br>
-    <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light">Done</ion-button>
+    <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [disabled]="!commandForm.valid">Done</ion-button>
 </form>

@@ -50,13 +50,13 @@ export class ComponentAccessModeComponent implements OnInit {
         console.log(err);
       });
       }
-      async deleteAccessMode(slidingItem: IonItemSliding, id: number){
+      async deleteAccessMode(slidingItem: IonItemSliding, id: number, name: string){
         slidingItem.close();
         console.log(id);
         const alert = await this.alertController.create({
          cssClass: 'my-custom-class',
-         header: 'Remove Telemetry',
-         message: `Are you sure you want remove the access mode?`,
+         header: 'Remove Access mode',
+         message: `Are you sure you want remove ${name}?`,
          buttons: [  {
            text: 'Cancel',
            handler: () => {

@@ -20,7 +20,7 @@ export class AddTelemetryComponentComponent implements OnInit {
   telemetryForm: FormGroup;
   idDeviceTemplate: number;
   idTelemetry: number;
-
+  segmentModel = "telemetry";
   name = '';
   arrayTelemetries: Telemetry [] = [];
   formNumber: number;

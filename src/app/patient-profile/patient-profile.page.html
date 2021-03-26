@@ -66,8 +66,8 @@
                 </ion-item>
 
 
-                <ion-item-options side="end" (ionSwipe)="deletePatientProfile(slidingItem,patientProfile['Id'])">
-                    <ion-item-option color="danger" expandable (click)="deletePatientProfile(slidingItem,patientProfile['Id'])">
+                <ion-item-options side="end" (ionSwipe)="deletePatientProfile(slidingItem,patientProfile['Id'], patientProfile['Name'])">
+                    <ion-item-option color="danger" expandable (click)="deletePatientProfile(slidingItem,patientProfile['Id'], patientProfile['Name'])">
 
                         <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
 

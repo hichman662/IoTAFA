@@ -50,7 +50,7 @@ export class PatientProfilePage implements OnInit {
     slidingItem.close();
   }
 
- async deletePatientProfile(slidingItem: IonItemSliding, id: number){
+ async deletePatientProfile(slidingItem: IonItemSliding, id: number, name: string){
     slidingItem.close();
     console.log(id);
     const alert = await this.alertController.create({

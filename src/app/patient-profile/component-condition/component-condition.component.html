@@ -13,9 +13,9 @@
                 <ion-label>{{condi['Description']}}</ion-label>
             </ion-item>
 
-            <ion-item-options side="end" (ionSwipe)="deleteCondition(slidingItem, condi['Id'])">
+            <ion-item-options side="end" (ionSwipe)="deleteCondition(slidingItem, condi['Id'], condi['Name'])">
 
-                <ion-item-option color="danger" expandable (click)="deleteCondition(slidingItem, condi['Id'])">
+                <ion-item-option color="danger" expandable (click)="deleteCondition(slidingItem, condi['Id'], condi['Name'])">
                     <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
                 </ion-item-option>
 
