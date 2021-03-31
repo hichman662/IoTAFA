@@ -1,0 +1,74 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="Patient profile" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+    <ion-row>
+        <ion-col size="4" class="ion-align-self-start">
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-end">
+            <ion-card color="transparent" class="deviceTemplate-card">
+                <ion-img src='assets/icon/disability.png'></ion-img>
+            </ion-card>
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-center">
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col size="1" class="ion-align-self-start">
+        </ion-col>
+        <ion-col size="10" class="ion-align-self-center">
+            <ion-list-header>
+                <ion-label class="text-top">{{disability['Name']}}</ion-label>
+            </ion-list-header>
+        </ion-col>
+        <ion-col size="1" class="ion-align-self-end">
+        </ion-col>
+    </ion-row>
+
+    <ion-segment value="all" color="tertiary" class="animate__animated animate__slideInUp animate__fast" scrollable="true" mode="md" [(ngModel)]="segmentModel" (ionChange)="segmentChanged($event)" lines="none">
+        <ion-segment-button value="features">
+            <ion-icon name="reader-outline"></ion-icon>
+            <ion-label>Disability details</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+
+</ion-header>
+
+<ion-content>
+    <div *ngIf="segmentModel === 'features'">
+        <ion-list>
+            <ion-list-header>
+                <ion-icon class="segmentIcon" name="walk-outline"></ion-icon>Disability type</ion-list-header>
+            <ion-item>
+
+                <ion-label *ngIf="disability['Type'] == 1"> Auditory</ion-label>
+                <ion-label *ngIf="disability['Type'] == 2"> Cognitive</ion-label>
+                <ion-label *ngIf="disability['Type'] == 3"> Physical</ion-label>
+                <ion-label *ngIf="disability['Type'] == 4"> Speech</ion-label>
+                <ion-label *ngIf="disability['Type'] == 5"> Visual</ion-label>
+            </ion-item>
+
+            <ion-list-header>
+                <ion-icon class="segmentIcon" name="stats-chart-outline"></ion-icon>Severity</ion-list-header>
+            <ion-item>
+
+                <ion-label *ngIf="disability['Severity'] == 1"> Severe</ion-label>
+                <ion-label *ngIf="disability['Severity'] == 2"> Moderate</ion-label>
+                <ion-label *ngIf="disability['Severity'] == 3"> Mild</ion-label>
+            </ion-item>
+            <ion-list-header>
+                <ion-icon class="segmentIcon" name="clipboard-outline"></ion-icon>Description</ion-list-header>
+            <ion-item>
+
+                <ion-label> {{disability['Description']}}</ion-label>
+
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>

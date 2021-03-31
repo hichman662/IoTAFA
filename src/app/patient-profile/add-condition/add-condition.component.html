@@ -1,0 +1,80 @@
+<form [formGroup]="conditionForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+        <ion-label position="stacked">Name</ion-label>
+        <ion-input type="text" formControlName="Name" class="form-control"></ion-input>
+        <div class="error" *ngIf="conditionForm.controls.Name.errors && conditionForm.controls.Name.touched">
+            To add Patient Profile please fill out this field
+        </div>
+    </ion-item>
+    <ion-item lines="full">
+        <ion-label>Disease</ion-label>
+        <ion-select value="Auditory" okText="Okay" cancelText="Dismiss" formControlName="Disease">
+            <div class="error" *ngIf="conditionForm.controls.Disease.errors && conditionForm.controls.Disease.touched">
+                Please fill out this field
+            </div>
+            <ion-select-option value="1">Alzheimer</ion-select-option>
+            <ion-select-option value="2">Parkinson</ion-select-option>
+            <ion-select-option value="3">Cancer</ion-select-option>
+            <ion-select-option value="4">Heart Disease</ion-select-option>
+            <ion-select-option value="5">Obesity</ion-select-option>
+            <ion-select-option value="6">Diabetes</ion-select-option>
+            <ion-select-option value="7">Epilepsy</ion-select-option>
+            <ion-select-option value="8">Apnea Sleep</ion-select-option>
+            <ion-select-option value="9">Narcolepsy</ion-select-option>
+            <ion-select-option value="10">Eating disorders</ion-select-option>
+            <ion-select-option value="11">Osteoporosis</ion-select-option>
+            <ion-select-option value="12">Asthma</ion-select-option>
+            <ion-select-option value="13">Fibrosis</ion-select-option>
+            <ion-select-option value="14">Oral Health</ion-select-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="stacked">Date Initial</ion-label>
+        <div item-content>
+            <ion-datetime pickerFormat="YYYY MM DD" min="2018" max="2029-12-31" formControlName="DateInitial"></ion-datetime>
+        </div>
+        <div class="error" *ngIf="conditionForm.controls.DateInitial.errors && conditionForm.controls.DateInitial.touched">
+            Please fill out this field
+        </div>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="stacked">Date End</ion-label>
+        <div item-content>
+            <ion-datetime pickerFormat="YYYY MM DD" min="2018" max="2029-12-31" value="null" formControlName="DateEnd"></ion-datetime>
+        </div>
+        <div class="error" *ngIf="conditionForm.controls.DateEnd.errors && conditionForm.controls.DateEnd.touched">
+            Please fill out this field
+        </div>
+
+    </ion-item>
+    <ion-item lines="full">
+        <ion-label>Clinical Status</ion-label>
+        <ion-select value="Active" okText="Okay" cancelText="Dismiss" formControlName="ClinicalStatus">
+            <div class="error" *ngIf="conditionForm.controls.ClinicalStatus.errors && conditionForm.controls.ClinicalStatus.touched">
+                Please fill out this field
+            </div>
+            <ion-select-option value="1">Active</ion-select-option>
+            <ion-select-option value="2">Recurrence</ion-select-option>
+            <ion-select-option value="3">Relapse</ion-select-option>
+            <ion-select-option value="4">Inactive</ion-select-option>
+            <ion-select-option value="5">Remission</ion-select-option>
+            <ion-select-option value="6">Resolved</ion-select-option>
+
+
+        </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked">Description</ion-label>
+        <ion-input name="name" type="text" formControlName="Description"></ion-input>
+        <div class="error" *ngIf="conditionForm.controls.Description.errors && conditionForm.controls.Description.touched">
+            Please fill out this field
+        </div>
+    </ion-item>
+
+
+    <br>
+    <br>
+    <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [disabled]="!conditionForm.valid">Done</ion-button>
+</form>

@@ -1,0 +1,87 @@
+<ion-header>
+
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="Device Templates" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button>
+            </ion-button>
+        </ion-buttons>
+
+    </ion-toolbar>
+    <ion-row>
+        <ion-col size="4" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-end">
+            <ion-card color="transparent" class="deviceTemplate-card">
+                <ion-img src='assets/icon/deviceTemp.png'></ion-img>
+
+            </ion-card>
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-center">
+        </ion-col>
+
+    </ion-row>
+    <ion-row>
+        <ion-col size="1" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="10" class="ion-align-self-center">
+
+            <ion-list-header>
+                <ion-label class="text-top">Edit Device template</ion-label>
+            </ion-list-header>
+
+        </ion-col>
+        <ion-col size="1" class="ion-align-self-end">
+
+        </ion-col>
+
+    </ion-row>
+    <ion-segment value="all" color="tertiary" scrollable="true" mode="md" [(ngModel)]="segmentModel" (ionChange)="segmentChanged($event)" lines="none">
+        <ion-segment-button value="deviceTemplate">
+            <ion-icon name="reader-outline"></ion-icon>
+            <ion-label>Profile</ion-label>
+        </ion-segment-button>
+
+    </ion-segment>
+</ion-header>
+
+<ion-content>
+
+    <div *ngIf="segmentModel === 'deviceTemplate'">
+        <form [formGroup]="deviceTemplateForm" (ngSubmit)="onSubmit()">
+            <ion-card-header [hidden]="!deviceOk" color="success" class="animate__animated animate__slideInUp animate__fast"> You can add another parameters for {{nameDeviceTemplate}} </ion-card-header>
+            <ion-item [disabled]="deviceOk">
+                <ion-label position="stacked">Name</ion-label>
+                <ion-input type="text" formControlName="name" class="form-control"></ion-input>
+                <div class="error" *ngIf="deviceTemplateForm.controls.name.errors && deviceTemplateForm.controls.name.touched">
+                    Please fill out this field
+                </div>
+            </ion-item>
+            <ion-item [disabled]="deviceOk">
+                <ion-label>isEdge</ion-label>
+                <ion-toggle formControlName="isEdge" class="form-control" checked="true"></ion-toggle>
+            </ion-item>
+
+            <ion-item lines="full" [disabled]="deviceOk">
+                <ion-label>Device type</ion-label>
+                <ion-select value="{{typeDeviceTemplate}}" okText="Okay" cancelText="Dismiss" formControlName="type">
+
+                    <ion-select-option value="1">Sensor</ion-select-option>
+                    <ion-select-option value="2">Actuator</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <br>
+            <br>
+
+            <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [disabled]="!deviceTemplateForm.valid">Submit</ion-button>
+        </form>
+
+    </div>
+
+    <br>
+
+</ion-content>
