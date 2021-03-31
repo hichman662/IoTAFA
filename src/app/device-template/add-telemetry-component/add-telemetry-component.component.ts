@@ -20,6 +20,7 @@ export class AddTelemetryComponentComponent implements OnInit {
   telemetryForm: FormGroup;
   idDeviceTemplate: number;
   idTelemetry: number;
+  telemetryOk = false;
   segmentModel = "telemetry";
   name = '';
   arrayTelemetries: Telemetry [] = [];
@@ -52,20 +53,21 @@ export class AddTelemetryComponentComponent implements OnInit {
       ]),
     });
 
-    this.idTelemetryForm = new FormGroup({
-      Telemetry_oid: new FormControl()
-    });
-
     this.eventForm = new FormGroup({
-      Telemetry_oid: new FormControl(''),
+      Name: new FormControl('', [
+        Validators.required]),
+      Telemetry_oid: new FormControl(this.idTelemetry),
       EvenetCommand_oid: new FormControl(0),
+      Notification_oid: new FormControl(0),
       Severity: new FormControl(1, [
         Validators.required
       ]),
     });
 
     this.locationForm = new FormGroup({
-      Telemetry_oid: new FormArray([]),
+      Name: new FormControl('', [
+        Validators.required]),
+      Telemetry_oid: new FormControl(this.idTelemetry),
       Latitude: new FormControl(0, [
         Validators.required
       ]),
@@ -78,14 +80,18 @@ export class AddTelemetryComponentComponent implements OnInit {
     });
 
     this.sensorForm = new FormGroup({
-      Telemetry_oid: new FormControl(),
+      Name: new FormControl('', [
+        Validators.required]),
+      Telemetry_oid: new FormControl(this.idTelemetry),
       SensorType: new FormControl('', [
         Validators.required
       ])
     });
 
     this.rangeStateForm = new FormGroup({
-      Telemetry_oid: new FormControl(''),
+      Name: new FormControl('', [
+        Validators.required]),
+      Telemetry_oid: new FormControl(this.idTelemetry),
       SensorType: new FormControl('', [
         Validators.required
       ])
@@ -122,10 +128,10 @@ export class AddTelemetryComponentComponent implements OnInit {
       .subscribe( (res: any) => {
         console.log(res);
         this.arrayTelemetries.push(res);
+        this.telemetryOk = true;
         this.name = res['Name'];
         this.idTelemetry = res['Id'];
         this.formNumber = res['Type'];
-        this.idTelemetryForm.get('Telemetry_oid').setValue(this.idTelemetry);
         this.saveAlert();
       }, ( err ) => {
 
@@ -140,8 +146,7 @@ export class AddTelemetryComponentComponent implements OnInit {
     this.locationForm.get('Telemetry_oid').setValue(this.idTelemetry); */
     this.telemetryService.createLocationTelemetry(this.locationForm.value)
     .subscribe( (res: any) => {
-      this.formNumber = 0;
-      console.log('location telemetry: ' + res.values);
+      console.log('location telemetry: ' + res);
       this.saveLocationAlert();
     }, ( err ) => {
 

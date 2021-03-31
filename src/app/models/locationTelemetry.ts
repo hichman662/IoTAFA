@@ -6,7 +6,7 @@ export class LocationTelemetry{
           Altitude?: number,
           Name?: string,
           // tslint:disable-next-line: variable-name
-          Telemetry_oid?: number[]
+          Telemetry_oid?: number
           )
     {}
 }
