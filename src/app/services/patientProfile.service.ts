@@ -12,7 +12,6 @@ import { Disability } from '../models/disability.model';
 })
 export class PatientProfileService {
 
-   
     patientProfile: PatientProfile;
 
 constructor(private http: HttpClient) {
