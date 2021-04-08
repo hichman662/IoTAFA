@@ -1,20 +1,22 @@
+import { CarePlanTemplateService } from './../services/carePlanTemplate.service';
+import { CarePlanTemplate } from './../models/carePlanTemplate.model';
 import { DeviceTemplate } from './../models/deviceTemplate.model';
-import { DeviceTemplateService } from './../services/deviceTemplate.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Data } from '@angular/router';
 import { AlertController, IonItemSliding } from '@ionic/angular';
 import {  LoadingController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-device-template',
-  templateUrl: './device-template.page.html',
-  styleUrls: ['./device-template.page.scss'],
+  selector: 'app-care-plan-template',
+  templateUrl: './care-plan-template.page.html',
+  styleUrls: ['./care-plan-template.page.scss'],
 })
-export class DeviceTemplatePage implements OnInit {
+export class CarePlanTemplatePage implements OnInit {
 
-  public listDeviceTemplates: DeviceTemplate[] = [];
+  public carePlanTemplates: CarePlanTemplate[] = [];
+
   constructor(
-            private deviceTemplateService: DeviceTemplateService,
+            private carePlanTemplateService: CarePlanTemplateService,
             public alertController: AlertController,
             public loadingController: LoadingController,
             public router: Router,
@@ -38,10 +40,10 @@ export class DeviceTemplatePage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.deviceTemplateService.getAllDeviceTemplate()
+    this.carePlanTemplateService.getAllCarePlantemplate()
     // tslint:disable-next-line: deprecation
     .subscribe( (res: any) => {
-        this.listDeviceTemplates = res;
+        this.carePlanTemplates = res;
     }, ( err) => {
         console.log(err);
     });
@@ -51,12 +53,12 @@ export class DeviceTemplatePage implements OnInit {
     slidingItem.close();
   }
 
- async deleteDeviceTemplate(slidingItem: IonItemSliding, id: number, name: string){
+ async deleteCarePlanTemplate(slidingItem: IonItemSliding, id: number, name: string){
     slidingItem.close();
     console.log(id);
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Remove Device Template',
+      header: 'Remove Care Plan',
       message: `Are you sure you want remove ${name}?`,
       buttons: [  {
         text: 'Cancel',
@@ -68,7 +70,7 @@ export class DeviceTemplatePage implements OnInit {
         text: 'Agree',
         handler: () => {
           console.log('Agree clicked');
-          this.deviceTemplateService.deleteDeviceTemplate(id)
+          this.carePlanTemplateService.deleteCarePlanTemplate(id)
           // tslint:disable-next-line: deprecation
           .subscribe( (res: any) => {
             this.ionViewWillEnter();

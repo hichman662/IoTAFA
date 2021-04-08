@@ -5,7 +5,7 @@ import { Tab3Page } from './tab3.page';
 const routes: Routes = [
   {
     path: '',
-    component: Tab3Page,
+    loadChildren: () => import('../care-plan-template/care-plan-template.module').then( m => m.CarePlanTemplatePageModule)
   }
 ];
 

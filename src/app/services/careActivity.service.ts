@@ -1,3 +1,4 @@
+import { Appointment } from './../models/appointment.model';
 import { Medication } from './../models/medication.model';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
@@ -15,6 +16,7 @@ export class CareActivityService {
 
     careActivity: CareActivity;
     medication: Medication;
+    appointment: Appointment;
 
 constructor(private http: HttpClient) {
 
@@ -66,4 +68,26 @@ public getAllMedication(): Observable<object>{
     return this.http.delete(`${environment.base_url}/Medication/Destroy?p_medication_oid=${uid}`);
   }
 
+  // Appointment
+
+public getAllAppointment(): Observable<object>{
+    return this.http.get(`${environment.base_url}/Appointment/ReadAll`);
+  }
+
+  public getAppointmentById( uid: number): Observable<object>{
+    if (!uid) { uid = null; }
+    return this.http.get <Appointment>(`${environment.base_url}/Appointment/${uid}` );
+  }
+
+  public createAppointment( data: Appointment ): Observable<object> {
+    return this.http.post(`${environment.base_url}/Appointment/New_`, data);
+  }
+
+  public updateAppointment(uid: number, data: Appointment): Observable<object> {
+    return this.http.put(`${environment.base_url}/Appointment/Modify?idAppointment=${uid}`, data);
+  }
+
+  public deleteAppointment(uid) {
+    return this.http.delete(`${environment.base_url}/Appointment/Destroy?p_appointment_oid=${uid}`);
+  }
 }
