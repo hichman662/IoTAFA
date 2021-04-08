@@ -52,7 +52,7 @@
     <ion-list>
         <div class="telemetry" *ngFor="let carePlanTemplate of carePlanTemplates">
             <ion-item-sliding #slidingItem>
-                <ion-item lines="inset" detail [routerLink]="['profile-care-plan-template',carePlanTemplate['Id']]">
+                <ion-item lines="inset" detail [routerLink]="['detail-care-plan-template',carePlanTemplate['Id']]">
 
                     <ion-avatar slot="start">
                         <img src="assets/icon/carePlan.svg">

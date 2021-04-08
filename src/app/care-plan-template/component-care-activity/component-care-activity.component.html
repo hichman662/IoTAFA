@@ -1,0 +1,33 @@
+<ion-item [hidden]="!arrayIsEmpty" line="none">
+    <ion-label class="arrayEmpty" color="warning">There is no care activity</ion-label>
+</ion-item>
+
+<ion-list>
+    <div class="condition" *ngFor="let careActivity of careActivities ">
+
+        <ion-item-sliding #slidingItem>
+            <ion-item lines="inset" detail [routerLink]="['careActivity',careActivity['Id']]">
+                <ion-avatar slot="start">
+                    <ion-icon color="tertiary" name="list-circle-outline"></ion-icon>
+                </ion-avatar>
+                <ion-label>{{careActivity['Name']}}</ion-label>
+            </ion-item>
+
+            <ion-item-options side="end" (ionSwipe)="deleteCareActivity(slidingItem, careActivity['Id'], careActivity['Name'])">
+
+                <ion-item-option color="danger" expandable (click)="deleteCareActivity(slidingItem, careActivity['Id'], careActivity['Name'])">
+                    <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+                </ion-item-option>
+
+            </ion-item-options>
+            <ion-item-options side="start">
+
+                <ion-item-option color="success" (click)="closeSliding(slidingItem)" expandable [routerLink]="['editCareActivity',careActivity['Id']]">
+
+                    <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+
+                </ion-item-option>
+            </ion-item-options>
+        </ion-item-sliding>
+    </div>
+</ion-list>
