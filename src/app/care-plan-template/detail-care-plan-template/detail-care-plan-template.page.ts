@@ -15,6 +15,7 @@ export class DetailCarePlanTemplatePage implements OnInit {
 
 
   segmentModel = 'details';
+  segmentModel2 = 'profile';
   public carePlanTemplate: CarePlanTemplate[] = [];
 
   private idPassedByURL: number = null;
