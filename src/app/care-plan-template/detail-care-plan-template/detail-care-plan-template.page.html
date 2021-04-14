@@ -138,6 +138,129 @@
 
             </ion-list>
         </div>
+        <div *ngIf="segmentModel2 === 'patient'">
+            <ion-list>
+                <ion-list-header>
+                    <ion-icon class="segmentIcon" name="document-outline"></ion-icon>Name</ion-list-header>
+                <ion-item>
+
+                    <ion-label> {{patientProfile['Name']}}</ion-label>
+
+                </ion-item>
+                <ion-list-header>
+                    <ion-icon class="segmentIcon" name="clipboard-outline"></ion-icon>Description</ion-list-header>
+                <ion-item>
+
+                    <ion-label text-wrap> {{patientProfile['Description']}}</ion-label>
+
+                </ion-item>
+                <ion-list-header>
+                    <ion-icon class="segmentIcon" name="warning-outline"></ion-icon>Hazard value</ion-list-header>
+                <ion-item>
+                    <ion-label *ngIf="patientProfile['HazardAvoidance'] == 0"> Undefined</ion-label>
+                    <ion-label *ngIf="patientProfile['HazardAvoidance'] == 1"> Flashing</ion-label>
+                    <ion-label *ngIf="patientProfile['HazardAvoidance'] == 2"> Motion Simulation</ion-label>
+                    <ion-label *ngIf="patientProfile['HazardAvoidance'] == 3"> Olfatory Hazard</ion-label>
+                    <ion-label *ngIf="patientProfile['HazardAvoidance'] == 4"> Sound</ion-label>
+                </ion-item>
+                <ion-list-header>
+                    <ion-icon class="segmentIcon" name="globe-outline"></ion-icon>Region</ion-list-header>
+                <ion-item>
+
+                    <ion-label> {{patientProfile['Region']}}</ion-label>
+
+                </ion-item>
+
+
+                <ion-list-header>
+                    <ion-icon class="segmentIcon" name="language-outline"></ion-icon>Preferred language</ion-list-header>
+                <ion-item>
+
+                    <ion-label *ngIf="patientProfile['PreferredLanguage'] == 1"> ES</ion-label>
+                    <ion-label *ngIf="patientProfile['PreferredLanguage'] == 2"> EN</ion-label>
+                    <ion-label *ngIf="patientProfile['PreferredLanguage'] == 3"> FR</ion-label>
+                    <ion-label *ngIf="patientProfile['PreferredLanguage'] == 4"> IT</ion-label>
+                    <ion-label *ngIf="patientProfile['PreferredLanguage'] == 5"> PR</ion-label>
+                    <ion-label *ngIf="patientProfile['PreferredLanguage'] == 6"> DE</ion-label>
+                    <ion-label *ngIf="patientProfile['PreferredLanguage'] == 7"> JA</ion-label>
+                    <ion-label *ngIf="patientProfile['PreferredLanguage'] == 8"> KO</ion-label>
+                    <ion-label *ngIf="patientProfile['PreferredLanguage'] == 9"> ZH</ion-label>
+
+
+                </ion-item>
+
+
+
+            </ion-list>
+        </div>
+        <div *ngIf="segmentModel2 === 'condition'">
+
+            <div class="container" *ngFor="let condition of conditions|keyvalue">
+                <mat-expansion-panel details>
+                    <mat-expansion-panel-header slot="start">
+                        <mat-panel-title>
+                            <ion-item>
+                                <ion-icon class="segmentIcon" name="list-circle-outline"></ion-icon>
+                                <ion-label>{{condition.value.Name}}</ion-label>
+                            </ion-item>
+                        </mat-panel-title>
+
+                    </mat-expansion-panel-header>
+
+                    <ion-item-sliding>
+                        <ion-item-options side="start">
+                            <ion-item-option color="danger" (click)="null" expandable>
+                                <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+                            </ion-item-option>
+                        </ion-item-options>
+                    </ion-item-sliding>
+
+                    <ion-card>
+                        <ion-item>
+                            <ion-label>Description</ion-label>
+                            <ion-badge slot="end">{{condition.value.Description}}</ion-badge>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>Name</ion-label>
+                            <ion-badge slot="end">{{condition.value.Name}}</ion-badge>
+                        </ion-item>
+                        <ion-item>
+
+                            <ion-label>Disease</ion-label>
+
+                            <ion-badge *ngIf="condition.value.Disease == 1"> Alzheimer</ion-badge>
+                            <ion-badge *ngIf="condition.value.Disease == 2"> Parkinson</ion-badge>
+                            <ion-badge *ngIf="condition.value.Disease == 3"> Cancer</ion-badge>
+                            <ion-badge *ngIf="condition.value.Disease == 4"> Heart Disease</ion-badge>
+                            <ion-badge *ngIf="condition.value.Disease == 5"> Obesity</ion-badge>
+                            <ion-badge *ngIf="condition.value.Disease == 6"> Diabetes</ion-badge>
+                            <ion-badge *ngIf="condition.value.Disease == 7"> Epilepsy</ion-badge>
+                            <ion-badge *ngIf="condition.value.Disease == 8"> Apnea Sleep</ion-badge>
+                            <ion-badge *ngIf="condition.value.Disease == 9"> Narcolepsy</ion-badge>
+                            <ion-badge *ngIf="condition.value.Disease == 10"> Eating disorders</ion-badge>
+                            <ion-badge *ngIf="condition.value.Disease == 11"> Osteoporosis</ion-badge>
+                            <ion-badge *ngIf="condition.value.Disease == 12"> Asthma</ion-badge>
+                            <ion-badge *ngIf="condition.value.Disease == 13"> Fibrosis</ion-badge>
+                            <ion-badge *ngIf="condition.value.Disease == 14"> Oral_Health</ion-badge>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>Clinical Status</ion-label>
+
+                            <ion-badge *ngIf="condition.value.ClinicalStatus == 1"> Active</ion-badge>
+                            <ion-badge *ngIf="condition.value.ClinicalStatus == 2"> Recurrence</ion-badge>
+                            <ion-badge *ngIf="condition.value.ClinicalStatus == 3"> Relapce</ion-badge>
+                            <ion-badge *ngIf="condition.value.ClinicalStatus == 4"> Inactive</ion-badge>
+                            <ion-badge *ngIf="condition.value.ClinicalStatus == 5"> Remission</ion-badge>
+                            <ion-badge *ngIf="condition.value.ClinicalStatus == 6"> Resolved</ion-badge>
+                        </ion-item>
+                    </ion-card>
+
+                </mat-expansion-panel>
+
+
+
+            </div>
+        </div>
     </div>
     <div *ngIf="segmentModel === 'careActivity'">
         <app-component-care-activity></app-component-care-activity>

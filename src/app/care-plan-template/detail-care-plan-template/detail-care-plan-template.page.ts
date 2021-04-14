@@ -1,3 +1,4 @@
+import { Condition } from './../../models/condition.model';
 import { CarePlanTemplate } from './../../models/carePlanTemplate.model';
 import { PatientProfileService } from './../../services/patientProfile.service';
 import { Component, OnInit } from '@angular/core';
@@ -17,7 +18,8 @@ export class DetailCarePlanTemplatePage implements OnInit {
   segmentModel = 'details';
   segmentModel2 = 'profile';
   public carePlanTemplate: CarePlanTemplate[] = [];
-
+  public patientProfile: PatientProfile;
+  public conditions: Condition[] = [];
   private idPassedByURL: number = null;
   constructor(
               private route: ActivatedRoute,
@@ -33,6 +35,8 @@ export class DetailCarePlanTemplatePage implements OnInit {
     .subscribe((res: any ) => {
       console.log(res);
       this.carePlanTemplate = res;
+      this.patientProfile = res['Patient'];
+      this.conditions = res['AddressConditions'];
 
     }, (err) => {
       console.log(err);
