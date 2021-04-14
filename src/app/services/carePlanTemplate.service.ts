@@ -88,4 +88,15 @@ public getAllGoal(): Observable<object>{
   public deleteTarget(uid) {
     return this.http.delete(`${environment.base_url}/Target/Destroy?p_target_oid=${uid}`);
   }
+
+  // Add conditions to Care plan template
+  public addConditionToCarePlan(uid: number, data: any): Observable<object> {
+    return this.http.put(`${environment.base_url}/CarePlanTemplate/AddCondition?p_careplantemplate_oid=${uid}`, data);
+  }
+
+  // Add Patient to Care plan template
+
+  public addPatientToCarePlan(uid: number, data: number): Observable<object> {
+    return this.http.put(`${environment.base_url}/CarePlanTemplate/AddPatientProfile?p_careplantemplate_oid=${uid}&p_patientprofile_oid=${data}`, '');
+  }
 }

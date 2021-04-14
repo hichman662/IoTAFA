@@ -93,7 +93,7 @@ public getAllAdaptationRequest(): Observable<object>{
     return this.http.get(`${environment.base_url}/AdaptationDetailRequired/ReadAll`);
   }
 
-  public geAdaptationDetailRequiredById( uid: number): Observable<object>{
+  public getAdaptationDetailRequiredById( uid: number): Observable<object>{
     if (!uid) { uid = null; }
     return this.http.get <AdaptationDetailRequired>(`${environment.base_url}/AdaptationDetailRequired/${uid}` );
   }

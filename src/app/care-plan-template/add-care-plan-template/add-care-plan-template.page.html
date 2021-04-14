@@ -158,7 +158,7 @@
             </ion-card>
         </div>
         <div *ngIf="segmentModel2 === 'condition'">
-            <form [formGroup]="conditionForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="conditionForm" (ngSubmit)="addConditionToCarePlan()">
                 <ion-item lines="full">
                     <ion-label>Conditions</ion-label>
                     <ion-select multiple="true" value="" okText="Okay" cancelText="Dismiss" formControlName="p_addressconditions_oids">
@@ -171,7 +171,25 @@
 
                     </ion-select>
                 </ion-item>
-                <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [hidden]="carePlanOk" [disabled]="!conditionForm.valid">Done</ion-button>
+                <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [hidden]="!carePlanOk" [disabled]="!conditionForm.valid">Done</ion-button>
+            </form>
+        </div>
+
+        <div *ngIf="segmentModel2 === 'patient'">
+            <form [formGroup]="patientForm" (ngSubmit)="addPatientToCarePlan()">
+                <ion-item lines="full">
+                    <ion-label>Patient</ion-label>
+                    <ion-select multiple="false" value="" okText="Okay" cancelText="Dismiss" formControlName="p_patientprofile_oid">
+                        <div class="error" *ngIf="patientForm.controls.p_patientprofile_oid.errors && patientForm.controls.p_patientprofile_oid.touched">
+                            Please fill out this field
+                        </div>
+                        <div>
+                            <ion-select-option *ngFor="let patient of allPatients" [value]="patient['Id']">{{patient['Name']}}</ion-select-option>
+                        </div>
+
+                    </ion-select>
+                </ion-item>
+                <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [hidden]="!carePlanOk" [disabled]="!patientForm.valid">Done</ion-button>
             </form>
         </div>
     </div>
