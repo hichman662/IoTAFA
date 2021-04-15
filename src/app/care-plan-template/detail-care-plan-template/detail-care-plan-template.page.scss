@@ -1,16 +1,7 @@
-.save {
-    border-color: transparent;
-    background-color: transparent;
-    color: rgba(29, 127, 219, 0.76);
-    margin-left: 100px;
-    margin-right: 100px;
-    font-size: 14px;
-}
+/* DOES NOT WORK - not specific enough */
 
-.error {
-    font-size: small;
-    color: tomato;
-}
+
+/* Works - pass "my-custom-class" in cssClass to increase specificity */
 
 .my-custom-class {
     color: green;
@@ -26,6 +17,13 @@ ion-toolbar {
 
 ion-header {
     background-color: rgb(248, 248, 248);
+}
+
+.text-top {
+    text-align: center;
+    margin-top: -18px;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .ion-align-self-end {
@@ -51,29 +49,6 @@ ion-loading {
     color: green;
 }
 
-.my-custom-class {
-    color: green;
-}
-
-ion-card {
-    box-shadow: none !important
-}
-
-ion-toolbar {
-    --background: rgb(248, 248, 248);
-}
-
-ion-header {
-    background-color: rgb(248, 248, 248);
-}
-
-.text-top {
-    text-align: center;
-    margin-top: -18px;
-    font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
 .iconText>ion-col>ion-icon {
     margin-left: 25px;
 }
@@ -81,7 +56,16 @@ ion-header {
 .iconText>ion-col>ion-label {
     position: flex;
     font-size: 12px;
-    margin-left: 10px;
+    margin-left: 14px;
+}
+
+.segmentIcon {
+    margin-right: 7px;
+    height: 14px;
+}
+
+ion-list-header {
+    margin-bottom: -9px;
 }
 
 app-component-telemetry {

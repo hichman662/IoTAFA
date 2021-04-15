@@ -22,7 +22,7 @@ export class AddTelemetryComponentComponent implements OnInit {
   idDeviceTemplate: number;
   idTelemetry: number;
   telemetryOk = false;
-  segmentModel = "telemetry";
+  segmentModel = 'telemetry';
   name = '';
   arrayTelemetries: Telemetry [] = [];
   formNumber: number;
@@ -124,14 +124,18 @@ export class AddTelemetryComponentComponent implements OnInit {
 
   onSubmit(){
     this.ngOnInit();
-//if(type telemetry==location) --> creatTelemetryLocation
+// if(type telemetry==location) --> creatTelemetryLocation
     this.telemetryService.createTelemetry(this.telemetryForm.value)
-      .subscribe( (res: any) => {
+    // tslint:disable-next-line: deprecation
+    .subscribe( (res: any) => {
         console.log(res);
         this.arrayTelemetries.push(res);
         this.telemetryOk = true;
+        // tslint:disable-next-line: no-string-literal
         this.name = res['Name'];
+        // tslint:disable-next-line: no-string-literal
         this.idTelemetry = res['Id'];
+        // tslint:disable-next-line: no-string-literal
         this.formNumber = res['Type'];
         this.saveAlert();
       }, ( err ) => {
@@ -146,6 +150,7 @@ export class AddTelemetryComponentComponent implements OnInit {
     /* (this.locationForm.get('Telemetry_oid') as FormArray).push(this.idTelemetryForm);
     this.locationForm.get('Telemetry_oid').setValue(this.idTelemetry); */
     this.telemetryService.createLocationTelemetry(this.locationForm.value)
+    // tslint:disable-next-line: deprecation
     .subscribe( (res: any) => {
       console.log('location telemetry: ' + res);
       this.saveLocationAlert();

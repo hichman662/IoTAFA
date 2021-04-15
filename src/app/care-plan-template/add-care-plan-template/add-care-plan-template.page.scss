@@ -1,3 +1,8 @@
+.error {
+    font-size: small;
+    color: tomato;
+}
+
 .save {
     border-color: transparent;
     background-color: transparent;
@@ -5,11 +10,6 @@
     margin-left: 100px;
     margin-right: 100px;
     font-size: 14px;
-}
-
-.error {
-    font-size: small;
-    color: tomato;
 }
 
 .my-custom-class {
@@ -89,12 +89,12 @@ app-component-telemetry {
 }
 
 ion-segment-button {
-    width: 40px;
+    width: 30px;
     margin-top: 2px;
     margin-left: 0px;
     margin-right: 0px;
     font-size: 10px;
     border: none;
     background-color: rgb(248, 248, 248);
-    /* border-radius: 50%; */
+    /*   border-radius: 50%; */
 }

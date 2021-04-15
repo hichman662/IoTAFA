@@ -12,7 +12,6 @@ import { Disability } from '../models/disability.model';
 })
 export class PatientProfileService {
 
-   
     patientProfile: PatientProfile;
 
 constructor(private http: HttpClient) {
@@ -31,7 +30,7 @@ public getPatientProfileById( uid: number): Observable<object>{
 }
 
 public createPatientProfile( data: PatientProfile ): Observable<object> {
-  return this.http.post(`${environment.base_url}/PatientProfile/NEW_`, data);
+  return this.http.post(`${environment.base_url}/PatientProfile/New_`, data);
 }
 
 public updatePatientProfile(uid: number, data: PatientProfile): Observable<object> {

@@ -18,7 +18,7 @@ import { Device } from '@capacitor/core';
 export class AddDeviceTemplatePage implements OnInit {
 
   // tslint:disable-next-line: ban-types
-  segmentModel = "deviceTemplate";
+  segmentModel = 'deviceTemplate';
   deviceOk = false;
   name = '';
   idDeviceTemplate: number;
