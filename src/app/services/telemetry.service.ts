@@ -20,6 +20,10 @@ export class TelemetryService {
 
 
   // telemetry
+  public getAllTelemetries(): Observable<object>{
+    return this.http.get(`${environment.base_url}/Telemetry/ReadAll`);
+  }
+
   public getTelemetryById( uid: number): Observable<object>{
     if (!uid) { uid = null; }
     return this.http.get <Telemetry>(`${environment.base_url}/Telemetry/${uid}`);

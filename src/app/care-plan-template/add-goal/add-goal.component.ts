@@ -1,3 +1,6 @@
+import { Telemetry } from './../../models/telemetry.model';
+import { TelemetryService } from './../../services/telemetry.service';
+import { PatientProfileService } from './../../services/patientProfile.service';
 import { CarePlanTemplateService } from 'src/app/services/carePlanTemplate.service';
 import { CareActivityService } from './../../services/careActivity.service';
 
@@ -7,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
+import { Measure } from 'src/app/models/measure.model';
 
 @Component({
   selector: 'app-add-goal',
@@ -15,7 +19,6 @@ import { Storage } from '@ionic/storage';
 })
 export class AddGoalComponent implements OnInit {
 
-  
   // tslint:disable-next-line: ban-types
   segmentModel = 'goal';
 
@@ -27,11 +30,14 @@ export class AddGoalComponent implements OnInit {
   goalForm: FormGroup;
   measureForm: FormGroup;
   targetForm: FormGroup;
-
-
+  allConditions: Condition[] = [];
+  allTelemetries: Telemetry[] = [];
+  allMeasures: Measure[] = [];
 
 
   constructor(
+    private patientProfileService: PatientProfileService,
+    private telemetryService: TelemetryService,
     private carePlanTemplateService: CarePlanTemplateService,
     public alertController: AlertController,
     private router: Router,
@@ -46,7 +52,7 @@ export class AddGoalComponent implements OnInit {
       CarePlan_oid: new FormControl(Number, [
         Validators.required
       ]),
-      TypeActivity: new FormControl(Number, [
+      Priority: new FormControl(Number, [
         Validators.required
       ]),
       Name: new FormControl('', [
@@ -55,21 +61,18 @@ export class AddGoalComponent implements OnInit {
       Description: new FormControl('', [
         Validators.required
       ]),
-      Duration: new FormControl(Number, [
+      Status: new FormControl(Number, [
         Validators.required
       ]),
-      Location: new FormControl('', [
+      Condition_oid: new FormControl(Number, [
+        Validators.required
+      ]),
+      Category: new FormControl(Number, [
         Validators.required
       ]),
       OutcomeCode: new FormControl('', [
         Validators.required
-      ]),
-      ActivityCode: new FormControl('', [
-        Validators.required
-      ]),
-      Periodicity: new FormControl(Number, [
-        Validators.required
-      ]),
+      ])
     });
 
     this.measureForm = new FormGroup({
@@ -82,49 +85,56 @@ export class AddGoalComponent implements OnInit {
       Description: new FormControl('', [
         Validators.required
       ]),
-      Manufacturer: new FormControl('', [
+      LOINCcode: new FormControl('', [
         Validators.required
       ]),
-      Dosage: new FormControl('', [
-        Validators.required
-      ]),
-      ProductReference: new FormControl(Number, [
-        Validators.required
-      ]),
-      MedicationCode: new FormControl('', [
-        Validators.required
-      ]),
-      Form: new FormControl(Number, [
-        Validators.required
-      ]),
+      Telemetry_oid: new FormControl([0])
     });
 
     this.targetForm = new FormGroup({
-      CareActivity_oid: new FormControl(Number, [
+      Goal_oid: new FormControl(Number, [
         Validators.required
       ]),
-      Name: new FormControl('', [
+      DesiredValue: new FormControl('', [
         Validators.required
       ]),
       Description: new FormControl('', [
         Validators.required
       ]),
-      DietCode: new FormControl('', [
+      DueDate: new FormControl(new Date().toISOString(), [
         Validators.required
       ]),
+      Measure_oid: new FormControl(Number, [
+        Validators.required
+      ])
     });
    }
 
+   
    ionViewWillEnter(){}
 
    ngOnInit() {
-/*
+
     this.patientProfileService.getAllCondition()
     .subscribe( (res: any) => {
       this.allConditions = res;
         }, ( err ) => {
     });
- */
+    this.carePlanTemplateService.getAllMeasure()
+    .subscribe( (res: any) => {
+      this.allMeasures = res;
+        }, ( err ) => {
+    });
+    this.telemetryService.getAllTelemetries()
+    .subscribe( (res: any) => {
+      this.allTelemetries = res;
+        }, ( err ) => {
+    });
+    this.telemetryService.getAllTelemetries()
+    .subscribe( (res: any) => {
+      this.allTelemetries = res;
+        }, ( err ) => {
+    });
    }
 
    addCareplan(){

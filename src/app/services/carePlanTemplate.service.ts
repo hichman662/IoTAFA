@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {of, Observable} from 'rxjs';
 import { CarePlanTemplate } from '../models/carePlanTemplate.model';
+import { Measure } from '../models/measure.model';
 
 
 
@@ -16,6 +17,7 @@ export class CarePlanTemplateService {
     carePlantemplate: CarePlanTemplate;
     goal: Goal;
     target: Target;
+    measure: Measure;
 
 constructor(private http: HttpClient) {
 
@@ -87,6 +89,28 @@ public getAllGoal(): Observable<object>{
 
   public deleteTarget(uid) {
     return this.http.delete(`${environment.base_url}/Target/Destroy?p_target_oid=${uid}`);
+  }
+
+  // Measure
+  public getAllMeasure(): Observable<object>{
+    return this.http.get(`${environment.base_url}/Measure/ReadAll`);
+  }
+
+  public getMeasureById( uid: number): Observable<object>{
+    if (!uid) { uid = null; }
+    return this.http.get <Measure>(`${environment.base_url}/Measure/${uid}` );
+  }
+
+  public createMeasure( data: Measure ): Observable<object> {
+    return this.http.post(`${environment.base_url}/Measure/New_`, data);
+  }
+
+  public updateMeasure(uid: number, data: Measure): Observable<object> {
+    return this.http.put(`${environment.base_url}/Measure/Modify?idMeasure=${uid}`, data);
+  }
+
+  public deleteMeasure(uid) {
+    return this.http.delete(`${environment.base_url}/Measure/Destroy?p_measure_oid=${uid}`);
   }
 
   // Add conditions to Care plan template
