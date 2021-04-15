@@ -146,7 +146,7 @@ export class AddCareActivityComponent implements OnInit {
  */
    }
 
-   onSubmit(){
+   addCareplan(){
    /*  this.carePlanTemplate = this.carePlanForm.value;
     this.carePlanTemplateService.createCarePlanTemplate(this.carePlanTemplate)
     // tslint:disable-next-line: deprecation
@@ -230,7 +230,7 @@ async addConditionPresentAlert() {
   await alert.present();
 }
 
-addPatientToCarePlan(){
+addAppointment(){
   /* this.carePlanTemplateService.addPatientToCarePlan(this.idCarePlan , this.patientForm.get('p_patientprofile_oid').value)
   .subscribe( (res: any) => {
     this.addPatientPresentAlert();
@@ -256,5 +256,8 @@ async addPatientPresentAlert() {
 
   await alert.present();
 }
+addNutrition(){}
+addMedication(){}
+addActivity(){}
 
 }

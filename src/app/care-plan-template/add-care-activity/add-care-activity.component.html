@@ -18,7 +18,7 @@
 
 </ion-segment>
 <div *ngIf="segmentModel === 'activity'">
-    <form [formGroup]="activityForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="activityForm" (ngSubmit)="addActivity()">
         <ion-item [disabled]="activityOk">
             <ion-label position="stacked">Name</ion-label>
             <ion-input type="text" formControlName="Name" class="form-control"></ion-input>
@@ -97,7 +97,7 @@
 </div>
 
 <div *ngIf="segmentModel === 'medication'">
-    <form [formGroup]="medicationForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="medicationForm" (ngSubmit)="addMedication()">
         <ion-card-header [hidden]="!activityOk" color="success" class="animate__animated animate__slideInUp animate__fast"> You can add another parameters for {{nameActivity}} </ion-card-header>
         <ion-item [disabled]="activityOk">
             <ion-label position="stacked">Name</ion-label>
@@ -164,7 +164,7 @@
     </ion-card>
 </div>
 <div *ngIf="segmentModel === 'nutritionOrder'">
-    <form [formGroup]="nutritionForm" (ngSubmit)="addConditionToCarePlan()">
+    <form [formGroup]="nutritionForm" (ngSubmit)="addNutrition()">
         <ion-item [disabled]="activityOk">
             <ion-label position="stacked">Name</ion-label>
             <ion-input type="text" formControlName="Name" class="form-control"></ion-input>
@@ -194,7 +194,7 @@
 </div>
 
 <div *ngIf="segmentModel === 'appointment'">
-    <form [formGroup]="appointmentForm" (ngSubmit)="addPatientToCarePlan()">
+    <form [formGroup]="appointmentForm" (ngSubmit)="addAppointment()">
         <ion-item [disabled]="activityOk">
             <ion-label position="stacked">Is virtual</ion-label>
             <ion-toggle formControlName="IsVirtual" class="form-control" checked="true"></ion-toggle>
