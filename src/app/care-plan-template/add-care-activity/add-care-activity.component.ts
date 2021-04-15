@@ -145,6 +145,16 @@ export class AddCareActivityComponent implements OnInit {
 
    ionViewWillEnter(){}
 
+   addAnotherActivity(){
+    console.log('clicked');
+    this.activityOk = false;
+    this.closeNutr = false;
+    this.closeMedic = false;
+    this.nutritionForm.reset();
+    this.medicationForm.reset();
+    this.activityForm.reset();
+   }
+
    ngOnInit() {
     this.storage.get('idCarePlan').then((val) => {
       console.log('I´m carrying id Care Plan inside Activity', val);
