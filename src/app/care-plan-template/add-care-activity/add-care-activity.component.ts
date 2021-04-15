@@ -25,6 +25,7 @@ export class AddCareActivityComponent implements OnInit {
   activityOk = false;
   name = '';
   idCarePlan: number;
+  idCareActivity: number;
   nameActivity: '';
   activityForm: FormGroup;
   medicationForm: FormGroup;
@@ -137,56 +138,44 @@ export class AddCareActivityComponent implements OnInit {
    ionViewWillEnter(){}
 
    ngOnInit() {
-/* 
-    this.patientProfileService.getAllCondition()
-    .subscribe( (res: any) => {
-      this.allConditions = res;
-        }, ( err ) => {
+    this.storage.get('idCarePlan').then((val) => {
+      console.log('I´m carrying id Care Plan inside Activity', val);
+      this.idCarePlan = val;
+      this.activityForm.get('CarePlan_oid').setValue(this.idCarePlan);
     });
- */
    }
 
-   addCareplan(){
-   /*  this.carePlanTemplate = this.carePlanForm.value;
-    this.carePlanTemplateService.createCarePlanTemplate(this.carePlanTemplate)
+   addActivity(){
+
+    this.careActivity = this.activityForm.value;
+    this.careActivityService.createCareActivity(this.careActivity)
     // tslint:disable-next-line: deprecation
     .subscribe( (res: any) => {
       console.log(res);
-      this.name = this.carePlanForm.get('Name').value;
+      this.nameActivity = this.activityForm.get('Name').value;
       // tslint:disable-next-line: no-string-literal
-      this.idCarePlan = res['Id'];
-      console.log(this.idCarePlan);
-      // tslint:disable-next-line: no-string-literal
-      this.nameCarePlan = res['Name'];
-      this.carePlanOk = true;
-      this.storage.set('idCarePlan', this.idCarePlan);
+      this.idCareActivity = res['Id'];
+      console.log(this.idCareActivity);
+      this.activityOk = true;
+      this.storage.set('idCareActivity', this.idCareActivity);
       this.presentAlert();
     }, ( err ) => {
-
-    }); */
+    });
 
   }
-
-
 
   async presentAlert() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'SUCCESS!',
-   /*    message: `The ${this.nameCarePlan} has been added successfully, now you can add another parameters for ${this.nameCarePlan} `, */
+      message: `The ${this.nameActivity} has been added successfully, now you can add another parameters for ${this.nameActivity} `,
       buttons: [  {
         text: 'Ok',
         handler: () => {
           this.showStorage();
 
         }
-      }/* ,
-      {
-        text: 'Add another Device Template',
-        handler: () => {
-         this.deviceTemplateForm.reset();
-        }
-      } */
+      }
       ]
     });
 
@@ -258,6 +247,5 @@ async addPatientPresentAlert() {
 }
 addNutrition(){}
 addMedication(){}
-addActivity(){}
 
 }

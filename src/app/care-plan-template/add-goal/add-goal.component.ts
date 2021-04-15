@@ -25,7 +25,7 @@ export class AddGoalComponent implements OnInit {
   goalOk = false;
   name = '';
   idCarePlan: number;
-  idGoa: number;
+  idGoal: number;
   nameGoal: '';
   goalForm: FormGroup;
   measureForm: FormGroup;
@@ -110,7 +110,7 @@ export class AddGoalComponent implements OnInit {
     });
    }
 
-   
+
    ionViewWillEnter(){}
 
    ngOnInit() {
@@ -137,7 +137,7 @@ export class AddGoalComponent implements OnInit {
     });
    }
 
-   addCareplan(){
+   addGoal(){
    /*  this.carePlanTemplate = this.carePlanForm.value;
     this.carePlanTemplateService.createCarePlanTemplate(this.carePlanTemplate)
     // tslint:disable-next-line: deprecation
@@ -247,7 +247,6 @@ async addPatientPresentAlert() {
 
   await alert.present();
 }
-addGoal(){}
 addMeasure(){}
 addTarget(){}
 

@@ -3,15 +3,15 @@
         <ion-icon name="walk-outline"></ion-icon>
         <ion-label>Details</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="medication">
+    <ion-segment-button value="medication" [disabled]="!activityOk">
         <ion-icon name="eyedrop-outline"></ion-icon>
         <ion-label>Medication</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="nutritionOrder">
+    <ion-segment-button value="nutritionOrder" [disabled]="!activityOk">
         <ion-icon name="nutrition-outline"></ion-icon>
         <ion-label text-wrap>Nutrition order</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="appointment">
+    <ion-segment-button value="appointment" [disabled]="!activityOk">
         <ion-icon name="calendar-outline"></ion-icon>
         <ion-label text-wrap>Appointment</ion-label>
     </ion-segment-button>
@@ -19,6 +19,7 @@
 </ion-segment>
 <div *ngIf="segmentModel === 'activity'">
     <form [formGroup]="activityForm" (ngSubmit)="addActivity()">
+        <ion-card-header [hidden]="!activityOk" color="success" class="animate__animated animate__slideInUp animate__fast"> You can add another parameters for {{nameActivity}} </ion-card-header>
         <ion-item [disabled]="activityOk">
             <ion-label position="stacked">Name</ion-label>
             <ion-input type="text" formControlName="Name" class="form-control"></ion-input>
@@ -54,7 +55,7 @@
                 To add Care activity please fill out this field
             </div>
         </ion-item>
-        <ion-item>
+        <ion-item [disabled]="activityOk">
             <ion-label position="stacked">Duration</ion-label>
             <ion-input type="number" formControlName="Duration" class="form-control" id="Duration" name="Duration"></ion-input>
             <div class="error" *ngIf="activityForm.controls.Duration.errors && activityForm.controls.Duration.touched">
@@ -98,36 +99,36 @@
 
 <div *ngIf="segmentModel === 'medication'">
     <form [formGroup]="medicationForm" (ngSubmit)="addMedication()">
-        <ion-card-header [hidden]="!activityOk" color="success" class="animate__animated animate__slideInUp animate__fast"> You can add another parameters for {{nameActivity}} </ion-card-header>
-        <ion-item [disabled]="activityOk">
+
+        <ion-item [disabled]="!activityOk">
             <ion-label position="stacked">Name</ion-label>
             <ion-input type="text" formControlName="Name" class="form-control"></ion-input>
             <div class="error" *ngIf="medicationForm.controls.Name.errors && medicationForm.controls.Name.touched">
                 To add medication please fill out this field
             </div>
         </ion-item>
-        <ion-item [disabled]="activityOk">
+        <ion-item [disabled]="!activityOk">
             <ion-label position="stacked">Description</ion-label>
             <ion-input type="text" formControlName="Description" class="form-control"></ion-input>
             <div class="error" *ngIf="medicationForm.controls.Description.errors && medicationForm.controls.Description.touched">
                 To add medication please fill out this field
             </div>
         </ion-item>
-        <ion-item [disabled]="activityOk">
+        <ion-item [disabled]="!activityOk">
             <ion-label position="stacked">Dosage</ion-label>
             <ion-input type="text" formControlName="Dosage" class="form-control"></ion-input>
             <div class="error" *ngIf="medicationForm.controls.Dosage.errors && medicationForm.controls.Dosage.touched">
                 To add medication please fill out this field
             </div>
         </ion-item>
-        <ion-item [disabled]="activityOk">
+        <ion-item [disabled]="!activityOk">
             <ion-label position="stacked">Manufacturer</ion-label>
             <ion-input type="text" formControlName="Manufacturer" class="form-control"></ion-input>
             <div class="error" *ngIf="medicationForm.controls.Manufacturer.errors && medicationForm.controls.Manufacturer.touched">
                 To add medication please fill out this field
             </div>
         </ion-item>
-        <ion-item>
+        <ion-item [disabled]="!activityOk">
             <ion-label position="stacked">Product reference</ion-label>
             <ion-input type="number" formControlName="ProductReference" class="form-control" id="ProductReference" name="ProductReference"></ion-input>
 
@@ -135,14 +136,14 @@
                 To add medication please fill out this field
             </div>
         </ion-item>
-        <ion-item [disabled]="activityOk">
+        <ion-item [disabled]="!activityOk">
             <ion-label position="stacked">Medication code</ion-label>
             <ion-input type="text" formControlName="MedicationCode" class="form-control"></ion-input>
             <div class="error" *ngIf="medicationForm.controls.MedicationCode.errors && medicationForm.controls.MedicationCode.touched">
                 To add medication please fill out this field
             </div>
         </ion-item>
-        <ion-item lines="full" [disabled]="activityOk">
+        <ion-item lines="full" [disabled]="!activityOk">
             <ion-label position="stacked">Form</ion-label>
             <ion-select value="draft" okText="Okay" cancelText="Dismiss" formControlName="Form">
                 <div class="error" *ngIf="medicationForm.controls.Form.errors && medicationForm.controls.Form.touched">
@@ -158,28 +159,28 @@
         <br>
         <br>
 
-        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [hidden]="activityOk" [disabled]="!medicationForm.valid">Done</ion-button>
+        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [hidden]="!activityOk" [disabled]="!medicationForm.valid">Done</ion-button>
     </form>
     <ion-card>
     </ion-card>
 </div>
 <div *ngIf="segmentModel === 'nutritionOrder'">
     <form [formGroup]="nutritionForm" (ngSubmit)="addNutrition()">
-        <ion-item [disabled]="activityOk">
+        <ion-item [disabled]="!activityOk">
             <ion-label position="stacked">Name</ion-label>
             <ion-input type="text" formControlName="Name" class="form-control"></ion-input>
             <div class="error" *ngIf="nutritionForm.controls.Name.errors && nutritionForm.controls.Name.touched">
                 To add nutrition please fill out this field
             </div>
         </ion-item>
-        <ion-item [disabled]="activityOk">
+        <ion-item [disabled]="!activityOk">
             <ion-label position="stacked">Description</ion-label>
             <ion-input type="text" formControlName="Description" class="form-control"></ion-input>
             <div class="error" *ngIf="nutritionForm.controls.Description.errors && nutritionForm.controls.Description.touched">
                 To add nutrition please fill out this field
             </div>
         </ion-item>
-        <ion-item [disabled]="activityOk">
+        <ion-item [disabled]="!activityOk">
             <ion-label position="stacked">Diet code</ion-label>
             <ion-input type="text" formControlName="DietCode" class="form-control"></ion-input>
             <div class="error" *ngIf="nutritionForm.controls.DietCode.errors && nutritionForm.controls.DietCode.touched">
@@ -189,7 +190,7 @@
 
         <br>
         <br>
-        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [hidden]="activityOk" [disabled]="!nutritionForm.valid">Done</ion-button>
+        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [hidden]="!activityOk" [disabled]="!nutritionForm.valid">Done</ion-button>
     </form>
 </div>
 

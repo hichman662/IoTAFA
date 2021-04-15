@@ -45,15 +45,15 @@
             <ion-icon name="receipt-outline"></ion-icon>
             <ion-label>Details</ion-label>
         </ion-segment-button>
-        <ion-segment-button value="careActivity">
+        <ion-segment-button value="careActivity" [disabled]="!carePlanOk">
             <ion-icon name="bicycle-outline"></ion-icon>
             <ion-label text-wrap>Care Activity</ion-label>
         </ion-segment-button>
-        <ion-segment-button value="goal">
+        <ion-segment-button value="goal" [disabled]="!carePlanOk">
             <ion-icon name="locate-outline"></ion-icon>
             <ion-label>Goal</ion-label>
         </ion-segment-button>
-        <ion-segment-button value="comunication">
+        <ion-segment-button value="comunication" [disabled]="!carePlanOk">
             <ion-icon name="swap-horizontal-outline"></ion-icon>
             <ion-label>Comunication</ion-label>
         </ion-segment-button>
@@ -67,11 +67,11 @@
                 <ion-icon name="medkit-outline"></ion-icon>
                 <ion-label>Profile</ion-label>
             </ion-segment-button>
-            <ion-segment-button value="condition">
+            <ion-segment-button value="condition" [disabled]="!carePlanOk">
                 <ion-icon name="list-circle-outline"></ion-icon>
                 <ion-label text-wrap>Condition</ion-label>
             </ion-segment-button>
-            <ion-segment-button value="patient">
+            <ion-segment-button value="patient" [disabled]="!carePlanOk">
                 <ion-icon name="accessibility-outline"></ion-icon>
                 <ion-label text-wrap>Patient</ion-label>
             </ion-segment-button>
@@ -130,7 +130,7 @@
 
                     </ion-select>
                 </ion-item>
-                <ion-item>
+                <ion-item [disabled]="carePlanOk">
                     <ion-label position="stacked">Duration Days</ion-label>
                     <ion-input type="number" formControlName="DurationDays" class="form-control" id="DurationDays" name="DurationDays"></ion-input>
 
@@ -138,7 +138,7 @@
                         To add Care plan please fill out this field
                     </div>
                 </ion-item>
-                <ion-item>
+                <ion-item [disabled]="carePlanOk">
                     <ion-label position="stacked">Modified</ion-label>
                     <div item-content>
                         <ion-datetime pickerFormat="YYYY MM DD" min="2018" max="2059-12-31" formControlName="Modified"></ion-datetime>
