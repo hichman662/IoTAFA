@@ -1,3 +1,6 @@
+import { Appointment } from './../../models/appointment.model';
+import { Medication } from './../../models/medication.model';
+import { NutritionOrder } from './../../models/nutritionOrder.model';
 import { CareActivityService } from './../../services/careActivity.service';
 import { PatientProfileService } from './../../services/patientProfile.service';
 import { Condition } from './../../models/condition.model';
@@ -32,7 +35,11 @@ export class AddCareActivityComponent implements OnInit {
   nutritionForm: FormGroup;
   appointmentForm: FormGroup;
   careActivity: CareActivity;
-
+  nutritionOrder: NutritionOrder;
+  medication: Medication;
+  appointment: Appointment;
+  closeNutr = false;
+  closeMedic = false;
 
 
   constructor(
@@ -118,6 +125,7 @@ export class AddCareActivityComponent implements OnInit {
       ]),
     });
 
+
     this.appointmentForm = new FormGroup({
       CareActivity_oid: new FormControl(Number, [
         Validators.required
@@ -157,14 +165,19 @@ export class AddCareActivityComponent implements OnInit {
       this.idCareActivity = res['Id'];
       console.log(this.idCareActivity);
       this.activityOk = true;
+      this.closeNutr = true;
+      this.closeMedic = true;
       this.storage.set('idCareActivity', this.idCareActivity);
-      this.presentAlert();
+      this.appointmentForm.get('CareActivity_oid').setValue(this.idCareActivity);
+      this.nutritionForm.get('CareActivity_oid').setValue(this.idCareActivity);
+      this.medicationForm.get('CareActivity_oid').setValue(this.idCareActivity);
+      this.activityPresentAlert();
     }, ( err ) => {
     });
 
   }
 
-  async presentAlert() {
+  async activityPresentAlert() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'SUCCESS!',
@@ -172,7 +185,6 @@ export class AddCareActivityComponent implements OnInit {
       buttons: [  {
         text: 'Ok',
         handler: () => {
-          this.showStorage();
 
         }
       }
@@ -186,58 +198,47 @@ export class AddCareActivityComponent implements OnInit {
       /*  console.log('Segment changed', ev); */
      }
 
-showStorage(){
-/*   this.storage.get('idCarePlan').then((val) => {
-    console.log('I´m carrying id Care Plan', val);
-  });
-}
 
-addConditionToCarePlan(){
-  console.log(this.conditionForm.get('p_addressconditions_oids').value);
-  this.carePlanTemplateService.addConditionToCarePlan(this.idCarePlan , this.conditionForm.get('p_addressconditions_oids').value)
-    .subscribe( (res: any) => {
-      this.addConditionPresentAlert();
-        }, ( err ) => {
-    }); */
 
-}
-async addConditionPresentAlert() {
-  const alert = await this.alertController.create({
-    cssClass: 'my-custom-class',
-    header: 'SUCCESS!',
-    message: `Conditions have been added successfully to Care Plan`,
-    buttons: [  {
-      text: 'Ok',
-      handler: () => {
-        this.showStorage();
 
-      }
-    }
-    ]
-  });
+addNutrition(){
+   this.nutritionOrder = this.nutritionForm.value;
+   this.careActivityService.createNutritionOrder(this.nutritionOrder)
+   .subscribe( (res: any) => {
+    this.addNutritionPresentAlert();
+    this.closeNutr = false;
+       }, ( err ) => {
+   });
+ }
 
-  await alert.present();
-}
-
-addAppointment(){
-  /* this.carePlanTemplateService.addPatientToCarePlan(this.idCarePlan , this.patientForm.get('p_patientprofile_oid').value)
+ addMedication(){
+  this.medication = this.medicationForm.value;
+  this.careActivityService.createMedication(this.medication)
   .subscribe( (res: any) => {
-    this.addPatientPresentAlert();
+   this.addMedicationPresentAlert();
+   this.closeMedic = false;
       }, ( err ) => {
-  }); */
+  });
+ }
+
+ addAppointment(){
+  this.appointment = this.appointmentForm.value;
+  this.careActivityService.createAppointment(this.appointment)
+  .subscribe( (res: any) => {
+   this.addAppointmentPresentAlert();
+      }, ( err ) => {
+  });
 
 }
 
-async addPatientPresentAlert() {
+async addNutritionPresentAlert() {
   const alert = await this.alertController.create({
     cssClass: 'my-custom-class',
     header: 'SUCCESS!',
-    message: `Patient has been added successfully to Care Plan`,
+    message: `Nutrition order has been added successfully to care activity`,
     buttons: [  {
       text: 'Ok',
       handler: () => {
-        this.showStorage();
-
       }
     }
     ]
@@ -245,7 +246,36 @@ async addPatientPresentAlert() {
 
   await alert.present();
 }
-addNutrition(){}
-addMedication(){}
+ async addMedicationPresentAlert() {
+  const alert = await this.alertController.create({
+    cssClass: 'my-custom-class',
+    header: 'SUCCESS!',
+    message: `Medication has been added successfully to care activity`,
+    buttons: [  {
+      text: 'Ok',
+      handler: () => {
+      }
+    }
+    ]
+  });
+
+  await alert.present();
+}
+
+async addAppointmentPresentAlert() {
+  const alert = await this.alertController.create({
+    cssClass: 'my-custom-class',
+    header: 'SUCCESS!',
+    message: `Appointment has been added successfully to care activity`,
+    buttons: [  {
+      text: 'Ok',
+      handler: () => {
+      }
+    }
+    ]
+  });
+
+  await alert.present();
+}
 
 }

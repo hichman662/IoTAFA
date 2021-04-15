@@ -1,3 +1,4 @@
+import { NutritionOrder } from './../models/nutritionOrder.model';
 import { Appointment } from './../models/appointment.model';
 import { Medication } from './../models/medication.model';
 import { environment } from './../../environments/environment';
@@ -17,6 +18,7 @@ export class CareActivityService {
     careActivity: CareActivity;
     medication: Medication;
     appointment: Appointment;
+    nutritionOrder: NutritionOrder;
 
 constructor(private http: HttpClient) {
 
@@ -89,5 +91,27 @@ public getAllAppointment(): Observable<object>{
 
   public deleteAppointment(uid) {
     return this.http.delete(`${environment.base_url}/Appointment/Destroy?p_appointment_oid=${uid}`);
+  }
+
+  // Nutrition
+  public getAllNutritionOrder(): Observable<object>{
+    return this.http.get(`${environment.base_url}/NutritionOrder/ReadAll`);
+  }
+
+  public getNutritionOrderById( uid: number): Observable<object>{
+    if (!uid) { uid = null; }
+    return this.http.get <NutritionOrder>(`${environment.base_url}/NutritionOrder/${uid}` );
+  }
+
+  public createNutritionOrder( data: NutritionOrder ): Observable<object> {
+    return this.http.post(`${environment.base_url}/NutritionOrder/New_`, data);
+  }
+
+  public updateNutritionOrder(uid: number, data: NutritionOrder): Observable<object> {
+    return this.http.put(`${environment.base_url}/NutritionOrder/Modify?idNutritionOrder=${uid}`, data);
+  }
+
+  public deleteNutritionOrder(uid) {
+    return this.http.delete(`${environment.base_url}/NutritionOrder/Destroy?p_nutritionorder_oid=${uid}`);
   }
 }
