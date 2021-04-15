@@ -1,3 +1,178 @@
-<p>
-  add-goal works!
-</p>
+<ion-segment value="all" color="tertiary" class="animate__animated animate__slideInUp animate__fast" scrollable="true" mode="md" [(ngModel)]="segmentModel" lines="none">
+    <ion-segment-button value="goal">
+        <ion-icon name="albums-outline"></ion-icon>
+        <ion-label>Details</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="target">
+        <ion-icon name="trending-up-outline"></ion-icon>
+        <ion-label>Target</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="measure">
+        <ion-icon name="speedometer-outline"></ion-icon>
+        <ion-label text-wrap>Measure</ion-label>
+    </ion-segment-button>
+
+
+</ion-segment>
+<div *ngIf="segmentModel === 'goal'">
+    <form [formGroup]="goalForm" (ngSubmit)="addGoal()">
+        <ion-item [disabled]="goalOk">
+            <ion-label position="stacked">Name</ion-label>
+            <ion-input type="text" formControlName="Name" class="form-control"></ion-input>
+            <div class="error" *ngIf="goalForm.controls.Name.errors && goalForm.controls.Name.touched">
+                To add goal please fill out this field
+            </div>
+        </ion-item>
+        <ion-item [disabled]="goalOk">
+            <ion-label position="stacked">Description</ion-label>
+            <ion-input type="text" formControlName="Description" class="form-control"></ion-input>
+            <div class="error" *ngIf="goalForm.controls.Description.errors && goalForm.controls.Description.touched">
+                To add Care activity please fill out this field
+            </div>
+        </ion-item>
+        <ion-item [disabled]="goalOk">
+            <ion-label position="stacked">Location</ion-label>
+            <ion-input type="text" formControlName="Location" class="form-control"></ion-input>
+            <div class="error" *ngIf="goalForm.controls.Location.errors && goalForm.controls.Location.touched">
+                To add Care activity please fill out this field
+            </div>
+        </ion-item>
+        <ion-item [disabled]="goalOk">
+            <ion-label position="stacked">Outcome code</ion-label>
+            <ion-input type="text" formControlName="OutcomeCode" class="form-control"></ion-input>
+            <div class="error" *ngIf="goalForm.controls.OutcomeCode.errors && goalForm.controls.OutcomeCode.touched">
+                To add Care activity please fill out this field
+            </div>
+        </ion-item>
+        <ion-item [disabled]="goalOk">
+            <ion-label position="stacked">Activity code</ion-label>
+            <ion-input type="text" formControlName="ActivityCode" class="form-control"></ion-input>
+            <div class="error" *ngIf="goalForm.controls.ActivityCode.errors && goalForm.controls.ActivityCode.touched">
+                To add Care activity please fill out this field
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Duration</ion-label>
+            <ion-input type="number" formControlName="Duration" class="form-control" id="Duration" name="Duration"></ion-input>
+            <div class="error" *ngIf="goalForm.controls.Duration.errors && goalForm.controls.Duration.touched">
+                To add Care activity please fill out this field
+            </div>
+        </ion-item>
+        <ion-item lines="full" [disabled]="goalOk">
+            <ion-label position="stacked">Type activity</ion-label>
+            <ion-select value="Medication" okText="Okay" cancelText="Dismiss" formControlName="TypeActivity">
+                <div class="error" *ngIf="goalForm.controls.TypeActivity.errors && goalForm.controls.TypeActivity.touched">
+                    Please fill out this field
+                </div>
+                <ion-select-option value="1">Medication</ion-select-option>
+                <ion-select-option value="2">Nutrition order</ion-select-option>
+                <ion-select-option value="3">Comunication</ion-select-option>
+                <ion-select-option value="4">Appointment</ion-select-option>
+                <ion-select-option value="5">Sport activity</ion-select-option>
+
+            </ion-select>
+        </ion-item>
+        <ion-item lines="full" [disabled]="goalOk">
+            <ion-label position="stacked">Periodicity</ion-label>
+            <ion-select value="draft" okText="Okay" cancelText="Dismiss" formControlName="Periodicity">
+                <div class="error" *ngIf="goalForm.controls.Periodicity.errors && goalForm.controls.Periodicity.touched">
+                    Please fill out this field
+                </div>
+                <ion-select-option value="1">Daily</ion-select-option>
+                <ion-select-option value="2">Monthly</ion-select-option>
+                <ion-select-option value="3">Per hour</ion-select-option>
+                <ion-select-option value="4">Weekly</ion-select-option>
+            </ion-select>
+        </ion-item>
+
+
+
+        <br>
+        <br>
+        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [hidden]="goalOk" [disabled]="!goalForm.valid">Done</ion-button>
+    </form>
+</div>
+
+<div *ngIf="segmentModel === 'target'">
+    <form [formGroup]="targetForm" (ngSubmit)="addTarget()">
+        <ion-card-header [hidden]="!goalOk" color="success" class="animate__animated animate__slideInUp animate__fast"> You can add another parameters for {{nameGoal}} </ion-card-header>
+        <ion-item [disabled]="goalOk">
+            <ion-label position="stacked">Name</ion-label>
+            <ion-input type="text" formControlName="Name" class="form-control"></ion-input>
+            <div class="error" *ngIf="targetForm.controls.Name.errors && targetForm.controls.Name.touched">
+                To add medication please fill out this field
+            </div>
+        </ion-item>
+        <ion-item [disabled]="goalOk">
+            <ion-label position="stacked">Description</ion-label>
+            <ion-input type="text" formControlName="Description" class="form-control"></ion-input>
+            <div class="error" *ngIf="targetForm.controls.Description.errors && targetForm.controls.Description.touched">
+                To add medication please fill out this field
+            </div>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">Product reference</ion-label>
+            <ion-input type="number" formControlName="ProductReference" class="form-control" id="ProductReference" name="ProductReference"></ion-input>
+
+            <div class="error" *ngIf="targetForm.controls.ProductReference.errors && targetForm.controls.ProductReference.touched">
+                To add medication please fill out this field
+            </div>
+        </ion-item>
+        <ion-item [disabled]="goalOk">
+            <ion-label position="stacked">Medication code</ion-label>
+            <ion-input type="text" formControlName="MedicationCode" class="form-control"></ion-input>
+            <div class="error" *ngIf="targetForm.controls.MedicationCode.errors && targetForm.controls.MedicationCode.touched">
+                To add medication please fill out this field
+            </div>
+        </ion-item>
+        <ion-item lines="full" [disabled]="goalOk">
+            <ion-label position="stacked">Form</ion-label>
+            <ion-select value="draft" okText="Okay" cancelText="Dismiss" formControlName="Form">
+                <div class="error" *ngIf="targetForm.controls.Form.errors && targetForm.controls.Form.touched">
+                    Please fill out this field
+                </div>
+                <ion-select-option value="1">Tablet</ion-select-option>
+                <ion-select-option value="2">Powder</ion-select-option>
+                <ion-select-option value="3">Capsule</ion-select-option>
+            </ion-select>
+        </ion-item>
+
+
+        <br>
+        <br>
+
+        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [hidden]="goalOk" [disabled]="!targetForm.valid">Done</ion-button>
+    </form>
+    <ion-card>
+    </ion-card>
+</div>
+<div *ngIf="segmentModel === 'measure'">
+    <form [formGroup]="measureForm" (ngSubmit)="addMeasure()">
+        <ion-item [disabled]="goalOk">
+            <ion-label position="stacked">Name</ion-label>
+            <ion-input type="text" formControlName="Name" class="form-control"></ion-input>
+            <div class="error" *ngIf="measureForm.controls.Name.errors && measureForm.controls.Name.touched">
+                To add nutrition please fill out this field
+            </div>
+        </ion-item>
+        <ion-item [disabled]="goalOk">
+            <ion-label position="stacked">Description</ion-label>
+            <ion-input type="text" formControlName="Description" class="form-control"></ion-input>
+            <div class="error" *ngIf="measureForm.controls.Description.errors && measureForm.controls.Description.touched">
+                To add nutrition please fill out this field
+            </div>
+        </ion-item>
+        <ion-item [disabled]="goalOk">
+            <ion-label position="stacked">Diet code</ion-label>
+            <ion-input type="text" formControlName="DietCode" class="form-control"></ion-input>
+            <div class="error" *ngIf="measureForm.controls.DietCode.errors && measureForm.controls.DietCode.touched">
+                To add nutrition please fill out this field
+            </div>
+        </ion-item>
+
+        <br>
+        <br>
+        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [hidden]="goalOk" [disabled]="!measureForm.valid">Done</ion-button>
+    </form>
+</div>
