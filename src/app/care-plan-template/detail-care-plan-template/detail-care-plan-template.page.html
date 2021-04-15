@@ -70,14 +70,15 @@
                 <ion-icon name="medkit-outline"></ion-icon>
                 <ion-label>Profile</ion-label>
             </ion-segment-button>
-            <ion-segment-button value="condition">
-                <ion-icon name="list-circle-outline"></ion-icon>
-                <ion-label text-wrap>Condition</ion-label>
-            </ion-segment-button>
             <ion-segment-button value="patient">
                 <ion-icon name="accessibility-outline"></ion-icon>
                 <ion-label text-wrap>Patient</ion-label>
             </ion-segment-button>
+            <ion-segment-button value="condition">
+                <ion-icon name="list-circle-outline"></ion-icon>
+                <ion-label text-wrap>Condition</ion-label>
+            </ion-segment-button>
+
 
         </ion-segment>
         <div *ngIf="segmentModel2 === 'profile'">
@@ -217,12 +218,12 @@
 
                     <ion-card>
                         <ion-item>
-                            <ion-label>Description</ion-label>
-                            <ion-badge slot="end">{{condition.value.Description}}</ion-badge>
-                        </ion-item>
-                        <ion-item>
                             <ion-label>Name</ion-label>
                             <ion-badge slot="end">{{condition.value.Name}}</ion-badge>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>Description</ion-label>
+                            <ion-badge slot="end">{{condition.value.Description}}</ion-badge>
                         </ion-item>
                         <ion-item>
 

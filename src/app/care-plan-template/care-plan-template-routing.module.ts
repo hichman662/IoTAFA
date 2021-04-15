@@ -16,6 +16,10 @@ const routes: Routes = [
   {
     path: 'add-care-plan-template',
     loadChildren: () => import('./add-care-plan-template/add-care-plan-template.module').then( m => m.AddCarePlanTemplatePageModule)
+  },
+  {
+    path: 'detail-care-activity',
+    loadChildren: () => import('./detail-care-activity/detail-care-activity.module').then( m => m.DetailCareActivityPageModule)
   }
 ];
 

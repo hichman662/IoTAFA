@@ -46,7 +46,7 @@
             <ion-label>Details</ion-label>
         </ion-segment-button>
         <ion-segment-button value="careActivity">
-            <ion-icon name="walk-outline"></ion-icon>
+            <ion-icon name="bicycle-outline"></ion-icon>
             <ion-label text-wrap>Care Activity</ion-label>
         </ion-segment-button>
         <ion-segment-button value="goal">
@@ -103,7 +103,7 @@
                     </div>
                 </ion-item>
                 <ion-item lines="full" [disabled]="carePlanOk">
-                    <ion-label>Status</ion-label>
+                    <ion-label position="stacked">Status</ion-label>
                     <ion-select value="draft" okText="Okay" cancelText="Dismiss" formControlName="Status">
                         <div class="error" *ngIf="carePlanForm.controls.Status.errors && carePlanForm.controls.Status.touched">
                             Please fill out this field
@@ -118,7 +118,7 @@
                     </ion-select>
                 </ion-item>
                 <ion-item lines="full" [disabled]="carePlanOk">
-                    <ion-label>Intent</ion-label>
+                    <ion-label position="stacked">Intent</ion-label>
                     <ion-select value="proposal" okText="Okay" cancelText="Dismiss" formControlName="Intent">
                         <div class="error" *ngIf="carePlanForm.controls.Intent.errors && carePlanForm.controls.Intent.touched">
                             Please fill out this field
@@ -131,7 +131,7 @@
                     </ion-select>
                 </ion-item>
                 <ion-item>
-                    <ion-label>Duration Days</ion-label>
+                    <ion-label position="stacked">Duration Days</ion-label>
                     <ion-input type="number" formControlName="DurationDays" class="form-control" id="DurationDays" name="DurationDays"></ion-input>
 
                     <div class="error" *ngIf="carePlanForm.controls.DurationDays.errors && carePlanForm.controls.DurationDays.touched">
@@ -160,7 +160,7 @@
         <div *ngIf="segmentModel2 === 'condition'">
             <form [formGroup]="conditionForm" (ngSubmit)="addConditionToCarePlan()">
                 <ion-item lines="full">
-                    <ion-label>Conditions</ion-label>
+                    <ion-label position="stacked">Conditions</ion-label>
                     <ion-select multiple="true" value="" okText="Okay" cancelText="Dismiss" formControlName="p_addressconditions_oids">
                         <div class="error" *ngIf="conditionForm.controls.p_addressconditions_oids.errors && conditionForm.controls.p_addressconditions_oids.touched">
                             Please fill out this field
@@ -178,7 +178,7 @@
         <div *ngIf="segmentModel2 === 'patient'">
             <form [formGroup]="patientForm" (ngSubmit)="addPatientToCarePlan()">
                 <ion-item lines="full">
-                    <ion-label>Patient</ion-label>
+                    <ion-label position="stacked">Patient</ion-label>
                     <ion-select multiple="false" value="" okText="Okay" cancelText="Dismiss" formControlName="p_patientprofile_oid">
                         <div class="error" *ngIf="patientForm.controls.p_patientprofile_oid.errors && patientForm.controls.p_patientprofile_oid.touched">
                             Please fill out this field
@@ -194,7 +194,7 @@
         </div>
     </div>
     <div *ngIf="segmentModel === 'careActivity'">
-        <!-- <app-add-telemetry-component></app-add-telemetry-component> -->
+        <app-add-care-activity></app-add-care-activity>
 
     </div>
     <div *ngIf="segmentModel === 'goal'">

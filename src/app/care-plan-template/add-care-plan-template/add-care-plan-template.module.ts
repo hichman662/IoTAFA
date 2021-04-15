@@ -1,3 +1,6 @@
+import { AddComunicationComponent } from './../add-comunication/add-comunication.component';
+import { AddGoalComponent } from './../add-goal/add-goal.component';
+import { AddCareActivityComponent } from './../add-care-activity/add-care-activity.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -20,6 +23,6 @@ import { AddCarePlanTemplatePage } from './add-care-plan-template.page';
     MatExpansionModule,
      RouterModule
   ],
-  declarations: [AddCarePlanTemplatePage]
+  declarations: [AddCarePlanTemplatePage, AddCareActivityComponent, AddGoalComponent, AddComunicationComponent]
 })
 export class AddCarePlanTemplatePageModule {}
