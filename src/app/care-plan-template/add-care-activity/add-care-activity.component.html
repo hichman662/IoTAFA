@@ -19,10 +19,10 @@
 </ion-segment>
 <div *ngIf="segmentModel === 'activity'">
     <form [formGroup]="activityForm" (ngSubmit)="addActivity()">
-        <ion-card-header [hidden]="!activityOk" color="success" class="animate__animated animate__slideInUp animate__fast"> Adding parameters for {{nameActivity}} or
-            <ion-button shape="round" fill="outline" size="small" (click)="addAnotherActivity()">
+        <ion-card-header [hidden]="!activityOk" color="success" class="animate__animated animate__slideInUp animate__fast"> Adding parameters for {{nameActivity}} or add another activity
+            <ion-button shape="round" color="danger" fill="outline" size="small" (click)="addAnotherActivity()">
                 <ion-icon slot="icon-only" name="add"></ion-icon>
-            </ion-button> another activity
+            </ion-button>
 
         </ion-card-header>
         <ion-item [disabled]="activityOk">
