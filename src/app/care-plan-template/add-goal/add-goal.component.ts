@@ -1,3 +1,4 @@
+import { Target } from './../../models/target.model';
 import { Telemetry } from './../../models/telemetry.model';
 import { TelemetryService } from './../../services/telemetry.service';
 import { PatientProfileService } from './../../services/patientProfile.service';
@@ -11,6 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { Measure } from 'src/app/models/measure.model';
+import { Goal } from 'src/app/models/goal.model';
 
 @Component({
   selector: 'app-add-goal',
@@ -23,7 +25,7 @@ export class AddGoalComponent implements OnInit {
   segmentModel = 'goal';
 
   goalOk = false;
-  name = '';
+  nameMeasure = '';
   idCarePlan: number;
   idGoal: number;
   nameGoal: '';
@@ -33,7 +35,9 @@ export class AddGoalComponent implements OnInit {
   allConditions: Condition[] = [];
   allTelemetries: Telemetry[] = [];
   allMeasures: Measure[] = [];
-
+  goal: Goal;
+  measure: Measure;
+  target: Target;
 
   constructor(
     private patientProfileService: PatientProfileService,
@@ -104,9 +108,7 @@ export class AddGoalComponent implements OnInit {
       DueDate: new FormControl(new Date().toISOString(), [
         Validators.required
       ]),
-      Measure_oid: new FormControl(Number, [
-        Validators.required
-      ])
+      Measure_oid: new FormControl(Number)
     });
    }
 
@@ -135,26 +137,33 @@ export class AddGoalComponent implements OnInit {
       this.allTelemetries = res;
         }, ( err ) => {
     });
+
+    this.storage.get('idCarePlan').then((val) => {
+      console.log('I´m carrying id Care Plan inside Goal', val);
+      this.idCarePlan = val;
+      this.goalForm.get('CarePlan_oid').setValue(this.idCarePlan);
+
+    });
    }
 
    addGoal(){
-   /*  this.carePlanTemplate = this.carePlanForm.value;
-    this.carePlanTemplateService.createCarePlanTemplate(this.carePlanTemplate)
+    this.goal = this.goalForm.value;
+    this.carePlanTemplateService.createGoal(this.goal)
     // tslint:disable-next-line: deprecation
     .subscribe( (res: any) => {
       console.log(res);
-      this.name = this.carePlanForm.get('Name').value;
       // tslint:disable-next-line: no-string-literal
-      this.idCarePlan = res['Id'];
-      console.log(this.idCarePlan);
+      this.idGoal = res['Id'];
+      console.log(this.idGoal);
       // tslint:disable-next-line: no-string-literal
-      this.nameCarePlan = res['Name'];
-      this.carePlanOk = true;
-      this.storage.set('idCarePlan', this.idCarePlan);
+      this.nameGoal = res['Name'];
+      this.goalOk = true;
+      this.storage.set('idGoal', this.idGoal);
+      this.targetForm.get('Goal_oid').setValue(this.idGoal);
       this.presentAlert();
     }, ( err ) => {
 
-    }); */
+    });
 
   }
 
@@ -164,20 +173,15 @@ export class AddGoalComponent implements OnInit {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'SUCCESS!',
-   /*    message: `The ${this.nameCarePlan} has been added successfully, now you can add another parameters for ${this.nameCarePlan} `, */
+   message: `The ${this.nameGoal} has been added successfully, now you can add another parameters for ${this.nameGoal} `,
       buttons: [  {
         text: 'Ok',
         handler: () => {
           this.showStorage();
 
         }
-      }/* ,
-      {
-        text: 'Add another Device Template',
-        handler: () => {
-         this.deviceTemplateForm.reset();
-        }
-      } */
+      }
+/*  */
       ]
     });
 
@@ -189,52 +193,63 @@ export class AddGoalComponent implements OnInit {
      }
 
 showStorage(){
-/*   this.storage.get('idCarePlan').then((val) => {
-    console.log('I´m carrying id Care Plan', val);
+   this.storage.get('idGoal').then((val) => {
+    console.log('I´m carrying id Goal', val);
   });
 }
-
-addConditionToCarePlan(){
-  console.log(this.conditionForm.get('p_addressconditions_oids').value);
-  this.carePlanTemplateService.addConditionToCarePlan(this.idCarePlan , this.conditionForm.get('p_addressconditions_oids').value)
-    .subscribe( (res: any) => {
-      this.addConditionPresentAlert();
-        }, ( err ) => {
-    }); */
-
-}
-async addConditionPresentAlert() {
-  const alert = await this.alertController.create({
-    cssClass: 'my-custom-class',
-    header: 'SUCCESS!',
-    message: `Conditions have been added successfully to Care Plan`,
-    buttons: [  {
-      text: 'Ok',
-      handler: () => {
-        this.showStorage();
-
-      }
-    }
-    ]
-  });
-
-  await alert.present();
-}
-
-addAppointment(){
-  /* this.carePlanTemplateService.addPatientToCarePlan(this.idCarePlan , this.patientForm.get('p_patientprofile_oid').value)
+addMeasure(){
+  this.measure = this.measureForm.value;
+  this.carePlanTemplateService.createMeasure(this.measure)
+  // tslint:disable-next-line: deprecation
   .subscribe( (res: any) => {
-    this.addPatientPresentAlert();
-      }, ( err ) => {
-  }); */
+    console.log(res);
+    // tslint:disable-next-line: no-string-literal
+    this.nameMeasure = res['Name'];
+    this.addMeasurePresentAlert();
+  }, ( err ) => {
 
+  });
 }
 
-async addPatientPresentAlert() {
+
+
+async addMeasurePresentAlert() {
   const alert = await this.alertController.create({
     cssClass: 'my-custom-class',
     header: 'SUCCESS!',
-    message: `Patient has been added successfully to Care Plan`,
+    message: `Measure ${this.nameMeasure} has been added successfully`,
+    buttons: [  {
+      text: 'Ok',
+      handler: () => {
+
+      }
+    }
+    ]
+  });
+
+  await alert.present();
+}
+
+addTarget(){
+  this.target = this.targetForm.value;
+  console.log(this.targetForm.value);
+  this.carePlanTemplateService.createTarget(this.target)
+  // tslint:disable-next-line: deprecation
+  .subscribe( (res: any) => {
+    console.log(res);
+    // tslint:disable-next-line: no-string-literal
+    this.addTargetPresentAlert();
+  }, ( err ) => {
+
+  });
+}
+
+
+async addTargetPresentAlert() {
+  const alert = await this.alertController.create({
+    cssClass: 'my-custom-class',
+    header: 'SUCCESS!',
+    message: `Target has been added successfully to the Goal`,
     buttons: [  {
       text: 'Ok',
       handler: () => {
@@ -247,7 +262,6 @@ async addPatientPresentAlert() {
 
   await alert.present();
 }
-addMeasure(){}
-addTarget(){}
+
 
 }
