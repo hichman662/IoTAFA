@@ -10,7 +10,7 @@ export class CareActivity {
       Description?: string,
       Duration?: number,
       // tslint:disable-next-line: variable-name
-      CarePlan_oid?: number,
+      CarePlanTemplate_oid?: number,
       // tslint:disable-next-line: no-shadowed-variable
       Medication?: Medication,
       Location?: string,
@@ -18,8 +18,6 @@ export class CareActivity {
       // tslint:disable-next-line: no-shadowed-variable
       NutritionOrder?: NutritionOrder,
       TypeActivity?: number,
-      // tslint:disable-next-line: variable-name
-      NextActivity_oid?: number,
       // tslint:disable-next-line: variable-name
       PreviousActivity_oid?: number,
       Notification?: Comunication[],
