@@ -3,6 +3,12 @@
 
 /* Works - pass "my-custom-class" in cssClass to increase specificity */
 
+.arrayEmpty {
+    margin-top: 50px;
+    text-align: left;
+    font-size: 16px;
+}
+
 .my-custom-class {
     color: green;
 }

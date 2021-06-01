@@ -53,10 +53,7 @@
             <ion-icon name="locate-outline"></ion-icon>
             <ion-label>Goal</ion-label>
         </ion-segment-button>
-        <ion-segment-button value="comunication" [disabled]="!carePlanOk">
-            <ion-icon name="swap-horizontal-outline"></ion-icon>
-            <ion-label>Comunication</ion-label>
-        </ion-segment-button>
+
     </ion-segment>
 </ion-header>
 <ion-content>
@@ -201,10 +198,7 @@
         <app-add-goal></app-add-goal>
 
     </div>
-    <div *ngIf="segmentModel === 'comunication'">
-        <!--  <app-add-property-component></app-add-property-component> -->
 
-    </div>
 
     <br>
 
