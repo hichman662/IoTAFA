@@ -1,7 +1,7 @@
 import { RouterModule } from '@angular/router';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ComponentGoalComponent } from './../component-goal/component-goal.component';
-import { ComponentComunicationComponent } from './../component-comunication/component-comunication.component';
+
 import { ComponentCareActivityComponent } from './../component-care-activity/component-care-activity.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -25,7 +25,6 @@ import { DetailCarePlanTemplatePage } from './detail-care-plan-template.page';
   ],
   declarations: [DetailCarePlanTemplatePage,
      ComponentCareActivityComponent,
-     ComponentComunicationComponent,
      ComponentGoalComponent]
 })
 export class DetailCarePlanTemplatePageModule {}

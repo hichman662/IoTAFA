@@ -54,7 +54,7 @@ export class AddCareActivityComponent implements OnInit {
     this.nutritionForm = null;
 
     this.activityForm = new FormGroup({
-      CarePlan_oid: new FormControl(Number, [
+      CarePlanTemplate_oid: new FormControl(Number, [
         Validators.required
       ]),
       TypeActivity: new FormControl(Number, [
@@ -159,7 +159,7 @@ export class AddCareActivityComponent implements OnInit {
     this.storage.get('idCarePlan').then((val) => {
       console.log('I´m carrying id Care Plan inside Activity', val);
       this.idCarePlan = val;
-      this.activityForm.get('CarePlan_oid').setValue(this.idCarePlan);
+      this.activityForm.get('CarePlanTemplate_oid').setValue(this.idCarePlan);
     });
    }
 

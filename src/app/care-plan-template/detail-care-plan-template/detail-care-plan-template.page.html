@@ -49,10 +49,6 @@
             <ion-icon name="walk-outline"></ion-icon>
             <ion-label text-wrap>Care Activity</ion-label>
         </ion-segment-button>
-        <ion-segment-button value="comunication">
-            <ion-icon name="swap-horizontal-outline"></ion-icon>
-            <ion-label>Comunication</ion-label>
-        </ion-segment-button>
         <ion-segment-button value="goal">
             <ion-icon name="locate-outline"></ion-icon>
             <ion-label>Goal</ion-label>
@@ -140,7 +136,12 @@
             </ion-list>
         </div>
         <div *ngIf="segmentModel2 === 'patient'">
-            <ion-list>
+            <ion-item *ngIf="patientProfile == null" line="none">
+                <ion-label class="arrayEmpty" color="warning">There is no patient assigned to this care plan</ion-label>
+            </ion-item>
+
+            <ion-list *ngIf="patientProfile != null">
+
                 <ion-list-header>
                     <ion-icon class="segmentIcon" name="document-outline"></ion-icon>Name</ion-list-header>
                 <ion-item>
@@ -272,8 +273,4 @@
 
     </div>
 
-    <div *ngIf="segmentModel === 'comunication'">
-        <app-component-comunication></app-component-comunication>
-
-    </div>
 </ion-content>

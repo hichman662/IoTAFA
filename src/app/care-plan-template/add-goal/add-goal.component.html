@@ -45,7 +45,7 @@
 
             </ion-select>
         </ion-item>
-        <ion-item lines="full">
+        <ion-item lines="full" [disabled]="goalOk">
             <ion-label position="stacked">Condition</ion-label>
             <ion-select multiple="false" value="" okText="Okay" cancelText="Dismiss" formControlName="Condition_oid">
                 <div class="error" *ngIf="goalForm.controls.Condition_oid.errors && goalForm.controls.Condition_oid.touched">
@@ -95,28 +95,28 @@
 </div>
 <div *ngIf="segmentModel === 'measure'">
     <form [formGroup]="measureForm" (ngSubmit)="addMeasure()">
-        <ion-item [disabled]="goalOk">
+        <ion-item [disabled]="!goalOk">
             <ion-label position="stacked">Name</ion-label>
             <ion-input type="text" formControlName="Name" class="form-control"></ion-input>
             <div class="error" *ngIf="measureForm.controls.Name.errors && measureForm.controls.Name.touched">
                 To add measure please fill out this field
             </div>
         </ion-item>
-        <ion-item [disabled]="goalOk">
+        <ion-item [disabled]="!goalOk">
             <ion-label position="stacked">Description</ion-label>
             <ion-input type="text" formControlName="Description" class="form-control"></ion-input>
             <div class="error" *ngIf="measureForm.controls.Description.errors && measureForm.controls.Description.touched">
                 To add measure please fill out this field
             </div>
         </ion-item>
-        <ion-item [disabled]="goalOk">
+        <ion-item [disabled]="!goalOk">
             <ion-label position="stacked">LOINC code</ion-label>
             <ion-input type="text" formControlName="LOINCcode" class="form-control"></ion-input>
             <div class="error" *ngIf="measureForm.controls.LOINCcode.errors && measureForm.controls.LOINCcode.touched">
                 To add measure please fill out this field
             </div>
         </ion-item>
-        <ion-item lines="full">
+        <ion-item lines="full" [hidden]="!goalOk">
             <ion-label position="stacked">Telemetries</ion-label>
             <ion-select multiple="true" value="" okText="Okay" cancelText="Dismiss" formControlName="Telemetry_oid">
 
@@ -129,28 +129,28 @@
 
         <br>
         <br>
-        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [hidden]="goalOk" [disabled]="!measureForm.valid">Done</ion-button>
+        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [hidden]="!goalOk" [disabled]="!measureForm.valid">Done</ion-button>
     </form>
 </div>
 
 <div *ngIf="segmentModel === 'target'">
     <form [formGroup]="targetForm" (ngSubmit)="addTarget()">
-        <ion-card-header [hidden]="!goalOk" color="success" class="animate__animated animate__slideInUp animate__fast"> You can add another parameters for {{nameGoal}} </ion-card-header>
-        <ion-item [disabled]="goalOk">
+
+        <ion-item [disabled]="!goalOk">
             <ion-label position="stacked">Description</ion-label>
             <ion-input type="text" formControlName="Description" class="form-control"></ion-input>
             <div class="error" *ngIf="targetForm.controls.Description.errors && targetForm.controls.Description.touched">
                 To add target please fill out this field
             </div>
         </ion-item>
-        <ion-item [disabled]="goalOk">
+        <ion-item [disabled]="!goalOk">
             <ion-label position="stacked">Desired value</ion-label>
             <ion-input type="text" formControlName="DesiredValue" class="form-control"></ion-input>
             <div class="error" *ngIf="targetForm.controls.DesiredValue.errors && targetForm.controls.DesiredValue.touched">
                 To add target please fill out this field
             </div>
         </ion-item>
-        <ion-item lines="full">
+        <ion-item lines="full" [hidden]="!goalOk">
             <ion-label position="stacked">Measure</ion-label>
             <ion-select multiple="false" value="" okText="Okay" cancelText="Dismiss" formControlName="Measure_oid">
 
@@ -160,7 +160,7 @@
 
             </ion-select>
         </ion-item>
-        <ion-item>
+        <ion-item [hidden]="!goalOk">
             <ion-label position="stacked">Due date</ion-label>
             <div item-content>
                 <ion-datetime pickerFormat="YYYY MM DD" min="2018" max="2059-12-31" formControlName="DueDate"></ion-datetime>
@@ -174,7 +174,7 @@
         <br>
         <br>
 
-        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [hidden]="goalOk" [disabled]="!targetForm.valid">Done</ion-button>
+        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [hidden]="!goalOk" [disabled]="!targetForm.valid">Done</ion-button>
     </form>
     <ion-card>
     </ion-card>
