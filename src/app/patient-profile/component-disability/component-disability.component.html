@@ -1,0 +1,33 @@
+<ion-item [hidden]="!arrayIsEmpty" line="none">
+    <ion-label class="arrayEmpty" color="warning">There is no disability</ion-label>
+</ion-item>
+
+<ion-list>
+    <div class="disability" *ngFor="let dis of disabilities ">
+
+        <ion-item-sliding #slidingItem>
+            <ion-item lines="inset" detail [routerLink]="['disability',dis['Id']]">
+                <ion-avatar slot="start">
+                    <ion-icon color="tertiary" name="accessibility-outline"></ion-icon>
+                </ion-avatar>
+                <ion-label>{{dis['Name']}}</ion-label>
+            </ion-item>
+
+            <ion-item-options side="end" (ionSwipe)="deleteDisability(slidingItem, dis['Id'], dis['Name'])">
+
+                <ion-item-option color="danger" expandable (click)="deleteDisability(slidingItem, dis['Id'], dis['Name'])">
+                    <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+                </ion-item-option>
+
+            </ion-item-options>
+            <ion-item-options side="start">
+
+                <ion-item-option color="success" (click)="closeSliding(slidingItem)" expandable [routerLink]="['editDisability',dis['Id']]">
+
+                    <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+
+                </ion-item-option>
+            </ion-item-options>
+        </ion-item-sliding>
+    </div>
+</ion-list>

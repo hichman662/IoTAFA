@@ -1,0 +1,205 @@
+<ion-header>
+
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="Care Plans" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button>
+            </ion-button>
+        </ion-buttons>
+
+    </ion-toolbar>
+    <ion-row>
+        <ion-col size="4" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-end">
+            <ion-card color="transparent" class="deviceTemplate-card">
+                <ion-img src='assets/icon/carePlan.png'></ion-img>
+
+            </ion-card>
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-center">
+        </ion-col>
+
+    </ion-row>
+    <ion-row>
+        <ion-col size="1" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="10" class="ion-align-self-center">
+
+            <ion-list-header>
+                <ion-label class="text-top">Add Care Plan</ion-label>
+            </ion-list-header>
+
+        </ion-col>
+        <ion-col size="1" class="ion-align-self-end">
+
+        </ion-col>
+
+    </ion-row>
+    <ion-segment value="all" color="tertiary" class="animate__animated animate__slideInUp animate__fast" scrollable="true" mode="md" [(ngModel)]="segmentModel" lines="none">
+        <ion-segment-button value="carePlan">
+            <ion-icon name="receipt-outline"></ion-icon>
+            <ion-label>Details</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="careActivity" [disabled]="!carePlanOk">
+            <ion-icon name="bicycle-outline"></ion-icon>
+            <ion-label text-wrap>Care Activity</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="goal" [disabled]="!carePlanOk">
+            <ion-icon name="locate-outline"></ion-icon>
+            <ion-label>Goal</ion-label>
+        </ion-segment-button>
+
+    </ion-segment>
+</ion-header>
+<ion-content>
+
+    <div *ngIf="segmentModel === 'carePlan'">
+        <ion-segment value="all" color="tertiary" class="animate__animated animate__slideInUp animate__fast" scrollable="true" mode="md" [(ngModel)]="segmentModel2" lines="none">
+            <ion-segment-button value="profile">
+                <ion-icon name="medkit-outline"></ion-icon>
+                <ion-label>Profile</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="condition" [disabled]="!carePlanOk">
+                <ion-icon name="list-circle-outline"></ion-icon>
+                <ion-label text-wrap>Condition</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="patient" [disabled]="!carePlanOk">
+                <ion-icon name="accessibility-outline"></ion-icon>
+                <ion-label text-wrap>Patient</ion-label>
+            </ion-segment-button>
+
+        </ion-segment>
+
+        <div *ngIf="segmentModel2 === 'profile'">
+            <form [formGroup]="carePlanForm" (ngSubmit)="onSubmit()">
+                <ion-card-header [hidden]="!carePlanOk" color="success" class="animate__animated animate__slideInUp animate__fast"> You can add another parameters for {{nameCarePlan}} </ion-card-header>
+                <ion-item [disabled]="carePlanOk">
+                    <ion-label position="stacked">Title</ion-label>
+                    <ion-input type="text" formControlName="Title" class="form-control"></ion-input>
+                    <div class="error" *ngIf="carePlanForm.controls.Title.errors && carePlanForm.controls.Title.touched">
+                        To add Care plan please fill out this field
+                    </div>
+                </ion-item>
+                <ion-item [disabled]="carePlanOk">
+                    <ion-label position="stacked">Name</ion-label>
+                    <ion-input type="text" formControlName="Name" class="form-control"></ion-input>
+                    <div class="error" *ngIf="carePlanForm.controls.Name.errors && carePlanForm.controls.Name.touched">
+                        To add Care plan please fill out this field
+                    </div>
+                </ion-item>
+                <ion-item [disabled]="carePlanOk">
+                    <ion-label position="stacked">Description</ion-label>
+                    <ion-input type="text" formControlName="Description" class="form-control"></ion-input>
+                    <div class="error" *ngIf="carePlanForm.controls.Description.errors && carePlanForm.controls.Description.touched">
+                        To add Care plan please fill out this field
+                    </div>
+                </ion-item>
+                <ion-item lines="full" [disabled]="carePlanOk">
+                    <ion-label position="stacked">Status</ion-label>
+                    <ion-select value="draft" okText="Okay" cancelText="Dismiss" formControlName="Status">
+                        <div class="error" *ngIf="carePlanForm.controls.Status.errors && carePlanForm.controls.Status.touched">
+                            Please fill out this field
+                        </div>
+                        <ion-select-option value="1">Draft</ion-select-option>
+                        <ion-select-option value="2">Active</ion-select-option>
+                        <ion-select-option value="3">On Hold</ion-select-option>
+                        <ion-select-option value="4">Revoked</ion-select-option>
+                        <ion-select-option value="5">Completed</ion-select-option>
+                        <ion-select-option value="6">Canceled</ion-select-option>
+
+                    </ion-select>
+                </ion-item>
+                <ion-item lines="full" [disabled]="carePlanOk">
+                    <ion-label position="stacked">Intent</ion-label>
+                    <ion-select value="proposal" okText="Okay" cancelText="Dismiss" formControlName="Intent">
+                        <div class="error" *ngIf="carePlanForm.controls.Intent.errors && carePlanForm.controls.Intent.touched">
+                            Please fill out this field
+                        </div>
+                        <ion-select-option value="1">Proposal</ion-select-option>
+                        <ion-select-option value="2">Plan</ion-select-option>
+                        <ion-select-option value="3">Order</ion-select-option>
+                        <ion-select-option value="4">Option</ion-select-option>
+
+                    </ion-select>
+                </ion-item>
+                <ion-item [disabled]="carePlanOk">
+                    <ion-label position="stacked">Duration Days</ion-label>
+                    <ion-input type="number" formControlName="DurationDays" class="form-control" id="DurationDays" name="DurationDays"></ion-input>
+
+                    <div class="error" *ngIf="carePlanForm.controls.DurationDays.errors && carePlanForm.controls.DurationDays.touched">
+                        To add Care plan please fill out this field
+                    </div>
+                </ion-item>
+                <ion-item [disabled]="carePlanOk">
+                    <ion-label position="stacked">Modified</ion-label>
+                    <div item-content>
+                        <ion-datetime pickerFormat="YYYY MM DD" min="2018" max="2059-12-31" formControlName="Modified"></ion-datetime>
+                    </div>
+                    <div class="error" *ngIf="carePlanForm.controls.Modified.errors && carePlanForm.controls.Modified.touched">
+                        Please fill out this field
+                    </div>
+                </ion-item>
+
+
+                <br>
+                <br>
+
+                <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [hidden]="carePlanOk" [disabled]="!carePlanForm.valid">Done</ion-button>
+            </form>
+            <ion-card>
+            </ion-card>
+        </div>
+        <div *ngIf="segmentModel2 === 'condition'">
+            <form [formGroup]="conditionForm" (ngSubmit)="addConditionToCarePlan()">
+                <ion-item lines="full">
+                    <ion-label position="stacked">Conditions</ion-label>
+                    <ion-select multiple="true" value="" okText="Okay" cancelText="Dismiss" formControlName="p_addressconditions_oids">
+                        <div class="error" *ngIf="conditionForm.controls.p_addressconditions_oids.errors && conditionForm.controls.p_addressconditions_oids.touched">
+                            Please fill out this field
+                        </div>
+                        <div>
+                            <ion-select-option *ngFor="let condition of allConditions" [value]="condition['Id']">{{condition['Name']}}</ion-select-option>
+                        </div>
+
+                    </ion-select>
+                </ion-item>
+                <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [hidden]="!carePlanOk" [disabled]="!conditionForm.valid">Done</ion-button>
+            </form>
+        </div>
+
+        <div *ngIf="segmentModel2 === 'patient'">
+            <form [formGroup]="patientForm" (ngSubmit)="addPatientToCarePlan()">
+                <ion-item lines="full">
+                    <ion-label position="stacked">Patient</ion-label>
+                    <ion-select multiple="false" value="" okText="Okay" cancelText="Dismiss" formControlName="p_patientprofile_oid">
+                        <div class="error" *ngIf="patientForm.controls.p_patientprofile_oid.errors && patientForm.controls.p_patientprofile_oid.touched">
+                            Please fill out this field
+                        </div>
+                        <div>
+                            <ion-select-option *ngFor="let patient of allPatients" [value]="patient['Id']">{{patient['Name']}}</ion-select-option>
+                        </div>
+
+                    </ion-select>
+                </ion-item>
+                <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [hidden]="!carePlanOk" [disabled]="!patientForm.valid">Done</ion-button>
+            </form>
+        </div>
+    </div>
+    <div *ngIf="segmentModel === 'careActivity'">
+        <app-add-care-activity></app-add-care-activity>
+
+    </div>
+    <div *ngIf="segmentModel === 'goal'">
+        <app-add-goal></app-add-goal>
+
+    </div>
+
+
+    <br>
+
+</ion-content>

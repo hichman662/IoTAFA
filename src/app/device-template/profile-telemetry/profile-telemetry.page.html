@@ -1,0 +1,97 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="Device template" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+    <ion-row>
+        <ion-col size="4" class="ion-align-self-start">
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-end">
+            <ion-card color="transparent" class="deviceTemplate-card">
+                <ion-img src='assets/icon/telemetry.png'></ion-img>
+            </ion-card>
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-center">
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col size="1" class="ion-align-self-start">
+        </ion-col>
+        <ion-col size="10" class="ion-align-self-center">
+            <ion-list-header>
+                <ion-label class="text-top">{{ telemetry['Name']}}</ion-label>
+            </ion-list-header>
+        </ion-col>
+        <ion-col size="1" class="ion-align-self-end">
+        </ion-col>
+    </ion-row>
+
+    <ion-segment value="all" color="tertiary" class="animate__animated animate__slideInUp animate__fast" scrollable="true" mode="md" [(ngModel)]="segmentModel" (ionChange)="segmentChanged($event)" lines="none">
+        <ion-segment-button value="profile">
+            <ion-icon name="reader-outline"></ion-icon>
+            <ion-label>Telemetry profile</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="specific">
+            <ion-icon name="radio-outline"></ion-icon>
+            <ion-label>Specific telemetry</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+
+</ion-header>
+
+<ion-content>
+    <div *ngIf="segmentModel === 'profile'">
+        <ion-item>
+            <ion-label>Frecuency</ion-label> {{ telemetry['Frecuency']}}
+        </ion-item>
+
+        <ion-item [hidden]="telemetry['Type'] !== 1">
+            <ion-label>Type</ion-label>State
+        </ion-item>
+        <ion-item [hidden]="telemetry['Type'] !== 2">
+            <ion-label>Type</ion-label>Event
+        </ion-item>
+        <ion-item [hidden]="telemetry['Type'] !== 3">
+            <ion-label>Type</ion-label>Location
+        </ion-item>
+        <ion-item [hidden]="telemetry['Type'] !== 4">
+            <ion-label>Type</ion-label>Sensor
+        </ion-item>
+
+
+        <ion-item [hidden]="telemetry['Unit'] !== 1">
+            <ion-label>Unit</ion-label>Percent
+        </ion-item>
+
+        <ion-item [hidden]="telemetry['Unit'] !== 2">
+            <ion-label>Unit</ion-label>Degree farenheit
+        </ion-item>
+
+        <ion-item [hidden]="telemetry['Unit'] !== 3">
+            <ion-label>Unit</ion-label>Degree celsius
+        </ion-item>
+
+        <ion-item [hidden]="telemetry['Unit'] !== 4">
+            <ion-label>Unit</ion-label>Geolocation
+        </ion-item>
+
+        <ion-item [hidden]="telemetry['Unit'] !== 5">
+            <ion-label>Unit</ion-label>Steps
+        </ion-item>
+
+        <ion-item [hidden]="telemetry['Unit'] !== 6">
+            <ion-label>Unit</ion-label>Beats per minute
+        </ion-item>
+
+    </div>
+    <div *ngIf="segmentModel === 'specific'">
+
+
+    </div>
+
+</ion-content>

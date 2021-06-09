@@ -1,0 +1,35 @@
+/* DOES NOT WORK - not specific enough */
+
+ion-loading {
+    color: green;
+}
+
+
+/* Works - pass "my-custom-class" in cssClass to increase specificity */
+
+.my-custom-class {
+    color: green;
+}
+
+ion-card {
+    box-shadow: none !important
+}
+
+ion-toolbar {
+    --background: rgb(248, 248, 248);
+}
+
+ion-header {
+    background-color: rgb(248, 248, 248);
+}
+
+.text-top {
+    text-align: center;
+    margin-top: -18px;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.ion-align-self-end {
+    margin-top: -18px;
+}

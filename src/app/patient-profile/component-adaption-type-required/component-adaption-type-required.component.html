@@ -1,0 +1,43 @@
+<ion-item [hidden]="!arrayIsEmpty" line="none">
+    <ion-label class="arrayEmpty" color="warning">There is no Adaptation Type Required</ion-label>
+</ion-item>
+
+<ion-list>
+
+    <div class="condition" *ngFor="let typeReq of adaptationTypeRequired ">
+
+        <ion-item-sliding #slidingItem>
+
+            <ion-item lines="inset">
+
+                <ion-label *ngIf="typeReq['AdaptionRequest'] == 1"> Alternative Text</ion-label>
+                <ion-label text-wrap *ngIf="typeReq['AdaptionRequest'] == 2"> Audio description</ion-label>
+                <ion-label *ngIf="typeReq['AdaptionRequest'] == 3"> Captions</ion-label>
+                <ion-label *ngIf="typeReq['AdaptionRequest'] == 4"> E_book</ion-label>
+                <ion-label *ngIf="typeReq['AdaptionRequest'] == 5"> Haptic</ion-label>
+                <ion-label *ngIf="typeReq['AdaptionRequest'] == 6"> HighContrast</ion-label>
+                <ion-label *ngIf="typeReq['AdaptionRequest'] == 7"> LongDescription</ion-label>
+                <ion-label *ngIf="typeReq['AdaptionRequest'] == 8"> Sign Language</ion-label>
+                <ion-label *ngIf="typeReq['AdaptionRequest'] == 9"> Transcript</ion-label>
+                <ion-note slot="end">{{typeReq['Description']}}</ion-note>
+
+            </ion-item>
+
+            <ion-item-options side="end" (ionSwipe)="deleteAdaptationTypeRequired(slidingItem, typeReq['Id'])">
+
+                <ion-item-option color="danger" expandable (click)="deleteAdaptationTypeRequired(slidingItem, typeReq['Id']) ">
+                    <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+                </ion-item-option>
+
+            </ion-item-options>
+            <ion-item-options side="start">
+
+                <ion-item-option color="success" (click)="closeSliding(slidingItem)" expandable [routerLink]="['editCondition',typeReq['Id']] ">
+
+                    <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+
+                </ion-item-option>
+            </ion-item-options>
+        </ion-item-sliding>
+    </div>
+</ion-list>
