@@ -181,7 +181,9 @@
                             Please fill out this field
                         </div>
                         <div>
-                            <ion-select-option *ngFor="let patient of allPatients" [value]="patient['Id']">{{patient['Name']}}</ion-select-option>
+                            <ion-select-option *ngFor="let patient of allPatients" [value]="patient['Id']">{{patient['Name']}}
+                                <option value=""><button>New Thing</button></option>
+                            </ion-select-option>
                         </div>
 
                     </ion-select>

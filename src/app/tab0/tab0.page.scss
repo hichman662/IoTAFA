@@ -36,7 +36,7 @@ ion-title {
 ion-header {
     text-align: center;
     align-content: center;
-    background-color: rgba(84, 87, 77, 0.719);
+    background-color: rgba(255, 255, 255);
 }
 
 ion-icon {
@@ -55,6 +55,20 @@ ion-label {
     justify-content: center;
     align-content: center;
     text-align: center;
-    font-size: 14px;
+    font-size: 22px;
     color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: -15px;
+}
+
+ion-card-header {
+    margin-top: -18px;
+    font-size: 72px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+ion-text {
+    margin-top: -10px;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
 }
